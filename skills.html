@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack & Services — KrazyDev | Langages, Sécu, Infra</title>
+<meta name="description" content="Stack technique KrazyDev : Python 3.13, Java 17, Rust/Axum, cybersécurité, Paper, services.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-inner"><div class="loader-logo">KRAZY<span>DEV</span></div><div class="loader-bar"><span></span></div><p>Chargement sécurisé...</p></div></div>
+<div id="progress"></div>
+<canvas id="particles" style="opacity:.4"></canvas>
+<div class="bg"></div><div class="grid-bg"></div><div class="scanline"></div>
+<nav><div class="nav-inner"><div class="logo glitch" data-text="KRAZYDEV">KRAZY<span>DEV</span></div><div class="nav-links"><a href="index.html">Accueil</a><a href="projets.html">Projets</a><a href="skills.html" class="active">Stack</a><a href="contact.html">Contact</a></div></div></nav>
+
+<div class="wrap" style="padding-top:44px">
+  <div class="page-head reveal visible">
+    <div class="kicker">/stack — 03</div>
+    <h1>La <em>stack</em></h1>
+    <p class="subtitle">Pas de buzzwords, juste ce qui tourne en prod.</p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section reveal">
+    <div class="skills">
+      <div class="skill"><h4>▸ Langages</h4><ul><li>Python 3.13 ★★★★☆</li><li>Java 17 ★★★★☆</li><li>Rust ★★★★★</li><li>SQL/SQLite ★★★★☆</li><li>JS ★★★☆☆</li><li>YAML/Maven ★★★★☆</li></ul><p style="opacity:.5;font-size:.78rem;margin-top:10px">Je code propre, typé, documenté.</p></div>
+      <div class="skill"><h4>▸ Cybersécurité & Infra</h4><ul><li>Anti-Raid / Anti-Bot</li><li>Auth & Permissions</li><li>WAL SQLite & Forensics</li><li>Paper Hardening</li><li>Rate-limit & Logs</li><li>Threat → Patch rapide</li></ul></div>
+      <div class="skill"><h4>▸ Serveur & DevOps</h4><ul><li>Rust Axum + Tokio</li><li>Tower / Governor</li><li>Gzip / CORS / Trace</li><li>Cloudflare (prod)</li><li>Git • Maven • Docker</li></ul></div>
+    </div>
+    <div class="tags" style="margin-top:16px"><span class="tag">Rust ★★★★★ — Serde, Axum, tokio, tower-http, tower_governor, tracing</span><span class="tag">Java 17 — Paper API, Spigot, Maven</span><span class="tag">Python — discord.py, aiohttp, sqlite3, matplotlib</span><span class="tag">JS — HTML/CSS vanilla, canvas</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px" class="mini-grid">
+      <div class="mini"><b>🛠️ Tooling</b><p>Burp, Nmap, Wireshark (bases), Git, Matplotlib, Paper API, discord.py</p></div>
+      <div class="mini"><b>📦 Méthode</b><p>Versionnage, changelog, test en prod contrôlée, rollback rapide</p></div>
+      <div class="mini"><b>🤝 Support</b><p>Discord actif, doc, mise à jour continue depuis 2023</p></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section reveal">
+    <h2>Services — Ce que je peux faire pour toi</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px" class="svc-grid">
+      <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">🤖 Bot Discord sur-mesure</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">Tickets V2, anti-raid, tempvoc, automod — livré, hébergé, maintenu. Pas un bot qui meurt au 1er raid.</p><p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--red);margin-top:8px">→ Devis sur Discord</p></div>
+      <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">⛏️ Plugins Paper prod</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">KM-Plugins ou plugin custom : perms, auth, perf. Code Java 17 propre, build Maven.</p><p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#c7cdd9;margin-top:8px">→ C:\Krazy Plugins\</p></div>
+      <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">🛡️ Audit anti-abus</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">Je check ton serveur/bot, je trouve les trous, je patch. Retour d'expérience de 3 ans d'attaques réelles.</p><p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#ffb84d;margin-top:8px">→ Sur demande</p></div>
+    </div>
+  </div>
+
+  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" onclick="goPrev()">← Retour</button><a href="contact.html" class="btn btn-primary">Suivant : Contact →</a></div>
+
+  <footer>Fait avec ♥ par <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Accueil</a> • <a href="projets.html">Projets</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a></footer>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

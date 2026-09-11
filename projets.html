@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — KrazyDev | Krazy Studio Bot & KM-Plugins</title>
+<meta name="description" content="Krazy Studio Bot (confidentiel) & KM-Plugins (public) en détail : architecture, features, stacks, fichiers.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-inner"><div class="loader-logo">KRAZY<span>DEV</span></div><div class="loader-bar"><span></span></div><p>Chargement sécurisé...</p></div></div>
+<div id="progress"></div>
+<canvas id="particles" style="opacity:.4"></canvas>
+<div class="bg"></div><div class="grid-bg"></div><div class="scanline"></div>
+<nav><div class="nav-inner"><div class="logo glitch" data-text="KRAZYDEV">KRAZY<span>DEV</span></div><div class="nav-links"><a href="index.html">Accueil</a><a href="projets.html" class="active">Projets</a><a href="skills.html">Stack</a><a href="contact.html">Contact</a></div></div></nav>
+
+<div class="wrap" style="padding-top:44px">
+  <div class="page-head reveal visible">
+    <div class="kicker">/projets — 02</div>
+    <h1>Les <em>projets</em></h1>
+    <p class="subtitle">2 écosystèmes, mais si tu ouvres le capot, c'est 15+ sous-projets prod.</p>
+  </div>
+
+  <!-- BOT -->
+  <div class="section reveal">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-maintenu">● MAINTENU — 2023-2026</span><span class="badge badge-confidentiel">CONFIDENTIEL — Repo privé</span><span class="badge" style="background:rgba(255,45,85,.14);color:#ff5c7a;border:1px solid rgba(255,45,85,.3)">FLAGSHIP</span></div>
+          <h3 style="margin-top:10px">Krazy Studio Bot — Bot Discord multifonction</h3>
+          <div class="meta">Python 3.13 • discord.py 2.7 • Le plus gros projet • 60k+ lignes</div>
+        </div>
+        <div style="text-align:right"><div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.6">12 cogs • 2 DB</div><div style="font-size:.78rem;color:var(--red);font-weight:800">PROD READY</div></div>
+      </div>
+      <div class="card-body" style="padding:0 22px 22px">
+        <p><b>Pitch :</b> Un seul bot qui remplace 6 bots mal branlés. Pensé pour grosses commus qui se font raider à 4h du mat.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px" class="feat-grid">
+          <div class="mini"><b>🎫 Tickets V2</b><p>Panels, threads, transcripts HTML, claim/close, logs</p></div>
+          <div class="mini"><b>🛡️ Anti-Raid</b><p>Join flood, mass-ban, auto-lock, forensics snapshots</p></div>
+          <div class="mini"><b>🔊 TempVoc</b><p>Salons vocaux temporaires auto, limite, perm, cleanup</p></div>
+          <div class="mini"><b>📊 Sondages 20 options</b><p>Embeds, boutons, résultats Matplotlib</p></div>
+          <div class="mini"><b>🤖 Automod + Logs</b><p>Filtres, warn/mute, logs complets salon par salon</p></div>
+          <div class="mini"><b>📈 Niveaux & Économie</b><p>XP, leaderboard, shop, daily</p></div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-top:14px">
+          <b style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--red)">Architecture</b>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.65;margin-top:6px;line-height:1.6">cogs/ (12) • core/ • utils/ • web/ • forensics_snapshots/<br>globality.db (WAL) • temp.db (WAL) • Matplotlib charts<br>Double DB pour ne jamais lock la prod</p>
+        </div>
+        <div class="tags"><span class="tag">Python 3.13</span><span class="tag">discord.py 2.7</span><span class="tag">SQLite WAL</span><span class="tag">Matplotlib</span><span class="tag">asyncio</span></div>
+        <div class="links">
+          <span style="font-size:.82rem;opacity:.6;padding:8px 0">Repo : confidentiel — accès privé sur demande</span>
+          <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Tester sur Discord ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KM-PLUGINS -->
+  <div class="section reveal">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-maintenu">● MAINTENU — 2023-2026</span><span class="badge badge-public">PUBLIC — Disponible</span></div>
+          <h3 style="margin-top:10px">KM-Plugins — Suite Paper/Spigot premium</h3>
+          <div class="meta">Java 17 • Paper/Spigot • Maven • C:\Krazy Plugins\ • ~60k fichiers</div>
+        </div>
+        <div style="text-align:right"><div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.6">15 plugins</div><div style="font-size:.78rem;color:#c7cdd9;font-weight:800">ECOSYSTEM</div></div>
+      </div>
+      <div class="card-body" style="padding:0 22px 22px">
+        <p><b>Pitch :</b> Une suite cohérente qui couvre auth, perms, anti-bot, modération et perf — sans empiler 20 plugins incompatibles.</p>
+        <div class="tags"><span class="tag">Java 17</span><span class="tag">Paper API</span><span class="tag">Spigot</span><span class="tag">Maven</span><span class="tag">YAML</span></div>
+        <div class="subgrid">
+          <div class="mini"><b>KM-AC</b><p>Anti-Cheat custom — 8 608 fichiers — détection & isolation</p><div class="files">Flag ship perf</div></div>
+          <div class="mini"><b>KM-AntiBots</b><p>Anti-bots / anti-raid — 102 fichiers</p></div>
+          <div class="mini"><b>KM-Login / Beta</b><p>Auth sécurisée — 15k + 11k fichiers — nLogin hardené</p></div>
+          <div class="mini"><b>KM-Perms</b><p>Perms avancées — 3 258 fichiers</p></div>
+          <div class="mini"><b>KM-Moderations</b><p>Sanctions & logs — 161 fichiers</p></div>
+          <div class="mini"><b>KM-Maintenance</b><p>Whitelist intelligente — 40 fichiers</p></div>
+          <div class="mini"><b>KM-Survival</b><p>Gameplay survie — 82 fichiers</p></div>
+          <div class="mini"><b>KM-TAB</b><p>TAB & scoreboard — 63 fichiers</p></div>
+          <div class="mini"><b>KrazyMan Perf</b><p>Lag-isolation — 66 fichiers</p></div>
+          <div class="mini"><b>KrazyMOTD</b><p>MOTD dynamique — 156 fichiers</p></div>
+          <div class="mini"><b>RAM_DUMPER</b><p>Dump hprof & forensics — 144 Mo</p></div>
+          <div class="mini" style="border-style:dashed;opacity:.7"><b>+ Nlogin_code / .tools</b><p>Sources & tooling — 8k fichiers</p></div>
+        </div>
+        <div class="links">
+          <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Obtenir KM-Plugins ↗</a>
+          <span style="font-size:.82rem;opacity:.6;padding:8px 0">Dispo via Discord — dossier C:\Krazy Plugins\</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" onclick="goPrev()">← Retour</button><a href="skills.html" class="btn btn-primary">Suivant : Stack →</a></div>
+
+  <footer>Fait avec ♥ par <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Accueil</a> • <a href="projets.html">Projets</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a></footer>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
