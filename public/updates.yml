@@ -1,0 +1,148 @@
+# =============================================================
+# KM-Plugins — Journal des mises a jour
+# Source de verite pour le site web (projets.html)
+# Statut : stable / dev / en-developpement / public / confidentiel
+# =============================================================
+
+suite: KM-Plugins
+auteur: KrazyMan_off aka Sasha
+faq:
+  prix: Tous les plugins sont 100% gratuits.
+  canal: Disponibles via Discord, liens envoyes par DM.
+
+plugins:
+  - id: km-ac
+    nom: KM-AC
+    tagline: "Anti-Cheat reseau, 138 checks, proxy-first"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-09-11
+    gratuit: true
+    features:
+      - "138 checks anti-cheat (mouvement, combat, impossibles)"
+      - "Lecture sur le proxy Velocity AVANT le backend"
+      - "Adaptateur Paper/Folia + coeur commun"
+      - "Isolation et detection a chaud, faible faux positif"
+
+  - id: km-antibots
+    nom: KM-AntiBots
+    tagline: "L'anti-bot qui remplace Cloudflare sur IP brute"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-09-11
+    gratuit: true
+    features:
+      - "Protection TCP Minecraft directement sur IP brute, sans domaine"
+      - "HandshakeValidator inspecte le protocole Minecraft natif"
+      - "BotScorer score 1 humain -> 99 bot (VPN/hosting/country)"
+      - "Challenge 5s + passage 30min, whitelist/blacklist persistantes"
+      - "Bridge Bukkit <-> Velocity, zero faux positif (trusted-players)"
+
+  - id: km-login
+    nom: KM-Login
+    tagline: "Authentification premium resistance brute-force"
+    statut: en-developpement
+    version: 2.0.17 (Alpha v2a)
+    derniere-maj: 2026-09-12
+    gratuit: true
+    en-developpement: true
+    note: "Phase Alpha/Beta active. Sortie prochaine."
+    features:
+      - "Auth premium + offline, securisee et auditee"
+      - "Recupere les comptes premiums via Mojang session"
+      - "Anti brute-force, sessions persistantes"
+      - "Chargement decoupe en modules (loader/separe)"
+      - "Compatible Bungee/Spigot/Velocity"
+
+  - id: km-maintenance
+    nom: KM-Maintenance
+    tagline: "Mode maintenance intelligent multi-serveurs"
+    statut: stable
+    version: 1.0.0-STABLE
+    derniere-maj: 2026-07-01
+    gratuit: true
+    features:
+      - "Coupure propre du serveur avec ecran MOTD de maintenance"
+      - "Whitelist intelligente par groupe/permission"
+      - "Ping cache pour afficher la maintenance dans le menu serveur"
+      - "Bridge proxy + bukkit pour synchroniser l'etat"
+
+  - id: km-moderations
+    nom: KM-Moderations
+    tagline: "Moderation proxy-first, sanctions sur tout le reseau"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-07-06
+    gratuit: true
+    features:
+      - "Ban / tempban / ipban / kick / mute / unmute centralises"
+      - "Ecrans de sanction MiniMessage avec gradients"
+      - "Annonces reseau globales a tous les serveurs"
+      - "Vanish, staff-chat, spy, gnick, freeze, find, fly, glist"
+      - "Sanctions persistantes (storage natif + IP ban)"
+
+  - id: km-perms
+    nom: KM-Perms
+    tagline: "Permissions avancees, fork LuckPerms durci"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-07-06
+    gratuit: true
+    features:
+      - "Base stable LuckPerms 5.5.17 avec modules KM"
+      - "Prefixes/suffixes groupes, poids, heritages"
+      - "Common + Proxy + Server, dashboard contexte"
+      - "Integre aux autres KM (prefixes dans chats/sanctions)"
+
+  - id: km-survival
+    nom: KM-Survival
+    tagline: "Survie realiste : temperature, faim, saisons"
+    statut: stable
+    version: 1.0.0
+    derniere-maj: 2026-07-15
+    gratuit: true
+    features:
+      - "Systeme de temperature corporelle et environnement"
+      - "Hydratation, faim, blessures et sante mentale"
+      - "Saisons (ete/hiver) avec impacts gameplay"
+      - "Gestion du sommeil et action bar HUD en temps reel"
+
+  - id: km-tab
+    nom: KM-TAB
+    tagline: "Tablist + chat global beaux, avec grades"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-07-06
+    gratuit: true
+    features:
+      - "Header/footer custom, ping, TPS, en ligne"
+      - "Chat global formatte avec grades KM-Perms"
+      - "Messages join/leave personnalisables"
+      - "Spigot/PufferFish + companion pour serveurs multiples"
+
+  - id: krazy-perf
+    nom: KrazyMan Performance
+    tagline: "Optimisation & isolation de lag serveur"
+    statut: dev
+    version: 1.0.0-SNAPSHOT
+    derniere-maj: 2026-09-11
+    gratuit: true
+    features:
+      - "Isolation des processus qui lag (chunks, redstone, AI)"
+      - "Watchdog froid, detecteurs de redstone clock et hopper"
+      - "Otimisation entite-AI, pregen de chunks, memoire"
+      - "Prometheus exporter + dashboard sante serveur"
+
+  - id: krazymotd
+    nom: KRAZY-MOTD
+    tagline: "MOTD animee, favicons et placeholders live"
+    statut: stable
+    version: 2.0.0-STABLE
+    derniere-maj: 2026-09-12
+    gratuit: true
+    features:
+      - "Animation de frames (sequentiel/random/shuffle)"
+      - "Placeholders live par ping : {online} {max} {time} {host}"
+      - "Hover custom, favicons par frame, spoof de version"
+      - "Nombre de joueurs simule (real/fake/fixe)"
+      - "Mode maintenance integre avec frame dediee"

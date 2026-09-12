@@ -20,7 +20,7 @@
   <div class="page-head reveal visible">
     <div class="kicker">/projets — 02</div>
     <h1>Les <em>projets</em></h1>
-    <p class="subtitle">2 écosystèmes, mais si tu ouvres le capot, c'est 15+ sous-projets prod.</p>
+    <p class="subtitle">1 flagship confidentiel + 10 plugins gratuits. Mises à jour trackées dans <b style="color:var(--red)">updates.yml</b>.</p>
   </div>
 
   <!-- BOT -->
@@ -62,34 +62,205 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-maintenu">● MAINTENU — 2023-2026</span><span class="badge badge-public">PUBLIC — Disponible</span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-maintenu">● MAINTENU — 2023-2026</span><span class="badge badge-public">GRATUITS</span><span class="badge" style="background:rgba(255,45,85,.14);color:#ff5c7a;border:1px solid rgba(255,45,85,.3)">10 PLUGINS</span></div>
           <h3 style="margin-top:10px">KM-Plugins — Suite Paper/Spigot premium</h3>
-          <div class="meta">Java 17 • Paper/Spigot • Maven • ~60k fichiers</div>
+          <div class="meta">Java 17 • Paper/Spigot/Velocity/Bungee • Maven & Gradle</div>
         </div>
-        <div style="text-align:right"><div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.6">15 plugins</div><div style="font-size:.78rem;color:#c7cdd9;font-weight:800">ECOSYSTEM</div></div>
+        <div style="text-align:right"><div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.6">10 plugins • 100% gratuits</div><div style="font-size:.78rem;color:var(--red);font-weight:800">LIBRES & DISPO</div></div>
       </div>
       <div class="card-body" style="padding:0 22px 22px">
-        <p><b>Pitch :</b> Une suite cohérente qui couvre auth, perms, anti-bot, modération et perf — sans empiler 20 plugins incompatibles.</p>
-        <div class="tags"><span class="tag">Java 17</span><span class="tag">Paper API</span><span class="tag">Spigot</span><span class="tag">Maven</span><span class="tag">YAML</span></div>
-        <div class="subgrid">
-          <div class="mini"><b>KM-AC</b><p>Anti-Cheat custom — 8 608 fichiers — détection & isolation</p><div class="files">Flag ship perf</div></div>
-          <div class="mini"><b>KM-AntiBots</b><p>Anti-bots / anti-raid — 102 fichiers</p></div>
-          <div class="mini"><b>KM-Login / Beta</b><p>Auth sécurisée — 15k + 11k fichiers — nLogin hardené</p></div>
-          <div class="mini"><b>KM-Perms</b><p>Perms avancées — 3 258 fichiers</p></div>
-          <div class="mini"><b>KM-Moderations</b><p>Sanctions & logs — 161 fichiers</p></div>
-          <div class="mini"><b>KM-Maintenance</b><p>Whitelist intelligente — 40 fichiers</p></div>
-          <div class="mini"><b>KM-Survival</b><p>Gameplay survie — 82 fichiers</p></div>
-          <div class="mini"><b>KM-TAB</b><p>TAB & scoreboard — 63 fichiers</p></div>
-          <div class="mini"><b>KrazyMan Perf</b><p>Lag-isolation — 66 fichiers</p></div>
-          <div class="mini"><b>KrazyMOTD</b><p>MOTD dynamique — 156 fichiers</p></div>
-          <div class="mini"><b>RAM_DUMPER</b><p>Dump hprof & forensics — 144 Mo</p></div>
-          <div class="mini" style="border-style:dashed;opacity:.7"><b>+ Nlogin_code / .tools</b><p>Sources & tooling — 8k fichiers</p></div>
-        </div>
-        <div class="links">
-          <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Obtenir KM-Plugins ↗</a>
-          <span style="font-size:.82rem;opacity:.6;padding:8px 0">Dispo via Discord — liens envoyés par DM</span>
-        </div>
+        <p><b>Pitch :</b> Une suite cohérente qui couvre auth, perms, anti-bot, anti-cheat, modération, survie et perf — sans empiler 20 plugins incompatibles. Chaque module parle aux autres : les grades KM-Perms s'affichent dans KM-TAB, les sanctions KM-Moderations s'annoncent sur tout le réseau, KM-AntiBots bloque avant même le backend. Tous gratuits, liens par DM sur Discord.</p>
+        <div class="tags"><span class="tag">Java 17</span><span class="tag">Paper API</span><span class="tag">Velocity</span><span class="tag">Bungee</span><span class="tag">Maven</span><span class="tag">Gradle</span></div>
       </div>
+    </div>
+
+    <div class="subgrid" style="grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px">
+      <!-- KM-AC -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">⚡ KM-AC</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Anti-Cheat réseau — 138 checks</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Le shield qui rend la triche épuisante. Détecte et isole les comportements impossibles sans casser l'expérience des légitimes.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ 138 checks : mouvement, combat, impossibles</span>
+          <span>▸ Proxy-first : lecture AVANT le backend</span>
+          <span>▸ Adaptateur Paper/Folia, coeur commun</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-09-11</div>
+      </div>
+      <!-- KM-AntiBots -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">🛡️ KM-AntiBots</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Anti-bot / anti-raid — l'edge qui remplace Cloudflare</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Cloudflare exige un domaine et ne voit pas Minecraft. KM-AntiBots inspecte le protocole natif (handshake, ping→join) et protège ton IP brute, sans DNS.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ HandshakeValidator protocole Minecraft natif</span>
+          <span>▸ BotScorer : score humain→bot (VPN/hosting)</span>
+          <span>▸ Challenge 5s + passage 30min, anti faux-positif</span>
+          <span>▸ Whitelist/blacklist persistantes, bridge Bukkit</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-09-11</div>
+      </div>
+      <!-- KM-Login -->
+      <div class="card" style="padding:20px;border-color:rgba(255,45,85,.35)">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">🔑 KM-Login</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Auth premium — résistance brute-force</div>
+          </div>
+          <span class="badge badge-confidentiel" style="background:rgba(255,45,85,.14);color:#ff5c7a;border-color:rgba(255,45,85,.35)">EN DÉVELOPPEMENT</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Le login qui vérifie les comptes premium via la session Mojang et rend le brute-force inutile. Actuellement en Alpha/Beta — phase finale.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Auth premium + offline, sessions persistantes</span>
+          <span>▸ Récupération des comptes premium Mojang</span>
+          <span>▸ Architecture modulaire (loader séparé)</span>
+          <span>▸ Bungee / Spigot / Velocity</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">ALPHA v2.0.17 — MAJ 2026-09-12</div>
+      </div>
+      <!-- KM-Maintenance -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">🚧 KM-Maintenance</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Mode maintenance intelligent multi-serveurs</div>
+          </div>
+          <span class="badge badge-public" style="background:rgba(56,239,125,.12);color:#5cf09a;border-color:rgba(56,239,125,.3)">STABLE 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Coupe proprement ton serveur pendant un update ou un reset, avec whitelist intelligente et écran visible dans le menu serveur.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Coupure propre + écran MOTD maintenance</span>
+          <span>▸ Whitelist par groupe/permission, ping cache</span>
+          <span>▸ Bridge proxy ↔ bukkit synchronisé</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-07-01</div>
+      </div>
+      <!-- KM-Moderations -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">👮 KM-Moderations</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Modération proxy-first, sanctions réseau</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Sanctionne n'importe quel joueur de ton réseau depuis le proxy : ban, ipban, kick, mute — l'effet est global, les écrans sont beaux.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Ban / tempban / ipban / kick / mute centralisés</span>
+          <span>▸ Écrans MiniMessage gradients + annonces globales</span>
+          <span>▸ Vanish, staff-chat, spy, gnick, freeze, fly, find</span>
+          <span>▸ Sanctions persistantes (IP ban + storage natif)</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-07-06</div>
+      </div>
+      <!-- KM-Perms -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">🎖️ KM-Perms</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Permissions avancées — fork LuckPerms durci</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">La base LuckPerms 5.5.17, durcie et branchée sur l'écosystème KM : groupes, poids, héritages — et tes grades s'affichent partout sinon.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Groupes, prefixes/suffixes, poids, héritages</span>
+          <span>▸ Modules Common + Proxy + Server</span>
+          <span>▸ Branché KM-TAB, KM-Moderations, KM-Survival</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-07-06</div>
+      </div>
+      <!-- KM-Survival -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">🌡️ KM-Survival</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Survie réaliste — température, hydratation, saisons</div>
+          </div>
+          <span class="badge badge-public" style="background:rgba(56,239,125,.12);color:#5cf09a;border-color:rgba(56,239,125,.3)">STABLE 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">La survie qui se vit : gère ta température corporelle, ton hydratation, tes blessures — et les saisons pèsent vraiment sur le gameplay.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Température + hydratation + faim connectées</span>
+          <span>▸ Blessures, santé mentale, effet somatique</span>
+          <span>▸ Saisons (été/hiver) avec impacts réels</span>
+          <span>▸ HUD action bar temps réel, sleep manager</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-07-15</div>
+      </div>
+      <!-- KM-TAB -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">📋 KM-TAB</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Tablist + chat global, avec grades</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Header/footer custom, ping, TPS, joueurs en ligne — et un chat global propre où les grades KM-Perms s'affichent automatiquement.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Header/footer custom : ping, TPS, online</span>
+          <span>▸ Chat global formaté grades KM-Perms</span>
+          <span>▸ Messages join/leave personnalisés</span>
+          <span>▸ Spigot/PufferFish + companion multi-serveurs</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-07-06</div>
+      </div>
+      <!-- KrazyMan Performance -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">⚙️ KrazyMan Performance</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">Optimisation & isolation de lag</div>
+          </div>
+          <span class="badge badge-maintenu">DEV 1.0.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Isole ce qui fait lag ta machine avant que ce soit toi qui lag : redstone clocks, hoppers, AI, chunks — avec watchdog et métriques.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Isolation lag : chunks, redstone, AI, hoppers</span>
+          <span>▸ Watchdog froid + redstone clock detector</span>
+          <span>▸ Optimisation entité-AI + pregen de chunks</span>
+          <span>▸ Prometheus exporter + dashboard santé serveur</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">MAJ 2026-09-11</div>
+      </div>
+      <!-- KrazyMOTD -->
+      <div class="card" style="padding:20px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <h3 style="font-size:1.05rem">✨ KRAZY-MOTD</h3>
+            <div class="meta" style="font-size:.78rem;margin-top:4px">MOTD animée + favicons + placeholders live</div>
+          </div>
+          <span class="badge badge-public" style="background:rgba(56,239,125,.12);color:#5cf09a;border-color:rgba(56,239,125,.3)">STABLE 2.0</span>
+        </div>
+        <p style="opacity:.72;font-size:.88rem;margin-top:10px;line-height:1.55">Un menu serveur qui showcase : frames animées, favicons par frame, faux joueurs, version spoof — le tout full MiniMessage pour Velocity.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;opacity:.85">
+          <span>▸ Animation frames : sequential / random / shuffle</span>
+          <span>▸ Placeholders live : {online} {max} {time} {host}</span>
+          <span>▸ Favicons par frame + hover custom</span>
+          <span>▸ Nombre simulé (real / fake / fixed)</span>
+          <span>▸ Mode maintenance intégré, frame dédiée</span>
+        </div>
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;opacity:.5">V2 — MAJ 2026-09-12</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,45,85,.06);border:1px dashed rgba(255,45,85,.3);border-radius:12px;padding:14px 18px;margin-top:16px;font-size:.88rem">
+      📦 <b>Tous les plugins sont 100% gratuits.</b> Obtenus via Discord — liens envoyés par DM. KM-Login est en développement actif (Alpha v2.0.17), les autres sont dispo dès maintenant.
+    </div>
+    <div class="links" style="justify-content:space-between">
+      <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Obtenir KM-Plugins ↗</a>
+      <span style="font-size:.82rem;opacity:.6;padding:8px 0">Suite :<br><b style="color:var(--red)">KM-AC · KM-AntiBots · KM-Login · KM-Maintenance · KM-Moderations · KM-Perms · KM-Survival · KM-TAB · KrazyMan Perf · KRAZY-MOTD</b></span>
     </div>
   </div>
 
