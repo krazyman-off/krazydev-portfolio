@@ -107,7 +107,7 @@ h1 em{background:linear-gradient(90deg,#fff 15%, var(--red) 40%, var(--crimson) 
 .marquee-track span{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.14em;opacity:.45;padding-right:24px}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .card{position:relative}
-.card::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);mask-composite:exclude;opacity:0;transition:opacity .3s}
+.card::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
 .card:hover::before{opacity:.4}
 /* coins brackets type HUD cyber */
 .card::after,.page-card::after{content:"";position:absolute;top:6px;right:6px;bottom:6px;left:6px;pointer-events:none;opacity:0;transition:opacity .3s;
