@@ -5,7 +5,7 @@
 use axum::{routing::get, Router, http::HeaderValue, http::StatusCode};
 use tower_http::{services::ServeDir, trace::TraceLayer, compression::CompressionLayer};
 
-const CSP: &str = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'";
+const CSP: &str = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co";
 
 #[tokio::main]
 async fn main() {
