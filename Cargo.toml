@@ -3,7 +3,7 @@ name = "krazydev-server"
 version = "0.1.0"
 edition = "2021"
 description = "KrazyDev portfolio server — Rust/Axum avec protections anti-abus (rate-limit, headers, anti-DDoS applicatif)"
-authors = ["KrazyMan_off aka Sasha <krazy@krazydev.dev>"]
+authors = ["KrazyMan_off aka Sasha <krazyman.off@gmail.com>"]
 
 [dependencies]
 axum = { version = "0.7", features = ["macros"] }
