@@ -58,8 +58,19 @@
       }
     },
     'KM-Login': { ico: 'emojis/km-login.png', builds: {} },
-    'KrazyMan Performance': { ico: 'emojis/krazy-perf.png', builds: {} },
-    'KM-MOTD': { ico: 'emojis/km-motd.png', builds: {} }
+    'KrazyMan Performance': {
+      ico: 'emojis/krazy-perf.png',
+      builds: {
+        bukkit: { file: 'KM-Performance-Bukkit-1.0.0-DEV.jar', bytes: 29781, channel: 'DEV' }
+      }
+    },
+    'KM-MOTD': {
+      ico: 'emojis/km-motd.png',
+      builds: {
+        velocity: { file: 'KM-MOTD-Velocity-2.0.0-STABLE.jar', bytes: 42460, channel: 'STABLE' },
+        bukkit: { file: 'KM-MOTD-Bukkit-1.0.0-STABLE.jar', bytes: 9178, channel: 'STABLE' }
+      }
+    }
   };
 
   var MC_VERSIONS = ['1.21.10', '1.21.11'];
