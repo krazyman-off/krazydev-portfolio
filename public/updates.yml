@@ -11,6 +11,26 @@ faq:
   canal: Disponibles via Discord, liens envoyes par DM.
 
 plugins:
+  - id: km-riotops
+    nom: KM-RiotOps
+    tagline: "Minecraft Security & Resilience Engine"
+    statut: dev
+    version: 1.0.0-DEV
+    derniere-maj: 2026-09-13
+    gratuit: true
+    nouveau: true
+    java: true
+    rust: false
+    maintenu: true
+    note: "Nouveau. Moteur de securite & resilience : decouvre les faiblesses avant un attaquant."
+    features:
+      - "Security engine integre : un seul plugin, pas juste un anti-crash"
+      - "Raisonnement en graphe : command -> permission -> etat -> amplification"
+      - "Agents specialises en parallele (command, permission, plugin, config, protocol, resource)"
+      - "Stress-test + fuzzing controles, budgets CPU/RAM, arret d'urgence"
+      - "Rapports console / JSON / HTML + commande /km-riotops doctor"
+      - "Safety first : aucun scan externe, aucune cible arbitraire, aucune persistance"
+
   - id: km-ac
     nom: KM-AC
     tagline: "Anti-Cheat reseau, 138 checks, proxy-first"
@@ -18,6 +38,10 @@ plugins:
     version: 1.0.0-DEV
     derniere-maj: 2026-09-11
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
+    stress-test: true
     features:
       - "138 checks anti-cheat (mouvement, combat, impossibles)"
       - "Lecture sur le proxy Velocity AVANT le backend"
@@ -31,6 +55,10 @@ plugins:
     version: 1.0.0-DEV
     derniere-maj: 2026-09-11
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
+    stress-test: true
     features:
       - "Protection TCP Minecraft directement sur IP brute, sans domaine"
       - "HandshakeValidator inspecte le protocole Minecraft natif"
@@ -46,6 +74,9 @@ plugins:
     derniere-maj: 2026-09-12
     gratuit: true
     en-developpement: true
+    java: true
+    rust: false
+    maintenu: true
     note: "Phase Alpha/Beta active. Sortie prochaine."
     features:
       - "Auth premium + offline, securisee et auditee"
@@ -61,6 +92,9 @@ plugins:
     version: 1.0.0-STABLE
     derniere-maj: 2026-07-01
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
     features:
       - "Coupure propre du serveur avec ecran MOTD de maintenance"
       - "Whitelist intelligente par groupe/permission"
@@ -74,6 +108,10 @@ plugins:
     version: 1.0.0-DEV
     derniere-maj: 2026-07-06
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
+    stress-test: true
     features:
       - "Ban / tempban / ipban / kick / mute / unmute centralises"
       - "Ecrans de sanction MiniMessage avec gradients"
@@ -84,10 +122,13 @@ plugins:
   - id: km-perms
     nom: KM-Perms
     tagline: "Permissions avancees, fork LuckPerms durci"
-    statut: dev
-    version: 1.0.0-DEV
+    statut: en-developpement
+    version: VERSION DEV
     derniere-maj: 2026-07-06
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
     features:
       - "Base stable LuckPerms 5.5.17 avec modules KM"
       - "Prefixes/suffixes groupes, poids, heritages"
@@ -101,6 +142,9 @@ plugins:
     version: 1.0.0
     derniere-maj: 2026-07-15
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
     features:
       - "Systeme de temperature corporelle et environnement"
       - "Hydratation, faim, blessures et sante mentale"
@@ -114,6 +158,9 @@ plugins:
     version: 1.0.0-DEV
     derniere-maj: 2026-07-06
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
     features:
       - "Header/footer custom, ping, TPS, en ligne"
       - "Chat global formatte avec grades KM-Perms"
@@ -123,23 +170,32 @@ plugins:
   - id: krazy-perf
     nom: KrazyMan Performance
     tagline: "Optimisation & isolation de lag serveur"
-    statut: dev
-    version: 1.0.0-SNAPSHOT
+    statut: stable
+    version: 1.0.0-STABLE
     derniere-maj: 2026-09-11
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
+    stress-test: true
+    note: "Teste en conditions reelles."
     features:
       - "Isolation des processus qui lag (chunks, redstone, AI)"
       - "Watchdog froid, detecteurs de redstone clock et hopper"
       - "Otimisation entite-AI, pregen de chunks, memoire"
       - "Prometheus exporter + dashboard sante serveur"
 
-  - id: krazymotd
-    nom: KRAZY-MOTD
+  - id: km-motd
+    nom: KM-MOTD
     tagline: "MOTD animee, favicons et placeholders live"
     statut: stable
     version: 2.0.0-STABLE
     derniere-maj: 2026-09-12
     gratuit: true
+    java: true
+    rust: false
+    maintenu: true
+    stress-test: true
     features:
       - "Animation de frames (sequentiel/random/shuffle)"
       - "Placeholders live par ping : {online} {max} {time} {host}"

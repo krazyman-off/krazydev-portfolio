@@ -67,6 +67,8 @@ h1 em{background:linear-gradient(90deg,#fff 15%, var(--red) 40%, var(--crimson) 
 .badge-maintenu{background:rgba(255,45,85,.14);color:var(--red);border:1px solid rgba(255,45,85,.32)}
 .badge-confidentiel{background:rgba(228,148,0,.14);color:#ffb84d;border:1px solid rgba(228,148,0,.28)}
 .badge-public{background:rgba(139,147,161,.14);color:#c7cdd9;border:1px solid rgba(139,147,161,.3)}
+.badge-stress{background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.35)}
+.badge-dev{background:rgba(255,184,77,.14);color:#ffb84d;border:1px solid rgba(255,184,77,.3)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
 .tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:5px 10px;border-radius:100px;transition:.2s}
 .tag:hover{background:rgba(255,45,85,.12);border-color:rgba(255,45,85,.3)}
@@ -81,6 +83,25 @@ h1 em{background:linear-gradient(90deg,#fff 15%, var(--red) 40%, var(--crimson) 
 .mini:hover{background:rgba(255,45,85,.07);transform:translateY(-2px)}
 .plg-ico{width:44px;height:44px;border-radius:50%;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,45,85,.25));transition:filter .25s}
 .card:hover .plg-ico{filter:drop-shadow(0 0 14px rgba(255,45,85,.5))}
+.st-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.st-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:4px 11px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#c7cdd9;cursor:help;transition:.2s}
+.st-chip img{width:15px;height:15px;object-fit:contain}
+.st-chip:hover{border-color:rgba(255,45,85,.4);background:rgba(255,45,85,.08)}
+.st-chip-ok img{filter:drop-shadow(0 0 4px rgba(56,239,125,.4))}
+.st-chip-no img{filter:drop-shadow(0 0 4px rgba(255,45,85,.4))}
+
+/* ==== BENCHMARKS ==== */
+.bench-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.bench{background:rgba(11,11,15,.5);border:1px solid rgba(255,45,85,.18);border-radius:12px;padding:10px 8px;text-align:center;transition:border-color .25s, background .25s}
+.bench:hover{border-color:rgba(255,45,85,.5);background:rgba(255,45,85,.08)}
+.bench b{display:block;font-size:1.15rem;color:var(--red);text-shadow:0 0 12px rgba(255,45,85,.45);font-family:'JetBrains Mono',monospace}
+.bench span{display:block;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-top:3px}
+/* ==== DOWNLOAD ==== */
+.dl-wrap{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px dashed rgba(255,255,255,.06);padding-top:14px}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;text-decoration:none;background:linear-gradient(120deg,var(--red),var(--crimson));color:#fff;box-shadow:0 8px 24px rgba(255,36,73,.3);transition:.2s;cursor:pointer}
+.dl-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,36,73,.45)}
+.dl-btn.disabled{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#5a6170;box-shadow:none;cursor:not-allowed;pointer-events:none}
+.dl-btn.disabled:hover{transform:none;box-shadow:none}
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:800px){.skills{grid-template-columns:1fr}}
 .skill{background:var(--card);border:1px solid rgba(255,45,85,.10);border-radius:16px;padding:18px}
