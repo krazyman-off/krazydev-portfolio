@@ -126,8 +126,8 @@ h1 em{background:linear-gradient(90deg,#fff 15%, var(--red) 40%, var(--crimson) 
 .dl-plat small{display:block;font-size:.72rem;opacity:.55;margin-top:3px;font-family:'JetBrains Mono',monospace}
 .dl-vers{margin-top:16px}
 .dl-gv{display:flex;gap:10px;flex-wrap:wrap}
-.dl-ver{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 16px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.82rem;transition:.2s}
-.dl-ver:hover{border-color:rgba(255,255,255,.25)}
+.dl-ver{background:rgba(255,184,77,.08);border:1px solid rgba(255,184,77,.35);border-radius:10px;padding:9px 16px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.82rem;transition:.2s;color:#ffb84d}
+.dl-ver:hover{border-color:rgba(255,184,77,.65);background:rgba(255,184,77,.16)}
 .dl-ver.active{background:rgba(255,45,85,.12);border-color:var(--red);color:var(--red)}
 .dl-proxy{margin-top:16px}
 .dl-proxy select{width:100%;background:rgba(11,11,15,.9);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:11px 14px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:.85rem;transition:.2s;cursor:pointer}
