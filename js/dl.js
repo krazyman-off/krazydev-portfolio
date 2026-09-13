@@ -67,7 +67,7 @@
     'KM-MOTD': {
       ico: 'emojis/km-motd.png',
       builds: {
-        velocity: { file: 'KM-MOTD-Velocity-2.0.0-STABLE.jar', bytes: 42460, channel: 'STABLE' },
+        velocity: { file: 'KM-MOTD-Velocity-1.0.0-STABLE.jar', bytes: 42460, channel: 'STABLE' },
         bukkit: { file: 'KM-MOTD-Bukkit-1.0.0-STABLE.jar', bytes: 9178, channel: 'STABLE' }
       }
     }
