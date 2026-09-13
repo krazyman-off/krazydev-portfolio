@@ -189,7 +189,7 @@ plugins:
     nom: KM-MOTD
     tagline: "MOTD animee, favicons et placeholders live"
     statut: stable
-    version: 2.0.0-STABLE
+    version: 1.0.0-STABLE
     derniere-maj: 2026-09-12
     gratuit: true
     java: true
