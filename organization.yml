@@ -12,10 +12,10 @@ grid:
   columns: 2
 
 order:
-  km-ac: 1
+  km-login: 1
   km-riotops: 2
   km-antibots: 3
-  km-login: 4
+  km-ac: 4
   km-maintenance: 5
   km-moderations: 6
   km-perms: 7

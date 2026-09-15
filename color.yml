@@ -30,7 +30,7 @@ km-antibots:
     - tone: stress
 
 km-login:
-  card_style: "border-color:rgba(255,45,85,.35)"
+  card_style: "border-color:rgba(228,148,0,.35)"
   badges:
     - tone: dev
 
