@@ -55,7 +55,7 @@ km-survival:
   dl: true
   java: true
   rust: false
-  maintenu: true
+  maintenu: false
 
 km-tab:
   dl: true
