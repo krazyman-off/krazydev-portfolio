@@ -1,0 +1,834 @@
+# =====================================================================
+#  KrazyDev — Configuration des plugins Minecraft (page /projets)
+# =====================================================================
+#  L'ORDRE des cartes est contrôlé par le champ "order" :
+#    1 = 1ere ligne à gauche    2 = 1ere ligne à droite
+#    3 = 2eme ligne à gauche    4 = 2eme ligne à droite ... etc
+#  (change juste "order" pour réorganiser, ou ajoute un nouveau bloc)
+#
+#  Pour AJOUTER un plugin : copie/colle un bloc "plugins:" existant et
+#  remplace id, order, name, icon, badges, meta, desc, features, stats,
+#  chips, update, dl.
+#
+#  Champs disponibles :
+#    - id          : identifiant unique (slug), pas d'espace, ex: km-ac
+#    - order       : position dans la grille (nombre)
+#    - name        : nom EXACT affiché (doit matcher une clé de js/dl.js
+#                    pour que le bouton ⬇ Download fonctionne)
+#    - icon        : chemin vers l'image (emojis/*.png)
+#    - card_style  : (optionnel) style CSS ajouté à la carte
+#    - badges      : liste de badges. Chaque badge a "text" (fr/en),
+#                    "tone" (dev|stable|public|maintenu|stress) et un
+#                    champ optionnel "style" pour forcer les couleurs
+#    - meta        : sous-titre (fr/en)
+#    - desc        : description (fr/en) — markdown autorisé :
+#                    **gras** et *italique*
+#    - features    : liste de points (fr: [...] / en: [...])
+#    - stats       : les 3 mini-statistiques (value + label fr/en)
+#    - chips       : les conditions (icône + label + ok) — Java/Rust/...
+#    - update      : texte de mise à jour (fr/en)
+#    - dl          : true  -> bouton Download actif (défaut)
+#                    false -> bouton grisé "Bientôt disponible"
+# =====================================================================
+
+grid:
+  columns: 2
+
+plugins:
+
+  # ---------------- 1 : KM-AC ----------------
+  - id: km-ac
+    order: 1
+    name: KM-AC
+    icon: emojis/km-ac.png
+    badges:
+      - text:
+          fr: "DEV 1.0.0"
+          en: "DEV 1.0.0"
+        tone: dev
+      - text:
+          fr: "STRESS-TEST ✓"
+          en: "STRESS-TEST ✓"
+        tone: stress
+    meta:
+      fr: "Anti-Cheat réseau — 138 checks"
+      en: "Network anti-cheat — 138 checks"
+    desc:
+      fr: "Le shield qui rend la triche **épuisante**. Détecte et isole les comportements impossibles sans casser l'expérience des légitimes."
+      en: "The shield that makes cheating **exhausting**. Detects and isolates impossible behaviour without breaking the experience of legit players."
+    features:
+      fr:
+        - "▸ 138 checks : mouvement, combat, impossibles"
+        - "▸ Proxy-first : lecture AVANT le backend"
+        - "▸ Adaptateur Paper/Folia, coeur commun"
+      en:
+        - "▸ 138 checks: movement, combat, impossible"
+        - "▸ Proxy-first: reads BEFORE the backend"
+        - "▸ Paper/Folia adapter, shared core"
+    stats:
+      - value: "138"
+        label:
+          fr: "checks actifs"
+          en: "active checks"
+      - value: "<0,05ms"
+        label:
+          fr: "latence ajoutée"
+          en: "added latency"
+      - value: "99,9%"
+        label:
+          fr: "légitimes intacts"
+          en: "legits intact"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-09-11"
+      en: "UPD 2026-09-11"
+    dl: true
+
+  # ---------------- 2 : KM-RiotOps ----------------
+  - id: km-riotops
+    order: 2
+    name: KM-RiotOps
+    icon: emojis/km-riotops.png
+    card_style: "border-color:rgba(228,148,0,.35)"
+    badges:
+      - text:
+          fr: "NOUVEAU — DEV 2.0.0"
+          en: "NEW — DEV 2.0.0"
+        tone: dev
+        style: "background:rgba(228,148,0,.14);color:#ffb84d;border:1px solid rgba(228,148,0,.35)"
+    meta:
+      fr: "Minecraft Security & Resilience Engine"
+      en: "Minecraft Security & Resilience Engine"
+    desc:
+      fr: "Un moteur de **sécurité offensive & résilience** intégré au serveur : il découvre les faiblesses AVANT qu'un attaquant les trouve. Il teste ton serveur contre lui-même, en procédant par graphe de risques, agents spécialisés et corrélation de chaînes d'impact."
+      en: "An offensive **security & resilience** engine built into the server: it finds weaknesses BEFORE an attacker does. It tests your server against itself, walking through a risk graph, specialised agents and impact-chain correlation."
+    features:
+      fr:
+        - "▸ Flux complet : discovery → baseline → agents → corrélation → rapport"
+        - "▸ Agents parallèles : command, permission, plugin, config, protocol, resource"
+        - "▸ Stress-test, fuzzing contrôlé, analyse de chaînes de vulnérabilité"
+        - "▸ Safety Controller : budgets CPU/RAM, stop d'urgence, aucun scan réseau externe"
+        - "▸ Rapports console / JSON / HTML + commande doctor"
+        - "▸ Builds : Paper 1.20.4 (2.0.0-DEV) + sonde Velocity (0.1.0-DEV)"
+      en:
+        - "▸ Full pipeline: discovery → baseline → agents → correlation → report"
+        - "▸ Parallel agents: command, permission, plugin, config, protocol, resource"
+        - "▸ Stress-test, controlled fuzzing, vulnerability-chain analysis"
+        - "▸ Safety Controller: CPU/RAM budgets, emergency stop, zero external network scan"
+        - "▸ Console / JSON / HTML reports + doctor command"
+        - "▸ Builds: Paper 1.20.4 (2.0.0-DEV) + Velocity probe (0.1.0-DEV)"
+    stats:
+      - value: "Graph"
+        label:
+          fr: "risque en chaîne"
+          en: "chained risk"
+      - value: "32"
+        label:
+          fr: "agents max"
+          en: "max agents"
+      - value: "0"
+        label:
+          fr: "scan externe"
+          en: "external scan"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "NOUVEAU — MAJ 2026-09-15"
+      en: "NEW — UPD 2026-09-15"
+    dl: true
+
+  # ---------------- 3 : KM-AntiBots ----------------
+  - id: km-antibots
+    order: 3
+    name: KM-AntiBots
+    icon: emojis/km-antibots.png
+    badges:
+      - text:
+          fr: "DEV 1.0.0"
+          en: "DEV 1.0.0"
+        tone: dev
+      - text:
+          fr: "STRESS-TEST ✓"
+          en: "STRESS-TEST ✓"
+        tone: stress
+    meta:
+      fr: "Anti-bot / anti-raid — l'edge qui remplace Cloudflare"
+      en: "Anti-bot / anti-raid — the edge that replaces Cloudflare"
+    desc:
+      fr: "Cloudflare exige un domaine et ne voit pas Minecraft. KM-AntiBots inspecte le protocole natif (handshake, ping→join) et protège ton IP brute, sans DNS."
+      en: "Cloudflare needs a domain and cannot see Minecraft. KM-AntiBots inspects the native protocol (handshake, ping→join) and protects your raw IP, no DNS needed."
+    features:
+      fr:
+        - "▸ HandshakeValidator protocole Minecraft natif"
+        - "▸ BotScorer : score humain→bot (VPN/hosting)"
+        - "▸ Challenge 5s + passage 30min, anti faux-positif"
+        - "▸ Whitelist/blacklist persistantes, bridge Bukkit"
+      en:
+        - "▸ HandshakeValidator native Minecraft protocol"
+        - "▸ BotScorer: human→bot score (VPN/hosting)"
+        - "▸ 5s challenge + 30min pass, anti false-positive"
+        - "▸ Persistent whitelist/blacklist, Bukkit bridge"
+    stats:
+      - value: "99"
+        label:
+          fr: "score bot max"
+          en: "max bot score"
+      - value: "<1ms"
+        label:
+          fr: "overhead handshake"
+          en: "handshake overhead"
+      - value: "0"
+        label:
+          fr: "faux positif"
+          en: "false positive"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-09-11"
+      en: "UPD 2026-09-11"
+    dl: true
+
+  # ---------------- 4 : KM-Login ----------------
+  - id: km-login
+    order: 4
+    name: KM-Login
+    icon: emojis/km-login.png
+    card_style: "border-color:rgba(255,45,85,.35)"
+    badges:
+      - text:
+          fr: "DEV — VELOCITY 1.1.0"
+          en: "DEV — VELOCITY 1.1.0"
+        tone: dev
+    meta:
+      fr: "Auth premium — résistance brute-force"
+      en: "Premium auth — brute-force resistance"
+    desc:
+      fr: "Le login qui vérifie les comptes premium via la session Mojang et rend le brute-force inutile. Le build Velocity DEV est dispo — Bukkit/Bungee suivent."
+      en: "The login that verifies premium accounts through the Mojang session and makes brute-force pointless. The Velocity DEV build is live — Bukkit/Bungee coming next."
+    features:
+      fr:
+        - "▸ Auth premium + offline, sessions persistantes"
+        - "▸ Récupération des comptes premium Mojang"
+        - "▸ Architecture modulaire (loader séparé)"
+        - "▸ Bungee / Spigot / Velocity"
+        - "▸ Build Velocity 1.1.0-DEV dispo au téléchargement"
+      en:
+        - "▸ Premium + offline auth, persistent sessions"
+        - "▸ Mojang premium account retrieval"
+        - "▸ Modular architecture (separate loader)"
+        - "▸ Bungee / Spigot / Velocity"
+        - "▸ Velocity 1.1.0-DEV build available for download"
+    stats:
+      - value: "Premium"
+        label:
+          fr: "auth Mojang"
+          en: "Mojang auth"
+      - value: "3 bases"
+        label:
+          fr: "Bungee/Spigot/Velocity"
+          en: "Bungee/Spigot/Velocity"
+      - value: "0 brute"
+        label:
+          fr: "force possible"
+          en: "force possible"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "DEV 1.1.0 — MAJ 2026-09-15"
+      en: "DEV 1.1.0 — UPD 2026-09-15"
+    dl: true
+
+  # ---------------- 5 : KM-Maintenance ----------------
+  - id: km-maintenance
+    order: 5
+    name: KM-Maintenance
+    icon: emojis/km-maintenance.png
+    badges:
+      - text:
+          fr: "STABLE 1.0.0"
+          en: "STABLE 1.0.0"
+        tone: public
+    meta:
+      fr: "Mode maintenance intelligent multi-serveurs"
+      en: "Smart multi-server maintenance mode"
+    desc:
+      fr: "Coupe proprement ton serveur pendant un update ou un reset, avec whitelist intelligente et écran visible dans le menu serveur."
+      en: "Cleanly shuts your server down during an update or reset, with a smart whitelist and a screen visible in the server menu."
+    features:
+      fr:
+        - "▸ Coupure propre + écran MOTD maintenance"
+        - "▸ Whitelist par groupe/permission, ping cache"
+        - "▸ Bridge proxy ↔ bukkit synchronisé"
+      en:
+        - "▸ Clean shutdown + maintenance MOTD screen"
+        - "▸ Whitelist by group/permission, ping cache"
+        - "▸ Synced proxy ↔ bukkit bridge"
+    stats:
+      - value: "~0ms"
+        label:
+          fr: "coupure propre"
+          en: "clean cutover"
+      - value: "Multi"
+        label:
+          fr: "serveurs sync"
+          en: "server sync"
+      - value: "Cache"
+        label:
+          fr: "ping restaure"
+          en: "ping restored"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-07-01"
+      en: "UPD 2026-07-01"
+    dl: true
+
+  # ---------------- 6 : KM-Moderations ----------------
+  - id: km-moderations
+    order: 6
+    name: KM-Moderations
+    icon: emojis/km-moderations.png
+    badges:
+      - text:
+          fr: "DEV 1.0.0"
+          en: "DEV 1.0.0"
+        tone: dev
+      - text:
+          fr: "STRESS-TEST ✓"
+          en: "STRESS-TEST ✓"
+        tone: stress
+    meta:
+      fr: "Modération proxy-first, sanctions réseau"
+      en: "Proxy-first moderation, network-wide sanctions"
+    desc:
+      fr: "Sanctionne n'importe quel joueur de ton réseau depuis le proxy : ban, ipban, kick, mute — l'effet est global, les écrans sont beaux."
+      en: "Sanction any player on your network straight from the proxy: ban, ipban, kick, mute — global effect, beautiful screens."
+    features:
+      fr:
+        - "▸ Ban / tempban / ipban / kick / mute centralisés"
+        - "▸ Écrans MiniMessage gradients + annonces globales"
+        - "▸ Vanish, staff-chat, spy, gnick, freeze, fly, find"
+        - "▸ Sanctions persistantes (IP ban + storage natif)"
+      en:
+        - "▸ Centralised ban / tempban / ipban / kick / mute"
+        - "▸ MiniMessage gradient screens + global announcements"
+        - "▸ Vanish, staff-chat, spy, gnick, freeze, fly, find"
+        - "▸ Persistent sanctions (IP ban + native storage)"
+    stats:
+      - value: "Réseau"
+        label:
+          fr: "sanction globale"
+          en: "global sanction"
+      - value: "8+"
+        label:
+          fr: "outils staff"
+          en: "staff tools"
+      - value: "100%"
+        label:
+          fr: "persistant storage"
+          en: "persistent storage"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-07-06"
+      en: "UPD 2026-07-06"
+    dl: true
+
+  # ---------------- 7 : KM-Perms ----------------
+  - id: km-perms
+    order: 7
+    name: KM-Perms
+    icon: emojis/km-perms.png
+    badges:
+      - text:
+          fr: "VERSION DEV"
+          en: "DEV VERSION"
+        tone: dev
+    meta:
+      fr: "Permissions avancées — fork LuckPerms durci"
+      en: "Advanced permissions — hardened LuckPerms fork"
+    desc:
+      fr: "La base LuckPerms 5.5.17, durcie et branchée sur l'écosystème KM : groupes, poids, héritages — et tes grades s'affichent partout sinon."
+      en: "The LuckPerms 5.5.17 base, hardened and wired into the KM ecosystem: groups, weights, inheritances — and your ranks show up everywhere."
+    features:
+      fr:
+        - "▸ Groupes, prefixes/suffixes, poids, héritages"
+        - "▸ Modules Common + Proxy + Server"
+        - "▸ Branché KM-TAB, KM-Moderations, KM-Survival"
+      en:
+        - "▸ Groups, prefixes/suffixes, weights, inheritances"
+        - "▸ Common + Proxy + Server modules"
+        - "▸ Wired to KM-TAB, KM-Moderations, KM-Survival"
+    stats:
+      - value: "5.5.17"
+        label:
+          fr: "base LuckPerms"
+          en: "LuckPerms base"
+      - value: "∞"
+        label:
+          fr: "groupes/héritages"
+          en: "groups/inheritances"
+      - value: "3+"
+        label:
+          fr: "KM branchés"
+          en: "KM wired"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-07-06"
+      en: "UPD 2026-07-06"
+    dl: true
+
+  # ---------------- 8 : KM-Survival ----------------
+  - id: km-survival
+    order: 8
+    name: KM-Survival
+    icon: emojis/km-survival.png
+    badges:
+      - text:
+          fr: "STABLE 1.0.0"
+          en: "STABLE 1.0.0"
+        tone: public
+    meta:
+      fr: "Survie réaliste — température, hydratation, saisons"
+      en: "Realistic survival — temperature, hydration, seasons"
+    desc:
+      fr: "La survie qui se vit : gère ta température corporelle, ton hydratation, tes blessures — et les saisons pèsent vraiment sur le gameplay."
+      en: "Survival you actually feel: manage your body temperature, hydration, wounds — and the seasons really weigh on the gameplay."
+    features:
+      fr:
+        - "▸ Température + hydratation + faim connectées"
+        - "▸ Blessures, santé mentale, effet somatique"
+        - "▸ Saisons (été/hiver) avec impacts réels"
+        - "▸ HUD action bar temps réel, sleep manager"
+      en:
+        - "▸ Connected temperature + hydration + hunger"
+        - "▸ Wounds, mental health, somatic effects"
+        - "▸ Seasons (summer/winter) with real impacts"
+        - "▸ Real-time action-bar HUD, sleep manager"
+    stats:
+      - value: "4"
+        label:
+          fr: "besoins liés"
+          en: "linked needs"
+      - value: "2"
+        label:
+          fr: "saisons réelles"
+          en: "real seasons"
+      - value: "Real"
+        label:
+          fr: "HUD temps réel"
+          en: "live HUD"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-07-15"
+      en: "UPD 2026-07-15"
+    dl: true
+
+  # ---------------- 9 : KM-TAB ----------------
+  - id: km-tab
+    order: 9
+    name: KM-TAB
+    icon: emojis/km-tab.png
+    badges:
+      - text:
+          fr: "DEV 1.0.0"
+          en: "DEV 1.0.0"
+        tone: maintenu
+    meta:
+      fr: "Tablist + chat global, avec grades"
+      en: "Tablist + global chat, with ranks"
+    desc:
+      fr: "Header/footer custom, ping, TPS, joueurs en ligne — et un chat global propre où les grades KM-Perms s'affichent automatiquement."
+      en: "Custom header/footer, ping, TPS, players online — and a clean global chat where KM-Perms ranks appear automatically."
+    features:
+      fr:
+        - "▸ Header/footer custom : ping, TPS, online"
+        - "▸ Chat global formaté grades KM-Perms"
+        - "▸ Messages join/leave personnalisés"
+        - "▸ Spigot/PufferFish + companion multi-serveurs"
+      en:
+        - "▸ Custom header/footer: ping, TPS, online"
+        - "▸ Global chat formatted with KM-Perms ranks"
+        - "▸ Customisable join/leave messages"
+        - "▸ Spigot/PufferFish + multi-server companion"
+    stats:
+      - value: "Live"
+        label:
+          fr: "ping+TPS+online"
+          en: "ping+TPS+online"
+      - value: "Grades"
+        label:
+          fr: "auto KM-Perms"
+          en: "auto KM-Perms"
+      - value: "Global"
+        label:
+          fr: "chat réseau"
+          en: "network chat"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-07-06"
+      en: "UPD 2026-07-06"
+    dl: true
+
+  # ---------------- 10 : KrazyMan Performance ----------------
+  - id: krazy-perf
+    order: 10
+    name: KrazyMan Performance
+    icon: emojis/krazy-perf.png
+    badges:
+      - text:
+          fr: "STABLE 1.0.0"
+          en: "STABLE 1.0.0"
+        tone: public
+        style: "background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.3)"
+      - text:
+          fr: "STRESS-TEST ✓"
+          en: "STRESS-TEST ✓"
+        tone: stress
+    meta:
+      fr: "Optimisation & isolation de lag"
+      en: "Lag optimisation & isolation"
+    desc:
+      fr: "Isole ce qui fait lag ta machine avant que ce soit toi qui lag : redstone clocks, hoppers, AI, chunks — avec watchdog et métriques. **Testé en conditions réelles**."
+      en: "Isolates what makes your machine lag before it is you lagging: redstone clocks, hoppers, AI, chunks — with watchdog and metrics. **Tested in real conditions**."
+    features:
+      fr:
+        - "▸ Isolation lag : chunks, redstone, AI, hoppers"
+        - "▸ Watchdog froid + redstone clock detector"
+        - "▸ Optimisation entité-AI + pregen de chunks"
+        - "▸ Prometheus exporter + dashboard santé serveur"
+      en:
+        - "▸ Lag isolation: chunks, redstone, AI, hoppers"
+        - "▸ Cold watchdog + redstone clock detector"
+        - "▸ Entity-AI optimisation + chunk pregen"
+        - "▸ Prometheus exporter + server health dashboard"
+    stats:
+      - value: "-X ms"
+        label:
+          fr: "MSPT après fix"
+          en: "MSPT after fix"
+      - value: "Watchdog"
+        label:
+          fr: "lag détecté"
+          en: "lag detected"
+      - value: "Prom"
+        label:
+          fr: "métriques live"
+          en: "live metrics"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "MAJ 2026-09-11"
+      en: "UPD 2026-09-11"
+    dl: true
+
+  # ---------------- 11 : KM-MOTD ----------------
+  - id: km-motd
+    order: 11
+    name: KM-MOTD
+    icon: emojis/km-motd.png
+    badges:
+      - text:
+          fr: "STABLE V1.0.0"
+          en: "STABLE V1.0.0"
+        tone: public
+        style: "background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.3)"
+      - text:
+          fr: "STRESS-TEST ✓"
+          en: "STRESS-TEST ✓"
+        tone: stress
+    meta:
+      fr: "MOTD animée + favicons + placeholders live"
+      en: "Animated MOTD + favicons + live placeholders"
+    desc:
+      fr: "Un menu serveur qui showcase : frames animées, favicons par frame, faux joueurs, version spoof — le tout full MiniMessage pour Velocity."
+      en: "A server menu that showcases: animated frames, per-frame favicons, fake players, version spoof — full MiniMessage for Velocity."
+    features:
+      fr:
+        - "▸ Animation frames : sequential / random / shuffle"
+        - "▸ Placeholders live : {online} {max} {time} {host}"
+        - "▸ Favicons par frame + hover custom"
+        - "▸ Nombre simulé (real / fake / fixed)"
+        - "▸ Mode maintenance intégré, frame dédiée"
+      en:
+        - "▸ Frame animation: sequential / random / shuffle"
+        - "▸ Live placeholders: {online} {max} {time} {host}"
+        - "▸ Per-frame favicons + custom hover"
+        - "▸ Simulated player count (real / fake / fixed)"
+        - "▸ Built-in maintenance mode, dedicated frame"
+    stats:
+      - value: "∞"
+        label:
+          fr: "frames animées"
+          en: "animated frames"
+      - value: "Live"
+        label:
+          fr: "placeholders ping"
+          en: "ping placeholders"
+      - value: "Favicon"
+        label:
+          fr: "par frame"
+          en: "per frame"
+    chips:
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Java"
+          en: "Java"
+        title:
+          fr: "Version Java disponible"
+          en: "Java version available"
+      - icon: emojis/not-approved.png
+        ok: false
+        label:
+          fr: "Rust"
+          en: "Rust"
+        title:
+          fr: "Pas encore de version Rust"
+          en: "No Rust version yet"
+      - icon: emojis/approved.png
+        ok: true
+        label:
+          fr: "Maintenu"
+          en: "Maintained"
+        title:
+          fr: "Plugin maintenu"
+          en: "Maintained plugin"
+    update:
+      fr: "V1.0.0 — MAJ 2026-09-12"
+      en: "V1.0.0 — UPD 2026-09-12"
+    dl: true

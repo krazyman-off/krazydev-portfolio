@@ -107,62 +107,6 @@
       { sel: '.wrap > div:nth-of-type(3) > div:nth-of-type(4) > a', en: 'Get KM-Plugins ↗' },
       { sel: '.wrap > div:nth-of-type(3) > div:nth-of-type(4) > span', en: 'Bundle:<br><b>KM-AC · KM-RiotOps · KM-AntiBots · KM-Login · KM-Maintenance · KM-Moderations · KM-Perms · KM-Survival · KM-TAB · KrazyMan Perf · KM-MOTD</b>' },
       { sel: '.nav-arrows .btn-primary', en: 'Next: Stack →' },
-      { sel: '.subgrid > .card:nth-child(1) > div:nth-of-type(1) .meta', en: 'Network anti-cheat — 138 checks' },
-      { sel: '.subgrid > .card:nth-child(1) > p', en: 'The shield that makes cheating exhausting. Detects and isolates impossible behaviour without breaking the experience of legit players.' },
-      { sel: '.subgrid > .card:nth-child(1) > div:nth-of-type(2)', en: '<span>▸ 138 checks: movement, combat, impossible</span><span>▸ Proxy-first: reads BEFORE the backend</span><span>▸ Paper/Folia adapter, shared core</span>' },
-      { sel: '.subgrid > .card:nth-child(1) .bench-grid', en: '<div class="bench"><b>138</b><span>active checks</span></div><div class="bench"><b>&lt;0,05ms</b><span>added latency</span></div><div class="bench"><b>99,9%</b><span>legits intact</span></div>' },
-      { sel: '.subgrid > .card:nth-child(1) .dl-wrap > span', en: 'UPD 2026-09-11' },
-      { sel: '.subgrid > .card:nth-child(2) > div:nth-of-type(1) .meta', en: 'Minecraft Security & Resilience Engine' },
-      { sel: '.subgrid > .card:nth-child(2) .badge', en: 'NEW — DEV 2.0.0' },
-      { sel: '.subgrid > .card:nth-child(2) > p', en: 'An offensive <b style="color:#ffb84d">security &amp; resilience</b> engine built into the server: it finds weaknesses BEFORE an attacker does. It tests your server against itself, walking through a risk graph, specialised agents and impact-chain correlation.' },
-      { sel: '.subgrid > .card:nth-child(2) > div:nth-of-type(2)', en: '<span>▸ Full pipeline: discovery → baseline → agents → correlation → report</span><span>▸ Parallel agents: command, permission, plugin, config, protocol, resource</span><span>▸ Stress-test, controlled fuzzing, vulnerability-chain analysis</span><span>▸ Safety Controller: CPU/RAM budgets, emergency stop, zero external network scan</span><span>▸ Console / JSON / HTML reports + doctor command</span><span>▸ Builds: Paper 1.20.4 (2.0.0-DEV) + Velocity probe (0.1.0-DEV)</span>' },
-      { sel: '.subgrid > .card:nth-child(2) .bench-grid', en: '<div class="bench"><b>Graph</b><span>chained risk</span></div><div class="bench"><b>32</b><span>max agents</span></div><div class="bench"><b>0</b><span>external scan</span></div>' },
-      { sel: '.subgrid > .card:nth-child(2) .dl-wrap > span', en: 'NEW — UPD 2026-09-15' },
-      { sel: '.subgrid > .card:nth-child(3) > div:nth-of-type(1) .meta', en: 'Anti-bot / anti-raid — the edge that replaces Cloudflare' },
-      { sel: '.subgrid > .card:nth-child(3) > p', en: 'Cloudflare needs a domain and cannot see Minecraft. KM-AntiBots inspects the native protocol (handshake, ping→join) and protects your raw IP, no DNS needed.' },
-      { sel: '.subgrid > .card:nth-child(3) > div:nth-of-type(2)', en: '<span>▸ HandshakeValidator native Minecraft protocol</span><span>▸ BotScorer: human→bot score (VPN/hosting)</span><span>▸ 5s challenge + 30min pass, anti false-positive</span><span>▸ Persistent whitelist/blacklist, Bukkit bridge</span>' },
-      { sel: '.subgrid > .card:nth-child(3) .bench-grid', en: '<div class="bench"><b>99</b><span>max bot score</span></div><div class="bench"><b>&lt;1ms</b><span>handshake overhead</span></div><div class="bench"><b>0</b><span>false positive</span></div>' },
-      { sel: '.subgrid > .card:nth-child(3) .dl-wrap > span', en: 'UPD 2026-09-11' },
-      { sel: '.subgrid > .card:nth-child(4) > div:nth-of-type(1) .meta', en: 'Premium auth — brute-force resistance' },
-      { sel: '.subgrid > .card:nth-child(4) > p', en: 'The login that verifies premium accounts through the Mojang session and makes brute-force pointless. The Velocity DEV build is live — Bukkit/Bungee coming next.' },
-      { sel: '.subgrid > .card:nth-child(4) > div:nth-of-type(2)', en: '<span>▸ Premium + offline auth, persistent sessions</span><span>▸ Mojang premium account retrieval</span><span>▸ Modular architecture (separate loader)</span><span>▸ Bungee / Spigot / Velocity</span><span>▸ Velocity 1.1.0-DEV build available for download</span>' },
-      { sel: '.subgrid > .card:nth-child(4) .bench-grid', en: '<div class="bench"><b>Premium</b><span>Mojang auth</span></div><div class="bench"><b>3 bases</b><span>Bungee/Spigot/Velocity</span></div><div class="bench"><b>0 brute</b><span>force possible</span></div>' },
-      { sel: '.subgrid > .card:nth-child(4) .dl-wrap > span', en: 'DEV 1.1.0 — UPD 2026-09-15' },
-      { sel: '.subgrid > .card:nth-child(5) > div:nth-of-type(1) .meta', en: 'Smart multi-server maintenance mode' },
-      { sel: '.subgrid > .card:nth-child(5) > p', en: 'Cleanly shuts your server down during an update or reset, with a smart whitelist and a screen visible in the server menu.' },
-      { sel: '.subgrid > .card:nth-child(5) > div:nth-of-type(2)', en: '<span>▸ Clean shutdown + maintenance MOTD screen</span><span>▸ Whitelist by group/permission, ping cache</span><span>▸ Synced proxy ↔ bukkit bridge</span>' },
-      { sel: '.subgrid > .card:nth-child(5) .bench-grid', en: '<div class="bench"><b>~0ms</b><span>clean cutover</span></div><div class="bench"><b>Multi</b><span>server sync</span></div><div class="bench"><b>Cache</b><span>ping restored</span></div>' },
-      { sel: '.subgrid > .card:nth-child(5) .dl-wrap > span', en: 'UPD 2026-07-01' },
-      { sel: '.subgrid > .card:nth-child(6) > div:nth-of-type(1) .meta', en: 'Proxy-first moderation, network-wide sanctions' },
-      { sel: '.subgrid > .card:nth-child(6) > p', en: 'Sanction any player on your network straight from the proxy: ban, ipban, kick, mute — global effect, beautiful screens.' },
-      { sel: '.subgrid > .card:nth-child(6) > div:nth-of-type(2)', en: '<span>▸ Centralised ban / tempban / ipban / kick / mute</span><span>▸ MiniMessage gradient screens + global announcements</span><span>▸ Vanish, staff-chat, spy, gnick, freeze, fly, find</span><span>▸ Persistent sanctions (IP ban + native storage)</span>' },
-      { sel: '.subgrid > .card:nth-child(6) .bench-grid', en: '<div class="bench"><b>Network</b><span>global sanction</span></div><div class="bench"><b>8+</b><span>staff tools</span></div><div class="bench"><b>100%</b><span>persistent storage</span></div>' },
-      { sel: '.subgrid > .card:nth-child(6) .dl-wrap > span', en: 'UPD 2026-07-06' },
-      { sel: '.subgrid > .card:nth-child(7) > div:nth-of-type(1) .meta', en: 'Advanced permissions — hardened LuckPerms fork' },
-      { sel: '.subgrid > .card:nth-child(7) > p', en: 'The LuckPerms 5.5.17 base, hardened and wired into the KM ecosystem: groups, weights, inheritances — and your ranks show up everywhere.' },
-      { sel: '.subgrid > .card:nth-child(7) > div:nth-of-type(2)', en: '<span>▸ Groups, prefixes/suffixes, weights, inheritances</span><span>▸ Common + Proxy + Server modules</span><span>▸ Wired to KM-TAB, KM-Moderations, KM-Survival</span>' },
-      { sel: '.subgrid > .card:nth-child(7) .bench-grid', en: '<div class="bench"><b>5.5.17</b><span>LuckPerms base</span></div><div class="bench"><b>∞</b><span>groups/inheritances</span></div><div class="bench"><b>3+</b><span>KM wired</span></div>' },
-      { sel: '.subgrid > .card:nth-child(7) .dl-wrap > span', en: 'UPD 2026-07-06' },
-      { sel: '.subgrid > .card:nth-child(8) > div:nth-of-type(1) .meta', en: 'Realistic survival — temperature, hydration, seasons' },
-      { sel: '.subgrid > .card:nth-child(8) > p', en: 'Survival you actually feel: manage your body temperature, hydration, wounds — and the seasons really weigh on the gameplay.' },
-      { sel: '.subgrid > .card:nth-child(8) > div:nth-of-type(2)', en: '<span>▸ Connected temperature + hydration + hunger</span><span>▸ Wounds, mental health, somatic effects</span><span>▸ Seasons (summer/winter) with real impacts</span><span>▸ Real-time action-bar HUD, sleep manager</span>' },
-      { sel: '.subgrid > .card:nth-child(8) .bench-grid', en: '<div class="bench"><b>4</b><span>linked needs</span></div><div class="bench"><b>2</b><span>real seasons</span></div><div class="bench"><b>Real</b><span>live HUD</span></div>' },
-      { sel: '.subgrid > .card:nth-child(8) .dl-wrap > span', en: 'UPD 2026-07-15' },
-      { sel: '.subgrid > .card:nth-child(9) > div:nth-of-type(1) .meta', en: 'Tablist + global chat, with ranks' },
-      { sel: '.subgrid > .card:nth-child(9) > p', en: 'Custom header/footer, ping, TPS, players online — and a clean global chat where KM-Perms ranks appear automatically.' },
-      { sel: '.subgrid > .card:nth-child(9) > div:nth-of-type(2)', en: '<span>▸ Custom header/footer: ping, TPS, online</span><span>▸ Global chat formatted with KM-Perms ranks</span><span>▸ Customisable join/leave messages</span><span>▸ Spigot/PufferFish + multi-server companion</span>' },
-      { sel: '.subgrid > .card:nth-child(9) .bench-grid', en: '<div class="bench"><b>Live</b><span>ping+TPS+online</span></div><div class="bench"><b>Ranks</b><span>auto KM-Perms</span></div><div class="bench"><b>Global</b><span>network chat</span></div>' },
-      { sel: '.subgrid > .card:nth-child(9) .dl-wrap > span', en: 'UPD 2026-07-06' },
-      { sel: '.subgrid > .card:nth-child(10) > div:nth-of-type(1) .meta', en: 'Lag optimisation & isolation' },
-      { sel: '.subgrid > .card:nth-child(10) > p', en: 'Isolates what makes your machine lag before it is you lagging: redstone clocks, hoppers, AI, chunks — with watchdog and metrics. <b style="color:#5cf09a">Tested in real conditions.</b>' },
-      { sel: '.subgrid > .card:nth-child(10) > div:nth-of-type(2)', en: '<span>▸ Lag isolation: chunks, redstone, AI, hoppers</span><span>▸ Cold watchdog + redstone clock detector</span><span>▸ Entity-AI optimisation + chunk pregen</span><span>▸ Prometheus exporter + server health dashboard</span>' },
-      { sel: '.subgrid > .card:nth-child(10) .bench-grid', en: '<div class="bench"><b>-X ms</b><span>MSPT after fix</span></div><div class="bench"><b>Watchdog</b><span>lag detected</span></div><div class="bench"><b>Prom</b><span>live metrics</span></div>' },
-      { sel: '.subgrid > .card:nth-child(10) .dl-wrap > span', en: 'UPD 2026-09-11' },
-      { sel: '.subgrid > .card:nth-child(11) > div:nth-of-type(1) .meta', en: 'Animated MOTD + favicons + live placeholders' },
-      { sel: '.subgrid > .card:nth-child(11) > p', en: 'A server menu that showcases: animated frames, per-frame favicons, fake players, version spoof — full MiniMessage for Velocity.' },
-      { sel: '.subgrid > .card:nth-child(11) > div:nth-of-type(2)', en: '<span>▸ Frame animation: sequential / random / shuffle</span><span>▸ Live placeholders: {online} {max} {time} {host}</span><span>▸ Per-frame favicons + custom hover</span><span>▸ Simulated player count (real / fake / fixed)</span><span>▸ Built-in maintenance mode, dedicated frame</span>' },
-      { sel: '.subgrid > .card:nth-child(11) .bench-grid', en: '<div class="bench"><b>∞</b><span>animated frames</span></div><div class="bench"><b>Live</b><span>ping placeholders</span></div><div class="bench"><b>Favicon</b><span>per frame</span></div>' },
-      { sel: '.subgrid > .card:nth-child(11) .dl-wrap > span', en: 'V1.0.0 — UPD 2026-09-12' }
     ],
     skill: [
       { sel: '.wrap > div:nth-of-type(1) .kicker', en: '/stack — 03' },
@@ -301,6 +245,7 @@
       });
 
       q('.badge').forEach(function (el) {
+        if (el.closest && el.closest('#subgrid')) return;
         var k = el.textContent.trim();
         if (BADGES[k] !== undefined) {
           saveOrig(el, 'text', el.textContent);
@@ -309,6 +254,7 @@
       });
 
       q('.st-chip').forEach(function (el) {
+        if (el.closest && el.closest('#subgrid')) return;
         var img = el.querySelector('img');
         var label = el.lastChild && el.lastChild.nodeType === 3 ? el.lastChild.nodeValue : el.textContent;
         var k = label.trim();
@@ -321,6 +267,7 @@
       });
 
       q('.dl-btn').forEach(function (el) {
+        if (el.closest && el.closest('#subgrid')) return;
         saveOrig(el, 'attr', { title: el.getAttribute('title') });
         el.setAttribute('title', 'Choose platform & version');
       });
@@ -369,6 +316,7 @@
         if (o && o.text !== undefined) t2.textContent = o.text;
       }
     }
+    document.dispatchEvent(new CustomEvent('krazydev:lang', { detail: { lang: lang } }));
   }
 
   // ---------- Popup + bouton ----------
