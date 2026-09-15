@@ -52,9 +52,9 @@ plugins:
   - id: km-antibots
     nom: KM-AntiBots
     tagline: "L'anti-bot qui remplace Cloudflare sur IP brute"
-    statut: dev
-    version: 1.0.0-DEV
-    derniere-maj: 2026-09-11
+    statut: en-developpement
+    version: 1.0.0-DEV (Velocity)
+    derniere-maj: 2026-09-16
     gratuit: true
     java: true
     rust: false
@@ -71,8 +71,8 @@ plugins:
     nom: KM-Login
     tagline: "Authentification premium resistance brute-force"
     statut: en-developpement
-    version: 1.1.0-DEV (Velocity)
-    derniere-maj: 2026-09-15
+    version: 1.0.0-DEV (Velocity)
+    derniere-maj: 2026-09-16
     gratuit: true
     en-developpement: true
     java: true
