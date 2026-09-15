@@ -1,0 +1,75 @@
+# =====================================================================
+#  KrazyDev — COULEURS : look des cartes plugin (/projets)
+# =====================================================================
+#  Relié par l'id.
+#    card_style : CSS ajouté à la carte (bordures, fond...)
+#    badges     : une entrée PAR badge, dans le MÊME ORDRE que dans
+#                 content.yml. tone choisit la teinte :
+#                   dev      -> orange
+#                   public   -> gris          (alias: stable)
+#                   maintenu -> rouge
+#                   stress   -> vert
+#                 style : (optionnel) CSS forcé qui surcharge le tone.
+
+km-ac:
+  card_style: ""
+  badges:
+    - tone: dev
+    - tone: stress
+
+km-riotops:
+  card_style: "border-color:rgba(228,148,0,.35)"
+  badges:
+    - tone: dev
+      style: "background:rgba(228,148,0,.14);color:#ffb84d;border:1px solid rgba(228,148,0,.35)"
+
+km-antibots:
+  card_style: ""
+  badges:
+    - tone: dev
+    - tone: stress
+
+km-login:
+  card_style: "border-color:rgba(255,45,85,.35)"
+  badges:
+    - tone: dev
+
+km-maintenance:
+  card_style: ""
+  badges:
+    - tone: public
+
+km-moderations:
+  card_style: ""
+  badges:
+    - tone: dev
+    - tone: stress
+
+km-perms:
+  card_style: ""
+  badges:
+    - tone: dev
+
+km-survival:
+  card_style: ""
+  badges:
+    - tone: public
+
+km-tab:
+  card_style: ""
+  badges:
+    - tone: maintenu
+
+krazy-perf:
+  card_style: ""
+  badges:
+    - tone: public
+      style: "background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.3)"
+    - tone: stress
+
+km-motd:
+  card_style: ""
+  badges:
+    - tone: public
+      style: "background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.3)"
+    - tone: stress

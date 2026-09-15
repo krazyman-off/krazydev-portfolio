@@ -1,0 +1,76 @@
+# =====================================================================
+#  KrazyDev — ATTRIBUTS / CONDITIONS : approuvé ou non, par plugin
+# =====================================================================
+#  Relié par l'id. true  = approuvé (✓ vert)     false = croix rouge (✗)
+#
+#    dl       : true  -> bouton ⬇ Download actif
+#               false -> bouton grisé "Bientôt disponible"
+#    java     : chip Java      (✓ / ✗)
+#    rust     : chip Rust      (✓ / ✗)
+#    maintenu : chip Maintenu  (✓ / ✗)
+
+km-ac:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-riotops:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-antibots:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-login:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-maintenance:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-moderations:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-perms:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-survival:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-tab:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+krazy-perf:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true
+
+km-motd:
+  dl: true
+  java: true
+  rust: false
+  maintenu: true

@@ -1,0 +1,25 @@
+# =====================================================================
+#  KrazyDev — ORGANISATION : position des cartes plugins (/projets)
+# =====================================================================
+#  Change UNIQUEMENT le nombre à côté de l'id pour déplacer un plugin :
+#    1 = 1re ligne à gauche    2 = 1re ligne à droite
+#    3 = 2e ligne à gauche     4 = 2e ligne à droite  ... etc
+#  Pour INVERSER deux plugins : échange simplement leurs deux nombres.
+#  Les autres fichiers (content.yml, attribut.yml, color.yml) sont
+#  reliés par le même "id" et ne dépendent pas de cette position.
+
+grid:
+  columns: 2
+
+order:
+  km-ac: 1
+  km-riotops: 2
+  km-antibots: 3
+  km-login: 4
+  km-maintenance: 5
+  km-moderations: 6
+  km-perms: 7
+  km-survival: 8
+  km-tab: 9
+  krazy-perf: 10
+  km-motd: 11

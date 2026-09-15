@@ -1,14 +1,19 @@
-// KrazyDev — plugins.js : rend les cartes plugins depuis plugins.yml.
-// L'ordre vient du champ "order" (1 = haut gauche, 2 = haut droite...).
-// Markdown autorisé dans desc/meta/features : **gras** et *italique*.
-// S'adapte à la langue courante (localStorage 'krazydev_lang' ou détection)
-// et écoute l'événement 'krazydev:lang' déclenché par i18n.js.
+// KrazyDev — plugins.js : rend les cartes plugins depuis 4 fichiers YAML
+// reliés par l'"id" :
+//   organization.yml -> position (order) + colonnes de la grille
+//   content.yml      -> tous les textes (FR/EN) + registre des chips
+//   attribut.yml     -> conditions : dl / java / rust / maintenu (true/false)
+//   color.yml        -> couleurs : card_style, tone + style des badges
+// Markdown autorisé dans meta/desc/features : **gras** et *italique*.
+// S'adapte à la langue courante et écoute 'krazydev:lang' (i18n.js).
 (function () {
   'use strict';
 
   var YAML = (typeof window !== 'undefined' && window.YAMLlite)
     ? window.YAMLlite
     : { parse: function () { return {}; } };
+
+  var FILES = ['organization.yml', 'content.yml', 'attribut.yml', 'color.yml'];
 
   var TONE_CLASS = {
     dev: 'badge-dev',
@@ -48,7 +53,11 @@
     return 'fr';
   }
 
-  var state = { lang: getLang(), cfg: null, list: [] };
+  var state = {
+    lang: getLang(),
+    data: { organization: {}, content: {}, attribut: {}, color: {} },
+    list: []
+  };
 
   function L(o, lang) {
     if (o == null) return '';
@@ -59,23 +68,80 @@
     return '';
   }
 
-  function badgeHTML(b, lang) {
-    var cls = 'badge';
-    if (b.tone && TONE_CLASS[b.tone]) cls += ' ' + TONE_CLASS[b.tone];
-    var st = b.style ? ' style="' + esc(b.style) + '"' : '';
-    return '<span class="' + cls + '"' + st + '>' + esc(L(b.text, lang)) + '</span>';
+  function buildList() {
+    var org = state.data.organization || {};
+    var content = state.data.content || {};
+    var attrs = state.data.attribut || {};
+    var colors = state.data.color || {};
+    var chipDefs = content.chips || {};
+    var orderMap = org.order || {};
+
+    var list = [];
+    Object.keys(content).forEach(function (id) {
+      if (id === 'chips') return;
+      var item = content[id];
+      if (!item || typeof item !== 'object') return;
+
+      item.id = id;
+      item.order = (orderMap[id] == null) ? 1e9 : Number(orderMap[id]);
+
+      var att = attrs[id] || {};
+      item.dl = att.dl !== false;
+
+      item.chips = [];
+      Object.keys(chipDefs).forEach(function (key) {
+        var def = chipDefs[key];
+        if (!def || typeof def !== 'object') return;
+        var ok = att[key] === true;
+        item.chips.push({
+          icon: ok ? (def.icon_ok || def.icon) : (def.icon_no || def.icon || ''),
+          ok: ok,
+          label: def.label,
+          title: def.title
+        });
+      });
+
+      var colr = colors[id] || {};
+      item.card_style = colr.card_style || '';
+      var badgeColors = Array.isArray(colr.badges) ? colr.badges : [];
+      item.badges = (Array.isArray(item.badges) ? item.badges : []).map(function (b, idx) {
+        var bc = badgeColors[idx] || {};
+        return {
+          text: b.text,
+          tone: bc.tone,
+          style: bc.style || ''
+        };
+      });
+
+      list.push(item);
+    });
+
+    list.sort(function (a, b) {
+      if (a.order !== b.order) return a.order - b.order;
+      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+    });
+    return list;
+  }
+
+  function chipHTML(c, lang) {
+    var mark = c.ok ? '✓' : '✗';
+    return '<span class="st-chip ' + (c.ok ? 'st-chip-ok' : 'st-chip-no') + '" title="' +
+      esc(L(c.title, lang)) + '"><img src="' + esc(c.icon) + '" alt="' + mark + '"> ' +
+      esc(L(c.label, lang)) + '</span>';
   }
 
   function cardHTML(p, lang) {
-    var badges = (p.badges && p.badges.length)
-      ? p.badges.map(function (b) { return badgeHTML(b, lang); }).join('')
-      : '';
-    var badgeCol = p.badges && p.badges.length
+    var badges = p.badges.map(function (b) {
+      var cls = 'badge';
+      if (b.tone && TONE_CLASS[b.tone]) cls += ' ' + TONE_CLASS[b.tone];
+      var st = b.style ? ' style="' + esc(b.style) + '"' : '';
+      return '<span class="' + cls + '"' + st + '>' + esc(L(b.text, lang)) + '</span>';
+    }).join('');
+    var badgeCol = badges
       ? '<div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">' + badges + '</div>'
       : '<div></div>';
 
-    var features = L(p.features, lang);
-    var featHtml = (features || []).map(function (f) {
+    var featHtml = L(p.features, lang).map(function (f) {
       return '<span>' + md(f) + '</span>';
     }).join('');
 
@@ -83,16 +149,11 @@
       return '<div class="bench"><b>' + esc(st.value) + '</b><span>' + esc(L(st.label, lang)) + '</span></div>';
     }).join('');
 
-    var chips = (p.chips || []).map(function (c) {
-      var mark = c.ok ? '✓' : '✗';
-      return '<span class="st-chip ' + (c.ok ? 'st-chip-ok' : 'st-chip-no') + '" title="' +
-        esc(L(c.title, lang)) + '"><img src="' + esc(c.icon) + '" alt="' + mark + '"> ' +
-        esc(L(c.label, lang)) + '</span>';
-    }).join('');
+    var chips = p.chips.map(function (c) { return chipHTML(c, lang); }).join('');
 
     var dlT = p.dl_title || { fr: 'Choisir plateforme & version', en: 'Choose platform & version' };
     var dlBtn = p.dl === false
-      ? '<a class="dl-btn disabled" title="' + esc((p.dl_title_disabled || { fr: 'Bientôt disponible', en: 'Coming soon' })[lang]) + '">⬇ Download</a>'
+      ? '<a class="dl-btn disabled" title="' + esc(L({ fr: 'Bientôt disponible', en: 'Coming soon' }, lang)) + '">⬇ Download</a>'
       : '<a class="dl-btn" title="' + esc(L(dlT, lang)) + '">⬇ Download</a>';
 
     var cardStyle = 'padding:20px' + (p.card_style ? ';' + p.card_style : '');
@@ -118,10 +179,10 @@
   function render() {
     var grid = document.getElementById('subgrid');
     if (!grid) return;
-    var cols = (state.cfg && state.cfg.grid && state.cfg.grid.columns) || 2;
+    var cols = (state.data.organization && state.data.organization.grid && state.data.organization.grid.columns) || 2;
     grid.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
     if (!state.list.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1;opacity:.5;font-size:.85rem">Aucun plugin configuré dans plugins.yml.</div>';
+      grid.innerHTML = '<div style="grid-column:1/-1;opacity:.5;font-size:.85rem">Aucun plugin configuré dans content.yml.</div>';
       return;
     }
     grid.innerHTML = state.list.map(function (p) { return cardHTML(p, state.lang); }).join('');
@@ -131,21 +192,24 @@
     var grid = document.getElementById('subgrid');
     if (!grid) return;
     grid.innerHTML = '<div style="grid-column:1/-1;opacity:.6;font-size:.85rem">Chargement des plugins…</div>';
-    fetch('plugins.yml', { cache: 'no-cache' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-      .then(function (txt) {
-        var cfg = YAML.parse(txt);
-        state.cfg = cfg;
-        state.list = (cfg.plugins || []).slice().sort(function (a, b) {
-          var oa = a.order == null ? 1e9 : Number(a.order);
-          var ob = b.order == null ? 1e9 : Number(b.order);
-          return oa - ob;
-        });
-        render();
-      })
-      .catch(function () {
-        grid.innerHTML = '<div style="grid-column:1/-1;opacity:.5;font-size:.85rem">plugins.yml introuvable — ajoute le fichier à côté de projets.html.</div>';
-      });
+    Promise.all(FILES.map(function (f) {
+      return fetch(f, { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + f); return r.text(); })
+        .then(function (txt) { return YAML.parse(txt); });
+    })).then(function (arr) {
+      state.data = {
+        organization: arr[0] || {},
+        content: arr[1] || {},
+        attribut: arr[2] || {},
+        color: arr[3] || {}
+      };
+      state.list = buildList();
+      render();
+    }).catch(function (err) {
+      var msg = (err && err.message) || '';
+      grid.innerHTML = '<div style="grid-column:1/-1;opacity:.5;font-size:.85rem">Fichier YAML introuvable (' +
+        esc(msg) + ') — vérifie ' + FILES.map(esc).join(', ') + ' dans public/.</div>';
+    });
   }
 
   document.addEventListener('krazydev:lang', function (e) {
