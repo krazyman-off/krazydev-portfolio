@@ -19,7 +19,7 @@ order:
   km-maintenance: 5
   km-moderations: 6
   km-perms: 7
-  km-survival: 8
+  km-motd: 8
   km-tab: 9
   krazy-perf: 10
-  km-motd: 11
+  km-survival: 11
