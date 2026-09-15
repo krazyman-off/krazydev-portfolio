@@ -16,16 +16,23 @@ addEventListener('scroll',()=>{
 });
 
 // reveal on scroll (staggered)
+// threshold:0 — un seuil proportionnel (ex: .12) piège les grosses sections
+// sur mobile (12% dépasse le viewport => jamais 'visible'). Fires dès 1px visible.
 const reveals=document.querySelectorAll('.reveal');
 const io=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
+  entries.forEach((e)=>{
     if(e.isIntersecting){
-      e.target.style.transitionDelay=(i%3)*0.08+'s';
+      const idx=Array.prototype.indexOf.call(reveals,e.target);
+      e.target.style.transitionDelay=(idx%3)*0.08+'s';
       e.target.classList.add('visible');
     }
   });
-},{threshold:.12});
-reveals.forEach(el=>io.observe(el));
+},{threshold:0, rootMargin:'0px 0px -60px 0px'});
+const fallbackVisible=()=>reveals.forEach(el=>el.classList.add('visible'));
+if(!('IntersectionObserver' in window)) fallbackVisible();
+else reveals.forEach(el=>io.observe(el));
+// filet de sécurité : jamais laisser une section invisible
+setTimeout(()=>{ reveals.forEach(el=>{ if(!el.classList.contains('visible')) el.classList.add('visible'); }); },3000);
 
 // typewriter
 const tw=document.getElementById('typewriter');

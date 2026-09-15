@@ -12,8 +12,8 @@
     'KM-RiotOps': {
       ico: 'emojis/km-riotops.png',
       builds: {
-        velocity: { file: 'KM-RiotOps-Velocity-1.0.0-DEV.jar', bytes: 356698, channel: 'DEV' },
-        bukkit: { file: 'KM-RiotOps-Bukkit-1.0.0-DEV.jar', bytes: 167254, channel: 'DEV' }
+        velocity: { file: 'KM-RiotOps-Velocity-0.1.0-DEV.jar', bytes: 356703, channel: 'DEV' },
+        bukkit: { file: 'KM-RiotOps-Bukkit-2.0.0-DEV.jar', bytes: 343628, channel: 'DEV' }
       }
     },
     'KM-AntiBots': {
@@ -57,7 +57,12 @@
         bukkit: { file: 'km-tab-Bukkit-1.0.0-STABLE.jar', bytes: 6386117, channel: 'STABLE' }
       }
     },
-    'KM-Login': { ico: 'emojis/km-login.png', builds: {} },
+    'KM-Login': {
+      ico: 'emojis/km-login.png',
+      builds: {
+        velocity: { file: 'KM-Login-1.1.0-DEV.jar', bytes: 29943502, channel: 'DEV' }
+      }
+    },
     'KrazyMan Performance': {
       ico: 'emojis/krazy-perf.png',
       builds: {
