@@ -38,7 +38,7 @@ plugins:
 
   # ---------------- 1 : KM-AC ----------------
   - id: km-ac
-    order: 1
+    order: 4
     name: KM-AC
     icon: emojis/km-ac.png
     badges:
@@ -258,12 +258,12 @@ plugins:
       en: "UPD 2026-09-11"
     dl: true
 
-  # ---------------- 4 : KM-Login ----------------
+  # ---------------- 1 : KM-Login ----------------
   - id: km-login
-    order: 4
+    order: 1
     name: KM-Login
     icon: emojis/km-login.png
-    card_style: "border-color:rgba(255,45,85,.35)"
+    card_style: "border-color:rgba(228,148,0,.35)"
     badges:
       - text:
           fr: "DEV — VELOCITY 1.1.0"
