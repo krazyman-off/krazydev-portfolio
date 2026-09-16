@@ -18,10 +18,10 @@ km-ac:
     - tone: stress
 
 km-riotops:
-  card_style: "border-color:rgba(228,148,0,.35)"
+  card_style: "border-color:rgba(245,195,78,.35)"
   badges:
     - tone: dev
-      style: "background:rgba(228,148,0,.14);color:#ffb84d;border:1px solid rgba(228,148,0,.35)"
+      style: "background:rgba(245,195,78,.14);color:#f5c34e;border:1px solid rgba(245,195,78,.35)"
 
 km-antibots:
   card_style: ""
@@ -30,7 +30,7 @@ km-antibots:
     - tone: stress
 
 km-login:
-  card_style: "border-color:rgba(228,148,0,.35)"
+  card_style: "border-color:rgba(245,195,78,.35)"
   badges:
     - tone: dev
 

@@ -2,6 +2,7 @@
 // décor fin injecté (évite de dupliquer dans chaque page)
 (function(){
   const vignette=document.createElement('div'); vignette.className='vignette'; document.body.appendChild(vignette);
+  const twinkle=document.createElement('div'); twinkle.className='twinkle'; document.body.appendChild(twinkle);
 })();
 
 // loader

@@ -1,5 +1,5 @@
 (function () {
-    var L = "<div style=position:fixed;inset:0;z-index:99999;background:#07070b;color:#ff2d55;font-family:monospace;font-size:13px;padding:20px;letter-spacing:1px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.8>Access denied — inspection n'est pas autorisée sur ce site.<br>Accès refusé 403.</div>";
+    var L = "<div style=position:fixed;inset:0;z-index:99999;background:#07070b;color:#a855f7;font-family:monospace;font-size:13px;padding:20px;letter-spacing:1px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.8>Access denied — inspection n'est pas autorisée sur ce site.<br>Accès refusé 403.</div>";
     if (top !== self) { document.documentElement.innerHTML = ""; return; }
     function block(e) { e.preventDefault(); }
     ["contextmenu", "selectstart", "dragstart", "copy", "cut", "paste"].forEach(function (ev) {
