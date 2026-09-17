@@ -4,13 +4,15 @@
 .spirit-crystal{
   position:fixed;bottom:20px;right:20px;z-index:50;
   width:32px;height:32px;cursor:pointer;
-  opacity:.18;transition:opacity .4s, transform .4s;
-  filter:drop-shadow(0 0 6px rgba(168,85,247,.5));
+  opacity:.45;transition:opacity .4s, transform .4s;
+  filter:drop-shadow(0 0 8px rgba(168,85,247,.6));
+  animation:crystalSway 4s ease-in-out infinite;
 }
-.spirit-crystal:hover{opacity:.85;transform:scale(1.3) rotate(15deg);filter:drop-shadow(0 0 16px rgba(168,85,247,.9)) drop-shadow(0 0 30px rgba(217,70,239,.5));}
+@keyframes crystalSway{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-5px) rotate(3deg)}}
+.spirit-crystal:hover{opacity:.95;transform:scale(1.3) rotate(15deg);filter:drop-shadow(0 0 16px rgba(168,85,247,.9)) drop-shadow(0 0 30px rgba(217,70,239,.5));}
 .spirit-crystal::before{
   content:"";display:block;width:100%;height:100%;
-  background:linear-gradient(135deg, rgba(168,85,247,.9), rgba(217,70,239,.8), rgba(124,58,237,.9));
+  background:linear-gradient(135deg, #d946ef, #a855f7, #7c3aed);
   clip-path:polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
   animation:crystalPulse 3s ease-in-out infinite;
 }
