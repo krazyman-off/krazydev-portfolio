@@ -3,26 +3,40 @@
 (function(){
   if(location.pathname.includes('secret.html')) return;
 
-  // — Sigil SVG : étoile centrale (Tohka) + lame Sandalphon + cercle runique
+  // — SVG cristal : facettes d'une Spirit Crystal (violet/gold) —
   const CRYSTAL_SVG =
     '<svg viewBox="0 0 64 64">'+
       '<defs>'+
-        '<linearGradient id="egStar" x1="0" y1="0" x2="1" y2="1">'+
-          '<stop offset="0" stop-color="#f5c34e"/>'+
-          '<stop offset=".5" stop-color="#a855f7"/>'+
-          '<stop offset="1" stop-color="#d946ef"/>'+
+        '<linearGradient id="egCrystal" x1="0" y1="0" x2="1" y2="1">'+
+          '<stop offset="0" stop-color="#d946ef"/>'+
+          '<stop offset=".45" stop-color="#a855f7"/>'+
+          '<stop offset="1" stop-color="#7c3aed"/>'+
         '</linearGradient>'+
-        '<linearGradient id="egBlade" x1="0" y1="0" x2="0" y2="1">'+
-          '<stop offset="0" stop-color="rgba(245,195,78,.5)"/>'+
-          '<stop offset="1" stop-color="rgba(245,195,78,.15)"/>'+
-        '</linearGradient>'+
+        '<radialGradient id="egCore" cx=".5" cy=".5" r=".5">'+
+          '<stop offset="0" stop-color="#fff"/>'+
+          '<stop offset=".35" stop-color="rgba(217,70,239,.9)"/>'+
+          '<stop offset="1" stop-color="rgba(168,85,247,0)"/>'+
+        '</radialGradient>'+
       '</defs>'+
-      '<circle cx="32" cy="32" r="29" fill="none" stroke="rgba(168,85,247,.75)" stroke-width="1.4" stroke-dasharray="9 6 4 6"/>'+
-      '<circle cx="32" cy="32" r="23" fill="none" stroke="rgba(217,70,239,.4)" stroke-width="1"/>'+
-      '<path d="M32 4 L33.6 18 L30.4 18 Z" fill="url(#egBlade)" stroke="rgba(245,195,78,.55)" stroke-width="1"/>'+
-      '<path d="M32 46 L33.6 60 L30.4 60 Z" fill="url(#egBlade)" stroke="rgba(245,195,78,.55)" stroke-width="1"/>'+
-      '<path d="M32 13 L36.6 26 L50 28.3 L40 37.7 L42.8 51 L32 43.8 L21.2 51 L24 37.7 L14 28.3 L27.4 26 Z" '+
-        'fill="url(#egStar)" stroke="rgba(245,195,78,.85)" stroke-width="1"/>'+
+      '<path d="M32 2 L47 18 L60 32 L47 46 L32 62 L17 46 L4 32 L17 18 Z" '+
+        'fill="url(#egCrystal)" stroke="rgba(245,195,78,.85)" stroke-width="1.1" stroke-linejoin="round"/>'+
+      '<polygon points="32,2 17,18 32,20" fill="rgba(255,255,255,.16)"/>'+
+      '<polygon points="32,2 47,18 32,20" fill="rgba(255,255,255,.32)"/>'+
+      '<polygon points="17,18 4,32 32,20" fill="rgba(255,255,255,.10)"/>'+
+      '<polygon points="47,18 60,32 32,20" fill="rgba(255,255,255,.22)"/>'+
+      '<polygon points="32,62 17,46 32,42" fill="rgba(8,3,26,.26)"/>'+
+      '<polygon points="32,62 47,46 32,42" fill="rgba(8,3,26,.44)"/>'+
+      '<polygon points="17,46 4,32 32,42" fill="rgba(8,3,26,.32)"/>'+
+      '<polygon points="47,46 60,32 32,42" fill="rgba(8,3,26,.54)"/>'+
+      '<path d="M32 2 L32 62 M32 20 L17 18 M32 20 L47 18 M32 20 L4 32 M32 20 L60 32 M32 42 L17 46 M32 42 L47 46 M32 42 L4 32 M32 42 L60 32" '+
+        'stroke="rgba(255,255,255,.22)" stroke-width=".5" fill="none"/>'+
+      '<ellipse cx="32" cy="33" rx="9" ry="15" fill="url(#egCore)" opacity=".75"/>'+
+      '<polygon points="32,2 40,15 32,17" fill="rgba(255,255,255,.28)"/>'+
+      '<g stroke="rgba(255,255,255,.95)" stroke-width="1" stroke-linecap="round">'+
+        '<path d="M46 10 L50 10 M48 8 L48 12"/>'+
+        '<path d="M54 20 L57 20 M55.5 18.5 L55.5 21.5" stroke="rgba(245,195,78,.8)"/>'+
+        '<path d="M12 44 L15 44 M13.5 42.5 L13.5 45.5"/>'+
+      '</g>'+
     '</svg>';
 
   const crystal=document.createElement('div');
@@ -38,7 +52,7 @@
 
   // — Animation d'éclatement (~5s) ———
   function trigger(el){
-    const size=30;
+    const size=36;
     const r=el.getBoundingClientRect();
     const startX=r.left, startY=r.top;
 
