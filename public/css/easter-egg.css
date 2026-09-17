@@ -95,6 +95,22 @@
 #eg-flash.on{opacity:1}
 #eg-flash.off{opacity:0;transition:opacity 1.2s ease}
 
+/* === Fissures réalistes : le cristal se fend en morceaux, la lumière jaillit === */
+.split-glow{position:absolute;inset:-6px;z-index:1;opacity:0;transition:opacity 1.2s ease;pointer-events:none;
+  background:radial-gradient(circle at 50% 45%, #fff 0%, #f5c34e 26%, #d946ef 55%, rgba(168,85,247,.45) 74%, transparent 86%);
+  filter:blur(1.5px)}
+.split-glow.on{opacity:.95}
+.sp-piece{position:absolute;inset:0;z-index:2;pointer-events:none;transition:transform .85s cubic-bezier(.25,.8,.35,1)}
+.sp-piece svg{width:100%;height:100%;display:block;overflow:visible}
+.sp-top{clip-path:polygon(50% 0%, 100% 32%, 50% 56%, 0% 32%)}
+.sp-right{clip-path:polygon(100% 32%, 100% 76%, 50% 56%)}
+.sp-bottom{clip-path:polygon(50% 56%, 100% 76%, 50% 100%, 0% 76%)}
+.sp-left{clip-path:polygon(0% 32%, 50% 56%, 0% 76%)}
+.sp-top.go{transform:translateY(-4px)}
+.sp-right.go{transform:translate(5px,1px) rotate(5deg)}
+.sp-bottom.go{transform:translateY(5px)}
+.sp-left.go{transform:translate(-5px,-1px) rotate(-5deg)}
+
 /* === Ambiance : voile, halo, bloom, voile de transition === */
 #eg-dim{position:fixed;inset:0;z-index:45;background:#060312;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
 .eg-halo{position:fixed;z-index:46;pointer-events:none;width:520px;height:520px;border-radius:50%;

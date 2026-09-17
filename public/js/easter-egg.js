@@ -170,23 +170,17 @@
       halo.style.opacity='1';
     },2800);
 
-    // — 4. FISSURES PROGRESSIVES (3.0s) : les craquelures se dessinent une à une —
+    // — 4. FISSURES PROGRESSIVES (3.0s) : le cristal se fend morceau par morceau —
     setTimeout(()=>{
-      const cracks=document.createElement('div');
-      cracks.className='crystal-cracks';
-      cracks.innerHTML=crackSVG();
-      el.appendChild(cracks);
-      requestAnimationFrame(()=>cracks.classList.add('on'));
+      buildSplit(el,cx,cy);
       el.classList.add('tremble-light','strained');
       dimTo(dim,.6);
     },3000);
 
-    // — 4b. TENSION (3.9s) : tremblement plus fort, fissures incandescentes —
+    // — 4b. TENSION (3.9s) : tremblement plus fort, la lumière s'intensifie —
     setTimeout(()=>{
       el.classList.remove('tremble-light');
       el.classList.add('tremble-heavy');
-      const c=el.querySelector('.crystal-cracks');
-      if(c) c.classList.add('hot');
       sparks(cx,cy,8,130);
     },3900);
 
@@ -224,23 +218,38 @@
     setTimeout(()=>{ window.location.href='secret.html'; },6000);
   }
 
-  // — SVG de fissures : se dessinent progressivement, groupe par groupe —
-  function crackSVG(){
-    const groups=[
-      {delay:'0s', spokes:['12,12 34,34 48,26 60,34','32,4 33,20 36,28','4,32 20,33 28,36']},
-      {delay:'.35s', spokes:['52,12 36,32 46,46 58,52','32,60 31,44 28,36','60,32 44,31 36,28']},
-      {delay:'.7s', spokes:['12,52 32,36 28,48 22,58','52,52 34,34 40,24 54,18']}
+  // — Fissures réalistes : le cristal se fend en 4 morceaux qui s'écartent
+  // progressivement, la lumière intérieure jaillit par les failles —
+  function buildSplit(el,cx,cy){
+    const orig=el.querySelector('.sigil');
+    const svgHTML=orig.innerHTML;
+    const glow=document.createElement('div');
+    glow.className='split-glow';
+    el.appendChild(glow);
+    const pieces=[
+      {cls:'sp-top', t:100},
+      {cls:'sp-right', t:350},
+      {cls:'sp-bottom', t:600},
+      {cls:'sp-left', t:850}
     ];
-    let out='';
-    groups.forEach((g,gi)=>{
-      g.spokes.forEach(pts=>{
-        const bright=gi===0 ? 'rgba(255,255,255,.85)' : 'rgba(245,195,78,.6)';
-        const glow=gi===0 ? 'rgba(168,85,247,.45)' : 'rgba(217,70,239,.35)';
-        out+='<polyline class="crack" style="--cd:'+g.delay+'" points="'+pts+'" fill="none" stroke="'+glow+'" stroke-width="2.5"/>'+
-             '<polyline class="crack" style="--cd:'+g.delay+'" points="'+pts+'" fill="none" stroke="'+bright+'" stroke-width=".9"/>';
-      });
+    pieces.forEach(p=>{
+      const d=document.createElement('div');
+      d.className='sp-piece '+p.cls;
+      d.innerHTML=svgHTML;
+      const s=d.querySelector('svg');
+      if(s) s.style.transform='rotate(540deg)';
+      el.appendChild(d);
     });
-    return '<svg viewBox="0 0 64 64">'+out+'</svg>';
+    orig.style.animation='none';
+    orig.style.opacity='0';
+    requestAnimationFrame(()=>glow.classList.add('on'));
+    pieces.forEach(p=>{
+      setTimeout(()=>{
+        const d=el.querySelector('.'+p.cls);
+        if(d) d.classList.add('go');
+        sparks(cx,cy,3,70);
+      },p.t);
+    });
   }
 
   // — Konami Code → secret page —
