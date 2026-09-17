@@ -117,7 +117,9 @@
     img.alt = name;
     head.appendChild(img);
     var t = el('div');
-    t.appendChild(el('h3', null, name));
+    var h3 = el('h3');
+    h3.textContent = name;
+    t.appendChild(h3);
     var sub = el('div', 'meta');
     sub.textContent = platList.length
       ? 'Choisis la brique de ton réseau, on te file le bon .jar.'
@@ -138,7 +140,8 @@
       var plats = el('div', 'dl-plats');
       platList.forEach(function (p) {
         var card = el('div', 'dl-plat' + (p.id === state.plat ? ' active' : ''));
-        card.innerHTML = '<b>' + p.label + '</b><small>' + p.sub + '</small>';
+        var pb = el('b'); pb.textContent = p.label; card.appendChild(pb);
+        var ps = el('small'); ps.textContent = p.sub; card.appendChild(ps);
         card.addEventListener('click', function () {
           state.plat = p.id;
           plats.querySelectorAll('.dl-plat').forEach(function (c) { c.classList.remove('active'); });
@@ -158,7 +161,8 @@
       var go = el('button', 'dl-big', '⬇ Télécharger .jar');
       go.addEventListener('click', function () {
         var b = CONFIG[state.plugin].builds[state.plat];
-        if (!b) return;
+        if (!b || !b.file) return;
+        if (/[/\\]|\.\./.test(b.file)) return; // jamais de traversal hors dl/
         var a = document.createElement('a');
         a.href = 'dl/' + b.file;
         a.download = b.file;
@@ -228,7 +232,7 @@
   function summary() {
     var b = CONFIG[state.plugin].builds[state.plat];
     var sum = el('div', 'dl-sum');
-    sum.appendChild(el('span', 'f', b ? b.file : '—'));
+    var fn = el('span', 'f'); fn.textContent = b ? b.file : '—'; sum.appendChild(fn);
     var m = el('span', 'm');
     if (b) {
       var parts = [];

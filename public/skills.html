@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <title>Stack & Services — KrazyDev | Langages, Sécu, Infra</title>
 <script src="js/guard.js"></script>
 <meta name="description" content="Stack technique KrazyDev : Python 3.13, Java 17, Rust/Axum, cybersécurité, Paper, services.">
@@ -44,12 +45,12 @@
     <h2>Services — Ce que je peux faire pour toi</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px" class="svc-grid">
       <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">🤖 Bot Discord sur-mesure</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">Tickets V2, anti-raid, tempvoc, automod — livré, hébergé, maintenu. Pas un bot qui meurt au 1er raid.</p><p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--red);margin-top:8px">→ Devis sur Discord</p></div>
-      <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">⛏️ Plugins Paper prod</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">KM-Plugins ou plugin custom : perms, auth, perf. Code Java 17 propre, build Maven.</p><p style="margin-top:8px"><a href="https://discord.gg/45Dc3UZ726" target="_blank" class="btn btn-ghost" style="height:38px;font-size:.82rem;padding:0 16px">Discord ↗</a></p></div>
+      <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">⛏️ Plugins Paper prod</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">KM-Plugins ou plugin custom : perms, auth, perf. Code Java 17 propre, build Maven.</p><p style="margin-top:8px"><a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="btn btn-ghost" style="height:38px;font-size:.82rem;padding:0 16px">Discord ↗</a></p></div>
       <div class="card" style="padding:18px"><h3 style="font-size:1.1rem">🛡️ Audit anti-abus</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.6">Je check ton serveur/bot, je trouve les trous, je patch. Retour d'expérience de 3 ans d'attaques réelles.</p><p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#f5c34e;margin-top:8px">→ Sur demande</p></div>
     </div>
   </div>
 
-  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" onclick="goPrev()">← Retour</button><a href="contact.html" class="btn btn-primary">Suivant : Contact →</a></div>
+  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" data-action="prev">← Retour</button><a href="contact.html" class="btn btn-primary">Suivant : Contact →</a></div>
 
   <footer>Fait avec ♥ par <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Accueil</a> • <a href="projets.html">Projets</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a></footer>
 </div>

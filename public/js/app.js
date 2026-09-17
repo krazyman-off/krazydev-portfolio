@@ -94,9 +94,13 @@ addEventListener('scroll',()=>{
 });
 
 // multi-page: boutons "Précédent" — reviennent à la page d'avant (historique)
+// (branchés via data-action="prev", pas de onclick inline pour la CSP)
 function goPrev(){
-  const fallback = document.body.dataset.home === "skills" ? "index.html" : "index.html";
+  const fallback = "index.html";
   if (history.length > 1) history.back();
   else location.href = fallback;
 }
+document.querySelectorAll('[data-action="prev"]').forEach(function (btn) {
+  btn.addEventListener('click', goPrev);
+});
 // Konami → easter-egg.js (Tohka secret page)

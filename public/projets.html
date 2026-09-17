@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <title>Projets — KrazyDev | Krazy Studio Bot & KM-Plugins</title>
 <script src="js/guard.js"></script>
 <meta name="description" content="Krazy Studio Bot (confidentiel) & KM-Plugins (public) en détail : architecture, features, stacks, fichiers.">
@@ -52,7 +53,7 @@
         <div class="tags"><span class="tag">Python 3.13</span><span class="tag">discord.py 2.7</span><span class="tag">SQLite WAL</span><span class="tag">Matplotlib</span><span class="tag">asyncio</span></div>
         <div class="links">
           <span style="font-size:.82rem;opacity:.6;padding:8px 0">Repo : confidentiel — accès privé sur demande</span>
-          <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Tester sur Discord ↗</a>
+          <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="primary">Tester sur Discord ↗</a>
         </div>
       </div>
     </div>
@@ -84,12 +85,12 @@
       <span><b>Tous les plugins sont 100% gratuits.</b> Obtenus via Discord — liens envoyés par DM. KM-Login est dispo en build Velocity DEV 1.1.0, KM-RiotOps est passé en DEV 2.0.0 (Paper 1.20.4) + sonde Velocity 0.1.0, les autres sont dispo dès maintenant.</span>
     </div>
     <div class="links" style="justify-content:space-between">
-      <a href="https://discord.gg/45Dc3UZ726" target="_blank" class="primary">Obtenir KM-Plugins ↗</a>
+      <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="primary">Obtenir KM-Plugins ↗</a>
       <span style="font-size:.82rem;opacity:.6;padding:8px 0">Suite :<br><b style="color:var(--red)">KM-AC · KM-RiotOps · KM-AntiBots · KM-Login · KM-Maintenance · KM-Moderations · KM-Perms · KM-Survival · KM-TAB · KrazyMan Perf · KM-MOTD</b></span>
     </div>
   </div>
 
-  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" onclick="goPrev()">← Retour</button><a href="skills.html" class="btn btn-primary">Suivant : Stack →</a></div>
+  <div class="nav-arrows" style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-ghost" data-action="prev">← Retour</button><a href="skills.html" class="btn btn-primary">Suivant : Stack →</a></div>
 
   <footer>Fait avec ♥ par <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Accueil</a> • <a href="projets.html">Projets</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a></footer>
 </div>

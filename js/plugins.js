@@ -31,6 +31,15 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Assainit un fragment CSS venu des YAML : autorise uniquement des
+  // déclarations simples (couleurs, bordures...), bloque url(/javascript:),
+  // expression(), @import, behavior et balises.
+  function safeCss(s) {
+    s = String(s == null ? '' : s);
+    if (/[<>"'`]|url\s*\(|expression\s*\(|@import|behavior\s*:/i.test(s)) return '';
+    return s.slice(0, 500);
+  }
+
   function md(s) {
     s = esc(s);
     s = s.replace(/\*\*([\s\S]+?)\*\*/g, function (m, t) { return '<b>' + t + '</b>'; });
@@ -102,14 +111,14 @@
       });
 
       var colr = colors[id] || {};
-      item.card_style = colr.card_style || '';
+      item.card_style = safeCss(colr.card_style || '');
       var badgeColors = Array.isArray(colr.badges) ? colr.badges : [];
       item.badges = (Array.isArray(item.badges) ? item.badges : []).map(function (b, idx) {
         var bc = badgeColors[idx] || {};
         return {
           text: b.text,
           tone: bc.tone,
-          style: bc.style || ''
+          style: safeCss(bc.style || '')
         };
       });
 
@@ -179,7 +188,9 @@
   function render() {
     var grid = document.getElementById('subgrid');
     if (!grid) return;
-    var cols = (state.data.organization && state.data.organization.grid && state.data.organization.grid.columns) || 2;
+    var rawCols = state.data.organization && state.data.organization.grid && state.data.organization.grid.columns;
+    var cols = parseInt(rawCols, 10);
+    if (!(cols >= 1 && cols <= 6)) cols = 2;
     grid.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
     if (!state.list.length) {
       grid.innerHTML = '<div style="grid-column:1/-1;opacity:.5;font-size:.85rem">Aucun plugin configuré dans content.yml.</div>';

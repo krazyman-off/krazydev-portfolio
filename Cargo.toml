@@ -8,9 +8,8 @@ authors = ["KrazyMan_off aka Sasha <krazyman.off@gmail.com>"]
 [dependencies]
 axum = { version = "0.7", features = ["macros"] }
 tokio = { version = "1", features = ["full"] }
-tower = "0.5"
-tower-http = { version = "0.6", features = ["trace", "cors", "fs", "compression-gzip"] }
-tower_governor = "0.7"
+tower = { version = "0.5", features = ["limit", "timeout", "buffer", "make"] }
+tower-http = { version = "0.6", features = ["trace", "cors", "fs", "compression-gzip", "map-response-body"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tracing = "0.1"
