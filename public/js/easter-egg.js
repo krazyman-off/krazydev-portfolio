@@ -1,9 +1,9 @@
 // KrazyDev — Easter Egg System
-// Tohka Yatogami — sigil de la Princesse des Étoiles (Sandalphon)
+// Tohka Yatogami — Spirit Crystal (fragment)
 (function(){
   if(location.pathname.includes('secret.html')) return;
 
-  // — SVG cristal : facettes d'une Spirit Crystal (violet/gold) —
+  // — SVG cristal fragmenté : arêtes cassées, facettes, fissure dorée, cœur lumineux
   const CRYSTAL_SVG =
     '<svg viewBox="0 0 64 64">'+
       '<defs>'+
@@ -18,24 +18,26 @@
           '<stop offset="1" stop-color="rgba(168,85,247,0)"/>'+
         '</radialGradient>'+
       '</defs>'+
-      '<path d="M32 2 L47 18 L60 32 L47 46 L32 62 L17 46 L4 32 L17 18 Z" '+
-        'fill="url(#egCrystal)" stroke="rgba(245,195,78,.85)" stroke-width="1.1" stroke-linejoin="round"/>'+
-      '<polygon points="32,2 17,18 32,20" fill="rgba(255,255,255,.16)"/>'+
-      '<polygon points="32,2 47,18 32,20" fill="rgba(255,255,255,.32)"/>'+
-      '<polygon points="17,18 4,32 32,20" fill="rgba(255,255,255,.10)"/>'+
-      '<polygon points="47,18 60,32 32,20" fill="rgba(255,255,255,.22)"/>'+
-      '<polygon points="32,62 17,46 32,42" fill="rgba(8,3,26,.26)"/>'+
-      '<polygon points="32,62 47,46 32,42" fill="rgba(8,3,26,.44)"/>'+
-      '<polygon points="17,46 4,32 32,42" fill="rgba(8,3,26,.32)"/>'+
-      '<polygon points="47,46 60,32 32,42" fill="rgba(8,3,26,.54)"/>'+
-      '<path d="M32 2 L32 62 M32 20 L17 18 M32 20 L47 18 M32 20 L4 32 M32 20 L60 32 M32 42 L17 46 M32 42 L47 46 M32 42 L4 32 M32 42 L60 32" '+
-        'stroke="rgba(255,255,255,.22)" stroke-width=".5" fill="none"/>'+
-      '<ellipse cx="32" cy="33" rx="9" ry="15" fill="url(#egCore)" opacity=".75"/>'+
-      '<polygon points="32,2 40,15 32,17" fill="rgba(255,255,255,.28)"/>'+
+      '<path d="M32 3 L45 13 L54 26 L49 40 L58 49 L40 60 L32 54 L24 62 L15 50 L21 38 L9 30 L18 17 Z" '+
+        'fill="url(#egCrystal)" stroke="rgba(245,195,78,.8)" stroke-width="1" stroke-linejoin="round"/>'+
+      '<polygon points="32,3 45,13 32,22" fill="rgba(255,255,255,.30)"/>'+
+      '<polygon points="32,3 18,17 32,22" fill="rgba(255,255,255,.14)"/>'+
+      '<polygon points="45,13 54,26 36,30" fill="rgba(255,255,255,.18)"/>'+
+      '<polygon points="18,17 9,30 28,32" fill="rgba(255,255,255,.08)"/>'+
+      '<polygon points="54,26 49,40 36,38" fill="rgba(8,3,26,.16)"/>'+
+      '<polygon points="49,40 58,49 40,52 36,44" fill="rgba(8,3,26,.30)"/>'+
+      '<polygon points="40,60 32,54 32,44 40,52" fill="rgba(8,3,26,.38)"/>'+
+      '<polygon points="15,50 21,38 28,40 24,52" fill="rgba(8,3,26,.24)"/>'+
+      '<polygon points="24,62 32,54 32,44" fill="rgba(8,3,26,.46)"/>'+
+      '<path d="M32 3 L32 54 M32 22 L45 13 M32 22 L18 17 M32 30 L49 40 M32 30 L21 38 M32 44 L49 40 M32 44 L21 38 M36 38 L54 26 M28 32 L9 30" '+
+        'stroke="rgba(255,255,255,.20)" stroke-width=".5" fill="none"/>'+
+      '<path d="M34 10 L29 26 L38 40 L33 52" stroke="rgba(245,195,78,.55)" stroke-width="1" fill="none" stroke-linejoin="round"/>'+
+      '<ellipse cx="32" cy="34" rx="8" ry="13" fill="url(#egCore)" opacity=".8"/>'+
+      '<polygon points="32,3 40,14 32,17" fill="rgba(255,255,255,.30)"/>'+
       '<g stroke="rgba(255,255,255,.95)" stroke-width="1" stroke-linecap="round">'+
-        '<path d="M46 10 L50 10 M48 8 L48 12"/>'+
-        '<path d="M54 20 L57 20 M55.5 18.5 L55.5 21.5" stroke="rgba(245,195,78,.8)"/>'+
-        '<path d="M12 44 L15 44 M13.5 42.5 L13.5 45.5"/>'+
+        '<path d="M46 8 L50 8 M48 6 L48 10"/>'+
+        '<path d="M55 20 L58 20 M56.5 18.5 L56.5 21.5" stroke="rgba(245,195,78,.85)"/>'+
+        '<path d="M10 44 L13 44 M11.5 42.5 L11.5 45.5"/>'+
       '</g>'+
     '</svg>';
 
@@ -43,62 +45,148 @@
   crystal.className='spirit-crystal';
   crystal.title='???';
   crystal.innerHTML='<span class="sigil">'+CRYSTAL_SVG+'</span>';
-  crystal.addEventListener('click',function(){
-    if(this.dataset.eg==='1') return;
-    this.dataset.eg='1';
-    trigger(this);
+  crystal.addEventListener('click',()=>{
+    if(crystal.dataset.eg) return;
+    crystal.dataset.eg='1';
+    trigger(crystal);
   });
   document.body.appendChild(crystal);
 
-  // — Animation d'éclatement (~5s) ———
+  // ===== helpers aléatoires =====
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const rand=(mi,ma)=>mi+Math.random()*(ma-mi);
+
+  // — anneau d'énergie (dans le body, indépendant de l'échelle) —
+  function ring(x,y,opts){
+    opts=opts||{};
+    const d=document.createElement('div');
+    d.className='sigil-ring'+(opts.gold?' gold':'');
+    d.style.setProperty('--s1',opts.size||'160px');
+    d.style.setProperty('--dur',(opts.dur||.7)+'s');
+    d.style.left=x+'px'; d.style.top=y+'px';
+    document.body.appendChild(d);
+    requestAnimationFrame(()=>d.classList.add('ring'));
+    setTimeout(()=>d.remove(),(opts.dur||.7)*1000+200);
+  }
+
+  // — pluie d'étincelles —
+  function sparks(x,y,n,power){
+    const cols=['#f5c34e','#a855f7','#d946ef','#ffffff','#e9d5ff'];
+    for(let i=0;i<n;i++){
+      const s=document.createElement('div');
+      s.className='eg-spark';
+      const a=Math.random()*Math.PI*2;
+      const dist=(Math.random()*.7+.3)*power;
+      const size=rand(2,5);
+      s.style.setProperty('--dx',Math.cos(a)*dist+'px');
+      s.style.setProperty('--dy',Math.sin(a)*dist+'px');
+      s.style.setProperty('--s',size+'px');
+      s.style.setProperty('--dur',rand(.4,.9)+'s');
+      s.style.setProperty('--clr',pick(cols));
+      s.style.left=x+'px'; s.style.top=y+'px';
+      document.body.appendChild(s);
+      requestAnimationFrame(()=>s.classList.add('anim'));
+      setTimeout(()=>s.remove(),1100);
+    }
+  }
+
+  // — éclatement en fragments —
+  function shatter(x,y){
+    const bx=['linear-gradient(135deg,#d946ef,#a855f7)','linear-gradient(135deg,#a855f7,#7c3aed)','linear-gradient(135deg,#f5c34e,#d946ef)'];
+    for(let i=0;i<11;i++){
+      const f=document.createElement('div');
+      f.className='eg-shard';
+      const a=Math.random()*Math.PI*2;
+      const dist=rand(90,280);
+      const rot=rand(160,540)*(pick([-1,1]));
+      f.style.setProperty('--dx',Math.cos(a)*dist+'px');
+      f.style.setProperty('--dy',Math.sin(a)*dist-rand(20,80)+'px');
+      f.style.setProperty('--rot',rot+'deg');
+      f.style.setProperty('--sc',rand(.3,1.1)+'');
+      f.style.setProperty('--w',rand(10,20)+'px');
+      f.style.setProperty('--h',rand(16,30)+'px');
+      f.style.setProperty('--dur',rand(1.1,1.6)+'s');
+      f.style.setProperty('--bg',pick(bx));
+      f.style.left=x+'px'; f.style.top=y+'px';
+      document.body.appendChild(f);
+      requestAnimationFrame(()=>f.classList.add('anim'));
+      setTimeout(()=>f.remove(),1900);
+    }
+  }
+
+  // — flash plein écran —
+  function flash(){
+    const f=document.createElement('div');
+    f.id='eg-flash';
+    document.body.appendChild(f);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>f.classList.add('on')));
+    setTimeout(()=>f.classList.add('off'),260);
+    setTimeout(()=>f.remove(),1600);
+  }
+
+  // ===== séquence principale (~5s) =====
   function trigger(el){
     const size=36;
     const r=el.getBoundingClientRect();
-    const startX=r.left, startY=r.top;
+    const sx=r.left, sy=r.top;
+    const cx=innerWidth/2, cy=innerHeight/2;
 
-    // verrouillé en position absolue mesurée
     el.style.bottom='auto'; el.style.right='auto';
-    el.style.left=startX+'px'; el.style.top=startY+'px';
-    void el.offsetWidth; // reflow
+    el.style.left=sx+'px'; el.style.top=sy+'px';
+    void el.offsetWidth;
 
-    // 1. charge (0–0.7s)
+    // — 1. CHARGE (0–0.8s) : il tourne, vibre, émet des anneaux —
     el.classList.add('charge');
+    const chargeTimer=setInterval(()=>ring(sx+size/2,sy+size/2,{size:'120px',dur:rand(.45,.65),gold:true}),230);
+    setTimeout(()=>{ clearInterval(chargeTimer); sparks(cx,cy,8,90); },820);
 
-    // 2. migration au centre + agrandissement (0.7–1.7s)
+    // — 2. VOL vers le centre (0.82–1.85s) : glisse + grossit + tourne —
     setTimeout(()=>{
-      el.style.transition='left .9s cubic-bezier(.2,.9,.25,1), top .9s cubic-bezier(.2,.9,.25,1), transform .9s cubic-bezier(.2,.9,.25,1)';
-      el.style.left=(innerWidth/2-size/2)+'px';
-      el.style.top=(innerHeight/2-size/2)+'px';
+      el.classList.add('flying');
+      el.style.transition='left .95s cubic-bezier(.22,1,.36,1), top .95s cubic-bezier(.22,1,.36,1), transform .95s cubic-bezier(.34,1.56,.64,1)';
+      el.style.left=(cx-size/2)+'px';
+      el.style.top=(cy-size/2)+'px';
       el.style.transform='scale(9)';
-    },700);
+      setTimeout(()=>ring(cx,cy,{size:'280px',dur:1.1,gold:true}),900);
+    },820);
 
-    // 3. fissures (1.5s)
+    // — 3. IMPACT / micro-rebond (1.95s) : le cristal "tombe" —
+    setTimeout(()=>{
+      el.style.transition='transform .16s cubic-bezier(.34,1.56,.64,1)';
+      el.style.transform='scale(9.4)';
+    },1950);
+    setTimeout(()=>{
+      el.style.transform='scale(9)';
+      ring(cx,cy,{size:'400px',dur:1});
+      ring(cx,cy,{size:'220px',dur:.8,gold:true});
+      sparks(cx,cy,16,150);
+    },2120);
+
+    // — 4. FISSURES + tremblement (2.5s) —
     setTimeout(()=>{
       const cracks=document.createElement('div');
       cracks.className='crystal-cracks';
       cracks.innerHTML=crackSVG();
       el.appendChild(cracks);
       requestAnimationFrame(()=>cracks.classList.add('on'));
-    },1500);
+      el.classList.add('shake');
+      sparks(cx,cy,8,120);
+    },2450);
 
-    // 4. tremblement violent + lueur (1.7–3s)
-    setTimeout(()=>el.classList.add('shake'),1700);
-
-    // 5. flash + dissipation (3–5s)
+    // — 5. ÉCLATEMENT (3.35s) : les fragments volent —
     setTimeout(()=>{
-      const flash=document.createElement('div');
-      flash.id='eg-flash';
-      document.body.appendChild(flash);
-      requestAnimationFrame(()=>flash.classList.add('on'));
-      setTimeout(()=>flash.classList.add('off'),250);
-    },3000);
+      el.classList.remove('shake');
+      el.classList.add('sharded');
+      shatter(cx,cy);
+      ring(cx,cy,{size:'520px',dur:1,gold:true});
+      ring(cx,cy,{size:'300px',dur:.8});
+      sparks(cx,cy,26,260);
+    },3350);
+    setTimeout(()=>flash(),3500);
+    setTimeout(()=>sparks(cx,cy,20,200),3900);
+    setTimeout(()=>sparks(cx,cy,14,260),4300);
 
-    setTimeout(()=>{
-      el.style.transition='transform .5s ease, opacity .5s ease';
-      el.classList.add('gone');
-    },3700);
-
-    // 6. redirection (~5s)
+    // — 6. REDIRECTION (~5s) —
     setTimeout(()=>{ window.location.href='secret.html'; },5000);
   }
 
@@ -132,7 +220,7 @@
     seq.push(e.key); seq=seq.slice(-10);
     if(seq.join(',')===konami.join(',')){
       const icon=document.querySelector('.spirit-crystal');
-      if(icon){ trigger(icon); icon.dataset.eg='1'; }
+      if(icon){ icon.dataset.eg='1'; trigger(icon); }
     }
   });
 })();
