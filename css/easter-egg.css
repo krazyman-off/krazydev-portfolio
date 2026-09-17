@@ -4,7 +4,7 @@
 .spirit-crystal{
   position:fixed;bottom:20px;right:20px;z-index:50;
   width:36px;height:36px;cursor:pointer;
-  opacity:.55;transition:opacity .4s ease, transform .4s ease;
+  opacity:.55;transition:opacity .4s ease, transform .4s ease, filter .8s ease;
   filter:drop-shadow(0 2px 8px rgba(168,85,247,.7)) drop-shadow(0 0 16px rgba(217,70,239,.35));
 }
 .spirit-crystal:hover{opacity:1;transform:scale(1.22);filter:drop-shadow(0 0 14px rgba(168,85,247,.95)) drop-shadow(0 0 30px rgba(217,70,239,.55))}
@@ -21,32 +21,41 @@
 }
 @keyframes idleRing{0%,100%{opacity:.12;transform:scale(.88)}50%{opacity:.5;transform:scale(1.08)}}
 
-/* === Phase 1 : charge (0–0.7s) === */
-.spirit-crystal.charge{opacity:1;animation:chargePulse .5s ease-in-out infinite}
-.spirit-crystal.charge::after{animation:idleRing .5s ease-in-out infinite;border-color:rgba(245,195,78,.6)}
-@keyframes chargePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
-.spirit-crystal.charge .sigil{animation:chargeSpin .9s linear infinite}
+/* === Phase 1 : éveil progressif (aucune animation de transform sur le bloc : le vol reste fluide) === */
+.spirit-crystal.wake{filter:brightness(1.55) drop-shadow(0 0 12px rgba(168,85,247,.9))}
+.spirit-crystal.charge{opacity:1}
+.spirit-crystal.charge::after{animation:idleRing .9s ease-in-out infinite;border-color:rgba(245,195,78,.55)}
+.spirit-crystal.charge .sigil{animation:sigilCharge 1.2s ease-in-out infinite alternate}
 .spirit-crystal.charge .sigil svg{animation:none}
-@keyframes chargeSpin{to{transform:rotate(360deg)}}
+@keyframes sigilCharge{from{transform:scale(1) rotate(0)}to{transform:scale(1.14) rotate(160deg)}}
+/* === Phase 2 : ascension (rotation douce pendant le vol) === */
+.spirit-crystal.flying .sigil{animation:sigilFlySpin 1.6s linear forwards}
+@keyframes sigilFlySpin{to{transform:rotate(540deg)}}
+/* === Phase 3b : tension (le cristal brille avant de craquer) === */
+.spirit-crystal.strained{filter:brightness(1.8) drop-shadow(0 0 18px rgba(245,195,78,.7))}
 
-/* === Phase 3 : fissures (SVG injecté au clic) === */
+/* === Phase 3 : fissures progressives (SVG injecté au clic) === */
 .crystal-cracks{position:absolute;inset:-10px;opacity:0;pointer-events:none;z-index:2;transition:opacity .4s ease}
 .crystal-cracks.on{opacity:1}
-.crystal-cracks svg{width:100%;height:100%;display:block;overflow:visible}
+.crystal-cracks svg{width:100%;height:100%;display:block;overflow:visible;transition:filter .6s ease}
+.crystal-cracks.hot svg{filter:drop-shadow(0 0 4px rgba(245,195,78,.9))}
+.crystal-cracks .crack{stroke-dasharray:90;stroke-dashoffset:90;opacity:0}
+.crystal-cracks.on .crack{animation:crackDraw .55s cubic-bezier(.3,.7,.4,1) forwards;animation-delay:var(--cd,0s)}
+@keyframes crackDraw{to{stroke-dashoffset:0;opacity:1}}
 
-/* === Phase 4 : tremblement violent === */
-/* (la transform inline = scale(9), l'animation la surplace) */
-.spirit-crystal.shake{animation:crackShake .11s linear infinite}
-@keyframes crackShake{
-  0%{transform:translate(-2px,2px) scale(9.4) rotate(-1.2deg)}
-  25%{transform:translate(2px,-2px) scale(9.1) rotate(1.2deg)}
-  50%{transform:translate(-2px,-2px) scale(9.7)}
-  75%{transform:translate(2px,2px) scale(9)}
-  100%{transform:translate(-2px,2px) scale(9.4) rotate(-.6deg)}
-}
+/* === Phase 4 : tremblement progressif (amplitude croissante) === */
+.spirit-crystal.tremble-light{animation:trembleLight .32s ease-in-out infinite}
+@keyframes trembleLight{
+  0%,100%{transform:translate(0,0) scale(9.02)}
+  50%{transform:translate(1px,-1px) scale(9.05) rotate(.3deg)}}
+.spirit-crystal.tremble-heavy{animation:trembleHeavy .13s linear infinite}
+@keyframes trembleHeavy{
+  0%{transform:translate(-3px,2px) scale(8.95) rotate(-1deg)}
+  50%{transform:translate(3px,-3px) scale(9.12) rotate(1deg)}
+  100%{transform:translate(-3px,2px) scale(8.95) rotate(-.5deg)}}
 
-/* === Phase 5 : dissipation === */
-.spirit-crystal.gone{opacity:0;transform:scale(15);filter:brightness(3);pointer-events:none}
+/* === Phase 5b : dissolution douce (pas de disparition brutale) === */
+.spirit-crystal.dissolve{opacity:0;transform:scale(10.6);filter:brightness(2.6) blur(3px);pointer-events:none}
 
 /* === NOUVEAU SYSTEME D'ANIMATION === */
 .spirit-crystal .sigil{transition:opacity .25s ease, transform .25s ease}
@@ -85,6 +94,25 @@
   background:radial-gradient(circle at center, #fff 0%, rgba(245,195,78,.55) 25%, rgba(168,85,247,.95) 55%, rgba(11,7,23,0) 100%)}
 #eg-flash.on{opacity:1}
 #eg-flash.off{opacity:0;transition:opacity 1.2s ease}
+
+/* === Ambiance : voile, halo, bloom, voile de transition === */
+#eg-dim{position:fixed;inset:0;z-index:45;background:#060312;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.eg-halo{position:fixed;z-index:46;pointer-events:none;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle, rgba(217,70,239,.4) 0%, rgba(168,85,247,.18) 38%, transparent 68%);
+  opacity:0;transform:translate(-50%,-50%) scale(0);
+  transition:transform 1.6s cubic-bezier(.45,0,.15,1), opacity .9s ease}
+@media(max-width:640px){.eg-halo{width:340px;height:340px}}
+#eg-bloom{position:fixed;inset:0;z-index:1990;pointer-events:none;opacity:0;transition:opacity .7s ease;
+  background:radial-gradient(circle at center, rgba(255,255,255,.95) 0%, rgba(217,70,239,.5) 32%, rgba(168,85,247,.22) 55%, transparent 76%)}
+#eg-bloom.on{opacity:.85}
+#eg-veil{position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:0;transition:opacity .9s ease;
+  background:radial-gradient(1200px 800px at 50% 45%, #17102b 0%, #0b0717 60%, #060312 100%)}
+#eg-veil.on{opacity:1}
+/* voile d'ouverture de la page secrète : masque l'arrivée depuis l'autre page */
+.eg-veil-boot{position:fixed;inset:0;z-index:3000;pointer-events:none;opacity:1;
+  background:radial-gradient(1200px 800px at 50% 45%, #17102b 0%, #0b0717 60%, #060312 100%);
+  animation:veilBoot 1.4s ease .25s forwards}
+@keyframes veilBoot{to{opacity:0;visibility:hidden}}
 
 /* === PAGE SECRÈTE === */
 .secret-page{overflow:hidden}

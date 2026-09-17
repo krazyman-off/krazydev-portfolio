@@ -1,5 +1,6 @@
 // KrazyDev — Easter Egg System
 // Tohka Yatogami — Spirit Crystal (fragment)
+// Séquence cinématique progressive (~6s) : éveil → ascension → fissures → éclatement → voile
 (function(){
   if(location.pathname.includes('secret.html')) return;
 
@@ -56,7 +57,7 @@
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   const rand=(mi,ma)=>mi+Math.random()*(ma-mi);
 
-  // — anneau d'énergie (dans le body, indépendant de l'échelle) —
+  // — anneau d'énergie (dans le body, indépendant de l'échelle du cristal) —
   function ring(x,y,opts){
     opts=opts||{};
     const d=document.createElement('div');
@@ -66,7 +67,7 @@
     d.style.left=x+'px'; d.style.top=y+'px';
     document.body.appendChild(d);
     requestAnimationFrame(()=>d.classList.add('ring'));
-    setTimeout(()=>d.remove(),(opts.dur||.7)*1000+200);
+    setTimeout(()=>d.remove(),(opts.dur||.7)*1000+250);
   }
 
   // — pluie d'étincelles —
@@ -86,14 +87,14 @@
       s.style.left=x+'px'; s.style.top=y+'px';
       document.body.appendChild(s);
       requestAnimationFrame(()=>s.classList.add('anim'));
-      setTimeout(()=>s.remove(),1100);
+      setTimeout(()=>s.remove(),1200);
     }
   }
 
-  // — éclatement en fragments —
-  function shatter(x,y){
+  // — éclatement en fragments (vague de n morceaux) —
+  function shatter(x,y,n){
     const bx=['linear-gradient(135deg,#d946ef,#a855f7)','linear-gradient(135deg,#a855f7,#7c3aed)','linear-gradient(135deg,#f5c34e,#d946ef)'];
-    for(let i=0;i<11;i++){
+    for(let i=0;i<n;i++){
       const f=document.createElement('div');
       f.className='eg-shard';
       const a=Math.random()*Math.PI*2;
@@ -114,17 +115,10 @@
     }
   }
 
-  // — flash plein écran —
-  function flash(){
-    const f=document.createElement('div');
-    f.id='eg-flash';
-    document.body.appendChild(f);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>f.classList.add('on')));
-    setTimeout(()=>f.classList.add('off'),260);
-    setTimeout(()=>f.remove(),1600);
-  }
+  // — léger voile d'ambiance qui s'épaissit pendant la séquence —
+  function dimTo(el,v){ el.style.opacity=v; }
 
-  // ===== séquence principale (~5s) =====
+  // ===== séquence principale (~6s, tout est progressif) =====
   function trigger(el){
     const size=36;
     const r=el.getBoundingClientRect();
@@ -135,82 +129,118 @@
     el.style.left=sx+'px'; el.style.top=sy+'px';
     void el.offsetWidth;
 
-    // — 1. CHARGE (0–0.8s) : il tourne, vibre, émet des anneaux —
-    el.classList.add('charge');
-    const chargeTimer=setInterval(()=>ring(sx+size/2,sy+size/2,{size:'120px',dur:rand(.45,.65),gold:true}),230);
-    setTimeout(()=>{ clearInterval(chargeTimer); sparks(cx,cy,8,90); },820);
+    // voile d'ambiance
+    const dim=document.createElement('div');
+    dim.id='eg-dim';
+    document.body.appendChild(dim);
 
-    // — 2. VOL vers le centre (0.82–1.85s) : glisse + grossit + tourne —
+    // halo d'énergie derrière le cristal
+    const halo=document.createElement('div');
+    halo.className='eg-halo';
+    halo.style.left=cx+'px'; halo.style.top=cy+'px';
+    document.body.appendChild(halo);
+
+    // — 1. ÉVEIL (0–1.2s) : le cristal s'illumine doucement, anneaux dorés —
+    dimTo(dim,.22);
+    el.classList.add('charge','wake');
+    ring(sx+size/2,sy+size/2,{size:'150px',dur:.8,gold:true});
+    setTimeout(()=>ring(sx+size/2,sy+size/2,{size:'110px',dur:.7,gold:true}),420);
+
+    // — 2. ASCENSION (1.2–2.8s) : déplacement + agrandissement CONTINUS et synchrones —
     setTimeout(()=>{
       el.classList.add('flying');
-      el.style.transition='left .95s cubic-bezier(.22,1,.36,1), top .95s cubic-bezier(.22,1,.36,1), transform .95s cubic-bezier(.34,1.56,.64,1)';
+      el.style.transition='left 1.6s cubic-bezier(.45,0,.15,1), top 1.6s cubic-bezier(.45,0,.15,1), transform 1.6s cubic-bezier(.45,0,.15,1), opacity .5s ease, filter .8s ease';
       el.style.left=(cx-size/2)+'px';
       el.style.top=(cy-size/2)+'px';
       el.style.transform='scale(9)';
-      setTimeout(()=>ring(cx,cy,{size:'280px',dur:1.1,gold:true}),900);
-    },820);
+      dimTo(dim,.5);
+      halo.style.opacity='.9';
+      halo.style.transform='translate(-50%,-50%) scale(1)';
+      ring(sx+size/2,sy+size/2,{size:'170px',dur:.9});
+      sparks(sx+size/2,sy+size/2,8,70);
+    },1200);
 
-    // — 3. IMPACT / micro-rebond (1.95s) : le cristal "tombe" —
+    // — 3. ARRIVÉE (2.8s) : suspension douce, pas de rebond brutal —
     setTimeout(()=>{
-      el.style.transition='transform .16s cubic-bezier(.34,1.56,.64,1)';
-      el.style.transform='scale(9.4)';
-    },1950);
-    setTimeout(()=>{
-      el.style.transform='scale(9)';
-      ring(cx,cy,{size:'400px',dur:1});
-      ring(cx,cy,{size:'220px',dur:.8,gold:true});
-      sparks(cx,cy,16,150);
-    },2120);
+      ring(cx,cy,{size:'330px',dur:.95});
+      ring(cx,cy,{size:'190px',dur:.8,gold:true});
+      sparks(cx,cy,10,130);
+      halo.style.transition='transform .9s ease, opacity .9s ease';
+      halo.style.transform='translate(-50%,-50%) scale(1.35)';
+      halo.style.opacity='1';
+    },2800);
 
-    // — 4. FISSURES + tremblement (2.5s) —
+    // — 4. FISSURES PROGRESSIVES (3.0s) : les craquelures se dessinent une à une —
     setTimeout(()=>{
       const cracks=document.createElement('div');
       cracks.className='crystal-cracks';
       cracks.innerHTML=crackSVG();
       el.appendChild(cracks);
       requestAnimationFrame(()=>cracks.classList.add('on'));
-      el.classList.add('shake');
-      sparks(cx,cy,8,120);
-    },2450);
+      el.classList.add('tremble-light','strained');
+      dimTo(dim,.6);
+    },3000);
 
-    // — 5. ÉCLATEMENT (3.35s) : les fragments volent —
+    // — 4b. TENSION (3.9s) : tremblement plus fort, fissures incandescentes —
     setTimeout(()=>{
-      el.classList.remove('shake');
-      el.classList.add('sharded');
-      shatter(cx,cy);
-      ring(cx,cy,{size:'520px',dur:1,gold:true});
-      ring(cx,cy,{size:'300px',dur:.8});
-      sparks(cx,cy,26,260);
-    },3350);
-    setTimeout(()=>flash(),3500);
-    setTimeout(()=>sparks(cx,cy,20,200),3900);
-    setTimeout(()=>sparks(cx,cy,14,260),4300);
+      el.classList.remove('tremble-light');
+      el.classList.add('tremble-heavy');
+      const c=el.querySelector('.crystal-cracks');
+      if(c) c.classList.add('hot');
+      sparks(cx,cy,8,130);
+    },3900);
 
-    // — 6. REDIRECTION (~5s) —
-    setTimeout(()=>{ window.location.href='secret.html'; },5000);
+    // — 5. ÉCLATEMENT EN VAGUES (4.3s puis 4.6s) : morceaux, pas tout d'un coup —
+    setTimeout(()=>{
+      shatter(cx,cy,5);
+      sparks(cx,cy,12,160);
+      ring(cx,cy,{size:'280px',dur:.9});
+    },4300);
+    setTimeout(()=>{
+      el.classList.remove('tremble-heavy');
+      el.classList.add('dissolve');
+      shatter(cx,cy,6);
+      sparks(cx,cy,20,220);
+      ring(cx,cy,{size:'520px',dur:1,gold:true});
+      halo.style.transition='transform .9s ease, opacity .9s ease';
+      halo.style.transform='translate(-50%,-50%) scale(.2)';
+      halo.style.opacity='0';
+      const bloom=document.createElement('div');
+      bloom.id='eg-bloom';
+      document.body.appendChild(bloom);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>bloom.classList.add('on')));
+      dimTo(dim,.85);
+    },4600);
+
+    // — 6. VOILE DE TRANSITION (5.1–6.0s) : masque le changement de page —
+    setTimeout(()=>{
+      const veil=document.createElement('div');
+      veil.id='eg-veil';
+      document.body.appendChild(veil);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>veil.classList.add('on')));
+    },5100);
+
+    // — 7. REDIRECTION (6.0s) : sous le voile, invisible —
+    setTimeout(()=>{ window.location.href='secret.html'; },6000);
   }
 
-  // — SVG de fissures : lignes brisées éclatant depuis le centre —
+  // — SVG de fissures : se dessinent progressivement, groupe par groupe —
   function crackSVG(){
-    const spokes=[
-      '12,12 34,34 48,26 60,34',
-      '52,12 36,32 46,46 58,52',
-      '12,52 32,36 28,48 22,58',
-      '52,52 34,34 40,24 54,18',
-      '32,4 33,20 36,28',
-      '32,60 31,44 28,36',
-      '4,32 20,33 28,36',
-      '60,32 44,31 36,28'
+    const groups=[
+      {delay:'0s', spokes:['12,12 34,34 48,26 60,34','32,4 33,20 36,28','4,32 20,33 28,36']},
+      {delay:'.35s', spokes:['52,12 36,32 46,46 58,52','32,60 31,44 28,36','60,32 44,31 36,28']},
+      {delay:'.7s', spokes:['12,52 32,36 28,48 22,58','52,52 34,34 40,24 54,18']}
     ];
-    let polylines='';
-    spokes.forEach((pts,i)=>{
-      const bright=i<4 ? 'rgba(255,255,255,.85)' : 'rgba(245,195,78,.55)';
-      const glow=i<4 ? 'rgba(168,85,247,.4)' : 'rgba(217,70,239,.3)';
-      polylines+=
-        '<polyline points="'+pts+'" fill="none" stroke="'+glow+'" stroke-width="2.5"/>'+
-        '<polyline points="'+pts+'" fill="none" stroke="'+bright+'" stroke-width=".9"/>';
+    let out='';
+    groups.forEach((g,gi)=>{
+      g.spokes.forEach(pts=>{
+        const bright=gi===0 ? 'rgba(255,255,255,.85)' : 'rgba(245,195,78,.6)';
+        const glow=gi===0 ? 'rgba(168,85,247,.45)' : 'rgba(217,70,239,.35)';
+        out+='<polyline class="crack" style="--cd:'+g.delay+'" points="'+pts+'" fill="none" stroke="'+glow+'" stroke-width="2.5"/>'+
+             '<polyline class="crack" style="--cd:'+g.delay+'" points="'+pts+'" fill="none" stroke="'+bright+'" stroke-width=".9"/>';
+      });
     });
-    return '<svg viewBox="0 0 64 64">'+polylines+'</svg>';
+    return '<svg viewBox="0 0 64 64">'+out+'</svg>';
   }
 
   // — Konami Code → secret page —
