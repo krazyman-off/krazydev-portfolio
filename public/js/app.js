@@ -99,13 +99,4 @@ function goPrev(){
   if (history.length > 1) history.back();
   else location.href = fallback;
 }
-// Konami
-let seq=[]; const konami=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
-addEventListener('keydown',e=>{
-  seq.push(e.key); seq=seq.slice(-10);
-  if(seq.join(',')===konami.join(',')){
-    document.body.style.filter="hue-rotate(90deg)";
-    setTimeout(()=>document.body.style.filter="",2000);
-    alert("KrazyDev mode activé 😎 — Sasha");
-  }
-});
+// Konami → easter-egg.js (Tohka secret page)

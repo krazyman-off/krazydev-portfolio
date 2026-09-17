@@ -1,0 +1,147 @@
+/* ===== EASTER EGG — Tohka Yatogami ===== */
+
+/* Spirit Crystal Icon (petite, dans le footer) */
+.spirit-crystal{
+  position:fixed;bottom:20px;right:20px;z-index:50;
+  width:32px;height:32px;cursor:pointer;
+  opacity:.18;transition:opacity .4s, transform .4s;
+  filter:drop-shadow(0 0 6px rgba(168,85,247,.5));
+}
+.spirit-crystal:hover{opacity:.85;transform:scale(1.3) rotate(15deg);filter:drop-shadow(0 0 16px rgba(168,85,247,.9)) drop-shadow(0 0 30px rgba(217,70,239,.5));}
+.spirit-crystal::before{
+  content:"";display:block;width:100%;height:100%;
+  background:linear-gradient(135deg, rgba(168,85,247,.9), rgba(217,70,239,.8), rgba(124,58,237,.9));
+  clip-path:polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+  animation:crystalPulse 3s ease-in-out infinite;
+}
+.spirit-crystal::after{
+  content:"";position:absolute;inset:-6px;
+  border:1px solid rgba(168,85,247,.3);border-radius:50%;
+  animation:crystalRing 3s ease-in-out infinite;
+}
+@keyframes crystalPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes crystalRing{0%,100%{opacity:0;transform:scale(.8)}50%{opacity:.4;transform:scale(1.1)}}
+
+/* === PAGE SECRÈTE === */
+.secret-page{overflow:hidden}
+.secret-wrap{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:60px 24px;text-align:center;position:relative;
+}
+
+/* Grande Spirit Crystal animée */
+.spirit-crystal-large{
+  position:relative;width:140px;height:140px;margin-bottom:36px;
+  animation:floatCrystal 4s ease-in-out infinite;
+}
+@keyframes floatCrystal{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.crystal-core{
+  position:absolute;top:50%;left:50%;width:50px;height:50px;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(135deg, #a855f7, #d946ef, #7c3aed);
+  clip-path:polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+  filter:drop-shadow(0 0 20px rgba(168,85,247,.9)) drop-shadow(0 0 40px rgba(217,70,239,.5));
+  animation:coreGlow 2s ease-in-out infinite;
+}
+@keyframes coreGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(168,85,247,.9)) drop-shadow(0 0 40px rgba(217,70,239,.5))}50%{filter:drop-shadow(0 0 30px rgba(168,85,247,1)) drop-shadow(0 0 60px rgba(217,70,239,.7))}}
+
+.crystal-ring{
+  position:absolute;top:50%;left:50%;border-radius:50%;
+  border:1.5px solid rgba(168,85,247,.3);
+  transform:translate(-50%,-50%);
+}
+.ring-1{width:70px;height:70px;animation:ringPulse 3s ease-in-out infinite}
+.ring-2{width:95px;height:95px;animation:ringPulse 3s ease-in-out .4s infinite}
+.ring-3{width:120px;height:120px;animation:ringPulse 3s ease-in-out .8s infinite}
+@keyframes ringPulse{0%,100%{opacity:0;transform:translate(-50%,-50%) scale(.85)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1.05)}}
+
+.crystal-particles{
+  position:absolute;inset:-20px;
+  background-image:
+    radial-gradient(2px 2px at 20% 15%, rgba(245,195,78,.8) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 75% 30%, rgba(217,70,239,.8) 50%, transparent 51%),
+    radial-gradient(2px 2px at 40% 80%, rgba(168,85,247,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 85% 70%, rgba(207,180,255,.6) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 10% 60%, rgba(245,195,78,.6) 50%, transparent 51%);
+  animation:twinkle 4s ease-in-out infinite;
+}
+
+.secret-title{
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);
+  background:linear-gradient(90deg, #fff 10%, #a855f7 40%, #d946ef 60%, #f5c34e 85%);
+  background-size:220% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:gradientShift 4s linear infinite;
+  margin-bottom:24px;
+}
+
+.secret-card{
+  width:min(580px,100%);
+  background:linear-gradient(180deg,rgba(168,85,247,.08),rgba(255,255,255,.02));
+  border:1px solid rgba(168,85,247,.25);border-radius:20px;
+  padding:32px 28px;text-align:left;
+  box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 40px rgba(124,58,237,.12);
+}
+.secret-badge{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;
+  background:rgba(245,195,78,.12);color:var(--gold);
+  border:1px solid rgba(245,195,78,.3);border-radius:100px;
+  padding:5px 16px;margin-bottom:16px;
+}
+.secret-msg{font-size:.95rem;line-height:1.7;opacity:.85}
+.secret-msg b{color:#fff}
+
+.secret-reward{
+  margin-top:20px;padding:20px;
+  background:rgba(11,7,23,.6);border:1px dashed rgba(168,85,247,.35);border-radius:14px;
+  text-align:center;
+}
+.reward-label{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);margin-bottom:8px;
+}
+.reward-code{
+  font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;
+  color:var(--red);letter-spacing:.06em;
+  text-shadow:0 0 20px rgba(168,85,247,.7);
+  animation:codeGlow 2s ease-in-out infinite;
+  cursor:pointer;padding:8px 0;
+}
+@keyframes codeGlow{0%,100%{text-shadow:0 0 20px rgba(168,85,247,.7)}50%{text-shadow:0 0 30px rgba(168,85,247,1), 0 0 50px rgba(217,70,239,.5)}}
+.reward-hint{font-size:.88rem;opacity:.7;margin-top:12px;line-height:1.6}
+.reward-hint a{color:var(--red);text-decoration:underline}
+
+.secret-joke{
+  margin-top:20px;padding:16px;
+  background:rgba(217,70,239,.06);border:1px solid rgba(217,70,239,.2);
+  border-radius:12px;text-align:center;font-style:italic;
+  font-size:.9rem;color:#d8b4fe;line-height:1.6;
+}
+
+.secret-actions{
+  display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center;
+}
+.secret-footer{
+  position:fixed;bottom:16px;left:0;right:0;text-align:center;
+  font-size:.72rem;opacity:.3;font-family:'JetBrains Mono',monospace;
+}
+
+/* Copie des boutons depuis style.css */
+.btn{height:48px;padding:0 22px;border-radius:12px;border:none;font-weight:800;cursor:pointer;transition:transform .15s, box-shadow .15s;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(120deg,var(--red),var(--crimson));color:#130b22;box-shadow:0 10px 30px rgba(124,58,237,.38)}
+.btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff}
+
+/* Responsive */
+@media(max-width:600px){
+  .spirit-crystal-large{width:100px;height:100px}
+  .crystal-core{width:36px;height:36px}
+  .ring-1{width:50px;height:50px}
+  .ring-2{width:68px;height:68px}
+  .ring-3{width:86px;height:86px}
+  .secret-card{padding:22px 18px}
+  .secret-actions{flex-direction:column;align-items:stretch}
+}
