@@ -517,3 +517,24 @@ km-motd:
   update:
     fr: "V1.0.0 — MAJ 2026-09-12"
     en: "V1.0.0 — UPD 2026-09-12"
+
+# ================= 12 : KM-Urix (prototype) =================
+km-urix:
+  name: "Prototype Name: KM-Urix 1b8fs"
+  icon: emojis/km-urix.png
+  badges:
+    - text:
+        fr: "PROTOTYPE"
+        en: "PROTOTYPE"
+  meta:
+    fr: "Prototype — fiche en cours"
+    en: "Prototype — work in progress"
+  desc:
+    fr: "UNKNOWN Yet"
+    en: "UNKNOWN Yet"
+  features:
+    fr: []
+    en: []
+  update:
+    fr: "PROTOTYPE"
+    en: "PROTOTYPE"

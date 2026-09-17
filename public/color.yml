@@ -73,3 +73,8 @@ km-motd:
     - tone: public
       style: "background:rgba(56,239,125,.12);color:#5cf09a;border:1px solid rgba(56,239,125,.3)"
     - tone: stress
+
+km-urix:
+  card_style: ""
+  badges:
+    - tone: dev

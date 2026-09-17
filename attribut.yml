@@ -74,3 +74,9 @@ km-motd:
   java: true
   rust: false
   maintenu: true
+
+km-urix:
+  dl: false
+  java: true
+  rust: false
+  maintenu: true

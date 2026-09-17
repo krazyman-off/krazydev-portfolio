@@ -83,7 +83,7 @@
     proj: [
       { sel: '.wrap > div:nth-of-type(1) .kicker', en: '/projects — 02' },
       { sel: '.wrap > div:nth-of-type(1) h1', en: 'The <em>projects</em>' },
-      { sel: '.wrap > div:nth-of-type(1) .subtitle', en: '1 confidential flagship + 11 free plugins. Updates tracked in <b style="color:var(--red)">updates.yml</b>.' },
+      { sel: '.wrap > div:nth-of-type(1) .subtitle', en: '1 confidential flagship + 12 free plugins. Updates tracked in <b style="color:var(--red)">updates.yml</b>.' },
       { sel: '.wrap > div:nth-of-type(2) .card-head h3', en: 'Krazy Studio Bot — Multi-feature Discord bot' },
       { sel: '.wrap > div:nth-of-type(2) .card-head .meta', en: 'Python 3.13 • discord.py 2.7 • The biggest project • 60k+ lines' },
       { sel: '.wrap > div:nth-of-type(2) .card-head div[style*="text-align:right"] > div:nth-of-type(1)', en: '12 cogs • 2 DB' },

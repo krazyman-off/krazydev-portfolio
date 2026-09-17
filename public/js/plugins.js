@@ -150,7 +150,9 @@
       ? '<div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">' + badges + '</div>'
       : '<div></div>';
 
-    var featHtml = L(p.features, lang).map(function (f) {
+    var featList = L(p.features, lang);
+    if (!Array.isArray(featList)) featList = [];
+    var featHtml = featList.map(function (f) {
       return '<span>' + md(f) + '</span>';
     }).join('');
 
