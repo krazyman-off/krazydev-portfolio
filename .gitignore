@@ -1,1 +1,7 @@
 target/
+# KRAZYCRYPT : jamais de clés ni de vault dans le repo
+secure/keys/
+secure/vault/
+secure/origin-plain/
+secure/restore-check/
+secure/*.log
