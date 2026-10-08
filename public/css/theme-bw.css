@@ -30,8 +30,9 @@ body::after{width:640px;height:640px;bottom:-220px;left:-180px;
 .hero .reveal.visible > *:nth-child(6){animation:heroIn .7s .4s cubic-bezier(.2,.8,.2,1) both}
 .hero .reveal.visible > *:nth-child(7){animation:heroIn .7s .48s cubic-bezier(.2,.8,.2,1) both}
 @keyframes heroIn{from{opacity:0;transform:translateY(34px) scale(.985);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
-h1 em{background:linear-gradient(100deg,#fff 10%,#cbd5e1 35%,#fff 55%,#64748b 75%,#fff 95%) !important;
-  background-size:220% auto !important;animation:gradientShift 4s linear infinite !important}
+h1 em{background-image:linear-gradient(100deg,#fff 10%,#cbd5e1 35%,#fff 55%,#64748b 75%,#fff 95%) !important;
+  background-size:220% auto !important;-webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;animation:gradientShift 4s linear infinite !important}
 .logo span{color:#fff !important;text-shadow:0 0 18px rgba(255,255,255,.65) !important}
 /* ---- nav soulignement ---- */
 .nav-links a{position:relative}
@@ -60,11 +61,12 @@ h1 em{background:linear-gradient(100deg,#fff 10%,#cbd5e1 35%,#fff 55%,#64748b 75
 /* ---- marquee rapide ---- */
 .marquee-track{animation-duration:16s !important}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{background:linear-gradient(90deg,#fff,#64748b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+.marquee-track span{background-image:linear-gradient(90deg,#fff,#64748b);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
 /* ---- titres shimmer ---- */
-.section h2{background:linear-gradient(90deg,#fff 30%,#64748b 50%,#fff 70%) !important;
-  background-size:200% auto !important;animation:gradientShift 6s linear infinite !important}
+.section h2{background-image:linear-gradient(90deg,#fff 30%,#64748b 50%,#fff 70%) !important;
+  background-size:200% auto !important;-webkit-background-clip:text !important;background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;animation:gradientShift 6s linear infinite !important}
 /* ---- kicker pulse blanc ---- */
 .kicker{border-color:rgba(255,255,255,.35) !important;color:#fff !important;
   animation:fadeDown .6s ease, kickerPulse 2.6s ease-in-out 1s infinite !important}
@@ -86,8 +88,10 @@ h1 em{background:linear-gradient(100deg,#fff 10%,#cbd5e1 35%,#fff 55%,#64748b 75
   box-shadow:0 0 12px rgba(255,255,255,.5)}
 /* ---- tags/badges hover blanc ---- */
 .tag:hover{background:rgba(255,255,255,.12) !important;border-color:rgba(255,255,255,.35) !important}
-/* ==== FILTRE PAR JEU ==== */
-.game-filter{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 4px}
+/* ==== FILTRES PROJET + JEU ==== */
+.game-filter{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 8px;align-items:center}
+.filter-label{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;
+  text-transform:uppercase;opacity:.55;min-width:64px}
 .gf-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;
   padding:9px 18px;border-radius:100px;cursor:pointer;color:#fff;
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);

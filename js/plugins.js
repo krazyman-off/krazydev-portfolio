@@ -93,8 +93,10 @@
 
       item.id = id;
       item.order = (orderMap[id] == null) ? 1e9 : Number(orderMap[id]);
-      // Jeu du plugin (filtre par jeu). Défaut : minecraft. Les futurs
-      // projets (ex : KM-Motor Games) déclareront leur propre jeu.
+      // Famille + jeu du plugin (filtres à deux niveaux). Défauts :
+      // family=km-plugins, game=minecraft. Les futurs projets
+      // (ex : KM-Motor Games) déclareront family: km-motor + leur jeu.
+      item.family = String(item.family || 'km-plugins').toLowerCase().replace(/[^a-z0-9-]+/g, '') || 'km-plugins';
       item.game = String(item.game || 'minecraft').toLowerCase().replace(/[^a-z0-9]+/g, '') || 'minecraft';
 
       var att = attrs[id] || {};
@@ -172,7 +174,7 @@
 
     var cardStyle = 'padding:20px' + (p.card_style ? ';' + p.card_style : '');
 
-    return '<div class="card" data-game="' + esc(p.game || 'minecraft') + '" style="' + esc(cardStyle) + '">' +
+    return '<div class="card" data-family="' + esc(p.family || 'km-plugins') + '" data-game="' + esc(p.game || 'minecraft') + '" style="' + esc(cardStyle) + '">' +
       '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">' +
         '<div>' +
           '<h3 style="font-size:1.05rem;display:flex;align-items:center;gap:10px"><img src="' + esc(p.icon) + '" alt="' + esc(p.name) + '" class="plg-ico">' + esc(p.name) + '</h3>' +
@@ -205,39 +207,63 @@
     applyGameFilter();
   }
 
-  // Filtre par jeu : 'all' = tout, 'minecraft' = jeux ciblés, 'next' = teaser.
+  // Filtres à deux niveaux : d'abord la FAMILLE (projet), ensuite le JEU.
+  // fam=all → bot + KM-Plugins ; fam=km-plugins → KM-Plugins seul ;
+  // fam=km-motor → teaser motor. game=next → teaser verrouillé.
+  var famFilter = 'all';
   var gameFilter = 'all';
-  function applyGameFilter() {
-    var grid = document.getElementById('subgrid');
-    var teaser = document.getElementById('game-teaser');
-    if (grid) {
-      var cards = grid.querySelectorAll('.card[data-game]');
-      for (var i = 0; i < cards.length; i++) {
-        var g = cards[i].getAttribute('data-game') || 'minecraft';
-        var show = (gameFilter === 'all') || (g === gameFilter);
-        cards[i].style.display = show ? '' : 'none';
-      }
-      grid.style.display = (gameFilter === 'next') ? 'none' : '';
-    }
-    if (teaser) teaser.hidden = (gameFilter !== 'next');
-    var btns = document.querySelectorAll('#game-filter .gf-btn');
+  function paintBar(barId, attr, cur) {
+    var btns = document.querySelectorAll('#' + barId + ' .gf-btn');
     for (var j = 0; j < btns.length; j++) {
-      var on = btns[j].getAttribute('data-game-filter') === gameFilter;
+      var on = btns[j].getAttribute(attr) === cur;
       if (on) btns[j].classList.add('active');
       else btns[j].classList.remove('active');
       btns[j].setAttribute('aria-selected', on ? 'true' : 'false');
     }
   }
+  function applyGameFilter() {
+    var bot = document.getElementById('bot-section');
+    var km = document.getElementById('kmplugins-section');
+    var grid = document.getElementById('subgrid');
+    var motor = document.getElementById('motor-teaser');
+    var teaser = document.getElementById('game-teaser');
+    var showBot = (famFilter === 'all');
+    var showKm = (famFilter === 'all' || famFilter === 'km-plugins');
+    if (bot) bot.style.display = showBot ? '' : 'none';
+    if (km) km.style.display = showKm ? '' : 'none';
+    if (grid && showKm) {
+      var cards = grid.querySelectorAll('.card[data-game]');
+      for (var i = 0; i < cards.length; i++) {
+        var f = cards[i].getAttribute('data-family') || 'km-plugins';
+        var g = cards[i].getAttribute('data-game') || 'minecraft';
+        var show = (famFilter === 'all' || f === famFilter) &&
+                   (gameFilter === 'all' || g === gameFilter);
+        cards[i].style.display = show ? '' : 'none';
+      }
+    }
+    if (motor) motor.hidden = !(famFilter === 'km-motor' && gameFilter !== 'next');
+    if (teaser) teaser.hidden = (gameFilter !== 'next');
+    paintBar('family-filter', 'data-family-filter', famFilter);
+    paintBar('game-filter', 'data-game-filter', gameFilter);
+  }
   function initGameFilter() {
-    var bar = document.getElementById('game-filter');
-    if (!bar || bar.getAttribute('data-wired')) return;
-    bar.setAttribute('data-wired', '1');
-    bar.addEventListener('click', function (e) {
-      var btn = e.target.closest ? e.target.closest('[data-game-filter]') : null;
-      if (!btn) return;
-      gameFilter = btn.getAttribute('data-game-filter') || 'all';
-      applyGameFilter();
-    });
+    var bars = [
+      ['family-filter', 'data-family-filter', function (v) { famFilter = v; }],
+      ['game-filter', 'data-game-filter', function (v) { gameFilter = v; }]
+    ];
+    for (var k = 0; k < bars.length; k++) {
+      (function (barId, attr, set) {
+        var bar = document.getElementById(barId);
+        if (!bar || bar.getAttribute('data-wired')) return;
+        bar.setAttribute('data-wired', '1');
+        bar.addEventListener('click', function (e) {
+          var btn = e.target.closest ? e.target.closest('[' + attr + ']') : null;
+          if (!btn) return;
+          set(btn.getAttribute(attr) || 'all');
+          applyGameFilter();
+        });
+      })(bars[k][0], bars[k][1], bars[k][2]);
+    }
   }
   initGameFilter();
 

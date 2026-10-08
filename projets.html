@@ -39,7 +39,7 @@
   </div>
 
   <!-- BOT -->
-  <div class="section reveal">
+  <div class="section reveal" id="bot-section">
     <div class="card">
       <div class="card-head">
         <div>
@@ -73,7 +73,7 @@
   </div>
 
   <!-- KM-PLUGINS -->
-  <div class="section reveal">
+  <div class="section reveal" id="kmplugins-section">
     <div class="card">
       <div class="card-head">
         <div>
@@ -89,17 +89,33 @@
       </div>
     </div>
 
+    <div class="game-filter" id="family-filter" role="tablist" aria-label="Choisir le projet">
+      <span class="filter-label">Projet :</span>
+      <button type="button" class="gf-btn active" data-family-filter="all" role="tab" aria-selected="true">Tous</button>
+      <button type="button" class="gf-btn" data-family-filter="km-plugins" role="tab" aria-selected="false">KM-Plugins</button>
+      <button type="button" class="gf-btn" data-family-filter="km-motor" role="tab" aria-selected="false">KM-Motor Games</button>
+    </div>
     <div class="game-filter" id="game-filter" role="tablist" aria-label="Filtrer les projets par jeu">
+      <span class="filter-label">Jeu :</span>
       <button type="button" class="gf-btn active" data-game-filter="all" role="tab" aria-selected="true">Tous</button>
       <button type="button" class="gf-btn" data-game-filter="minecraft" role="tab" aria-selected="false">⛏ Minecraft</button>
       <button type="button" class="gf-btn gf-locked" data-game-filter="next" role="tab" aria-selected="false">🔒 NOT HERE YET</button>
     </div>
 
+    <div class="game-teaser" id="motor-teaser" hidden>
+      <div class="gt-lock">🦀</div>
+      <div>
+        <h3>KM-MOTOR GAMES — bientôt</h3>
+        <p>Proxy Minecraft ultra-perf + moteur de jeu custom, 100% Rust. Famille : KM-Motor Games · Jeu : Minecraft.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Être notifié →</a>
+    </div>
+
     <div class="game-teaser" id="game-teaser" hidden>
       <div class="gt-lock">🔒</div>
       <div>
-        <h3>KM-MOTOR GAMES — bientôt</h3>
-        <p>Proxy Minecraft ultra-perf + moteur de jeu custom, 100% Rust. Le prochain jeu ? <b>NOT HERE YET.</b></p>
+        <h3>NOT HERE YET</h3>
+        <p>Le prochain jeu n'est pas encore là. Reviens bientôt.</p>
       </div>
       <a href="contact.html" class="btn btn-primary">Être notifié →</a>
     </div>
