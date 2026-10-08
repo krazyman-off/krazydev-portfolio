@@ -13,6 +13,7 @@ body::before,body::after{content:"";position:fixed;border-radius:50%;
 body::before{width:560px;height:560px;top:-160px;right:-140px;
   background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%);
   animation:orbFloat 11s ease-in-out infinite}
+#particles{opacity:.8 !important}
 body::after{width:640px;height:640px;bottom:-220px;left:-180px;
   background:radial-gradient(circle,rgba(148,163,184,.16),transparent 65%);
   animation:orbFloat 14s ease-in-out infinite reverse}
