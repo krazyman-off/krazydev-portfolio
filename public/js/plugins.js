@@ -93,6 +93,9 @@
 
       item.id = id;
       item.order = (orderMap[id] == null) ? 1e9 : Number(orderMap[id]);
+      // Jeu du plugin (filtre par jeu). Défaut : minecraft. Les futurs
+      // projets (ex : KM-Motor Games) déclareront leur propre jeu.
+      item.game = String(item.game || 'minecraft').toLowerCase().replace(/[^a-z0-9]+/g, '') || 'minecraft';
 
       var att = attrs[id] || {};
       item.dl = att.dl !== false;
@@ -169,7 +172,7 @@
 
     var cardStyle = 'padding:20px' + (p.card_style ? ';' + p.card_style : '');
 
-    return '<div class="card" style="' + esc(cardStyle) + '">' +
+    return '<div class="card" data-game="' + esc(p.game || 'minecraft') + '" style="' + esc(cardStyle) + '">' +
       '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">' +
         '<div>' +
           '<h3 style="font-size:1.05rem;display:flex;align-items:center;gap:10px"><img src="' + esc(p.icon) + '" alt="' + esc(p.name) + '" class="plg-ico">' + esc(p.name) + '</h3>' +
@@ -199,7 +202,44 @@
       return;
     }
     grid.innerHTML = state.list.map(function (p) { return cardHTML(p, state.lang); }).join('');
+    applyGameFilter();
   }
+
+  // Filtre par jeu : 'all' = tout, 'minecraft' = jeux ciblés, 'next' = teaser.
+  var gameFilter = 'all';
+  function applyGameFilter() {
+    var grid = document.getElementById('subgrid');
+    var teaser = document.getElementById('game-teaser');
+    if (grid) {
+      var cards = grid.querySelectorAll('.card[data-game]');
+      for (var i = 0; i < cards.length; i++) {
+        var g = cards[i].getAttribute('data-game') || 'minecraft';
+        var show = (gameFilter === 'all') || (g === gameFilter);
+        cards[i].style.display = show ? '' : 'none';
+      }
+      grid.style.display = (gameFilter === 'next') ? 'none' : '';
+    }
+    if (teaser) teaser.hidden = (gameFilter !== 'next');
+    var btns = document.querySelectorAll('#game-filter .gf-btn');
+    for (var j = 0; j < btns.length; j++) {
+      var on = btns[j].getAttribute('data-game-filter') === gameFilter;
+      if (on) btns[j].classList.add('active');
+      else btns[j].classList.remove('active');
+      btns[j].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+  }
+  function initGameFilter() {
+    var bar = document.getElementById('game-filter');
+    if (!bar || bar.getAttribute('data-wired')) return;
+    bar.setAttribute('data-wired', '1');
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-game-filter]') : null;
+      if (!btn) return;
+      gameFilter = btn.getAttribute('data-game-filter') || 'all';
+      applyGameFilter();
+    });
+  }
+  initGameFilter();
 
   function load() {
     var grid = document.getElementById('subgrid');

@@ -1,0 +1,130 @@
+/* KrazyDev — THÈME NOIR/BLANC PREMIUM + ANIMATIONS FORTES.
+   Surcharge style.css : monochrome (le --red devient blanc), orbes,
+   entrées en cascade, shine, marquee rapide, filtre par jeu, teasers. */
+:root{
+  --red:#f8fafc; --crimson:#94a3b8; --neon:#ffffff;
+  --bw-line:rgba(255,255,255,.14);
+}
+::selection{background:#fff;color:#000}
+html{scrollbar-color:#3a3a3a #050505}
+body{background:#050505 !important}
+body::before,body::after{content:"";position:fixed;border-radius:50%;
+  filter:blur(130px);pointer-events:none;z-index:-5;opacity:.5}
+body::before{width:560px;height:560px;top:-160px;right:-140px;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%);
+  animation:orbFloat 11s ease-in-out infinite}
+body::after{width:640px;height:640px;bottom:-220px;left:-180px;
+  background:radial-gradient(circle,rgba(148,163,184,.16),transparent 65%);
+  animation:orbFloat 14s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-46px,38px) scale(1.08)}}
+.bg{background:
+  radial-gradient(1000px 700px at 15% -5%, rgba(255,255,255,.06), transparent 60%),
+  radial-gradient(800px 600px at 105% 15%, rgba(148,163,184,.08), transparent 55%),
+  linear-gradient(180deg,#050505 0%, #0a0a0c 50%, #050505 100%) !important}
+/* ---- entrée hero en cascade ---- */
+.hero .reveal.visible > *:nth-child(1){animation:heroIn .7s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(2){animation:heroIn .7s .08s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(3){animation:heroIn .7s .16s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(4){animation:heroIn .7s .24s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(5){animation:heroIn .7s .32s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(6){animation:heroIn .7s .4s cubic-bezier(.2,.8,.2,1) both}
+.hero .reveal.visible > *:nth-child(7){animation:heroIn .7s .48s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(34px) scale(.985);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+h1 em{background:linear-gradient(100deg,#fff 10%,#cbd5e1 35%,#fff 55%,#64748b 75%,#fff 95%) !important;
+  background-size:220% auto !important;animation:gradientShift 4s linear infinite !important}
+.logo span{color:#fff !important;text-shadow:0 0 18px rgba(255,255,255,.65) !important}
+/* ---- nav soulignement ---- */
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;
+  background:linear-gradient(90deg,#fff,transparent);transition:width .25s ease}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover{color:#fff !important}
+/* ---- boutons shine ---- */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);transition:left .5s ease}
+.btn:hover::after{left:130%}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:linear-gradient(120deg,#fff,#94a3b8) !important;color:#000 !important;
+  box-shadow:0 10px 34px rgba(255,255,255,.22) !important}
+.btn-primary:hover{box-shadow:0 14px 44px rgba(255,255,255,.32) !important}
+/* ---- cartes : ligne de lumière + glow ---- */
+.card{position:relative}
+.card::before{content:"";position:absolute;top:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+  opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+.card:hover{border-color:rgba(255,255,255,.4) !important;
+  box-shadow:0 24px 60px rgba(0,0,0,.55), 0 0 44px rgba(255,255,255,.09) !important}
+/* ---- marquee rapide ---- */
+.marquee-track{animation-duration:16s !important}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{background:linear-gradient(90deg,#fff,#64748b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+/* ---- titres shimmer ---- */
+.section h2{background:linear-gradient(90deg,#fff 30%,#64748b 50%,#fff 70%) !important;
+  background-size:200% auto !important;animation:gradientShift 6s linear infinite !important}
+/* ---- kicker pulse blanc ---- */
+.kicker{border-color:rgba(255,255,255,.35) !important;color:#fff !important;
+  animation:fadeDown .6s ease, kickerPulse 2.6s ease-in-out 1s infinite !important}
+@keyframes kickerPulse{0%,100%{box-shadow:0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 18px rgba(255,255,255,.25)}}
+/* ---- terminal caret ---- */
+.term-body::after{content:"▊";color:#fff;animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.terminal{border-color:rgba(255,255,255,.2) !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 40px rgba(255,255,255,.06) !important}
+/* ---- stats glow ---- */
+.stat:hover{border-color:rgba(255,255,255,.45) !important;
+  box-shadow:0 0 26px rgba(255,255,255,.1)}
+.stat b{color:#fff !important;text-shadow:0 0 16px rgba(255,255,255,.55) !important}
+/* ---- reveal plus théâtral ---- */
+.reveal{transform:translateY(26px);filter:blur(6px)}
+.reveal.visible{filter:none}
+/* ---- progress blanc ---- */
+#progress{background:linear-gradient(90deg,#fff,#64748b) !important;
+  box-shadow:0 0 12px rgba(255,255,255,.5)}
+/* ---- tags/badges hover blanc ---- */
+.tag:hover{background:rgba(255,255,255,.12) !important;border-color:rgba(255,255,255,.35) !important}
+/* ==== FILTRE PAR JEU ==== */
+.game-filter{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 4px}
+.gf-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;
+  padding:9px 18px;border-radius:100px;cursor:pointer;color:#fff;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  transition:transform .15s, box-shadow .2s, background .2s}
+.gf-btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.4)}
+.gf-btn.active{background:#fff;color:#000;border-color:#fff;
+  box-shadow:0 0 22px rgba(255,255,255,.3)}
+.gf-locked{border-style:dashed}
+#subgrid .card{transition:opacity .3s, transform .3s}
+/* ==== TEASER JEU SUIVANT ==== */
+.game-teaser{display:flex;gap:18px;align-items:center;margin-top:16px;
+  border:1px dashed rgba(255,255,255,.35);border-radius:18px;padding:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  animation:kickerPulse 3s ease-in-out infinite}
+.game-teaser[hidden]{display:none}
+.gt-lock{font-size:2.4rem;filter:drop-shadow(0 0 14px rgba(255,255,255,.4));
+  animation:lockBob 2.4s ease-in-out infinite}
+@keyframes lockBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.game-teaser h3{font-size:1.2rem;letter-spacing:.04em}
+.game-teaser p{opacity:.72;margin-top:6px;line-height:1.6}
+.game-teaser .btn{margin-left:auto;flex-shrink:0}
+/* ==== TEASER KM-MOTOR (accueil) ==== */
+.motor-teaser{display:flex;gap:12px;align-items:center;margin-top:18px;
+  padding:14px 18px;border-radius:14px;font-size:.92rem;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.16);position:relative;overflow:hidden}
+.motor-teaser::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,#fff,transparent)}
+.motor-teaser a{color:#fff;font-weight:800}
+.mt-pulse{color:#fff;animation:blink 1.4s steps(1) infinite;font-size:1.1rem}
+/* ---- accessibilité ---- */
+a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+@media(max-width:640px){
+  .game-teaser{flex-direction:column;text-align:center}
+  .game-teaser .btn{margin-left:0}
+  body::before,body::after{opacity:.3}
+}

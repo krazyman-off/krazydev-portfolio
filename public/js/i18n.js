@@ -78,7 +78,8 @@
       { sel: '.projects .card:nth-of-type(2) p', en: 'Java 17 • Paper/Spigot • Maven — 15 plugins: KM-AC (8,608 files), KM-Login, KM-Perms, KM-AntiBots, KM-Moderations…' },
       { sel: '.wrap > .section:nth-of-type(4) .cta h3', en: 'Let\u2019s work together?' },
       { sel: '.wrap > .section:nth-of-type(4) .cta p', en: 'Simplest: Discord. Fast reply, no ghost form.' },
-      { sel: '.wrap > .section:nth-of-type(4) .cta .btn-ghost', en: 'Contact page' }
+      { sel: '.wrap > .section:nth-of-type(4) .cta .btn-ghost', en: 'Contact page' },
+      { sel: '.motor-teaser .mt-txt', en: '<b>KM-MOTOR GAMES is coming</b> — 100% Rust Minecraft proxy + engine. <a href="projets.html#game-filter">See the teaser →</a>' }
     ],
     proj: [
       { sel: '.wrap > div:nth-of-type(1) .kicker', en: '/projects — 02' },
@@ -107,6 +108,10 @@
       { sel: '.wrap > div:nth-of-type(3) > div:nth-of-type(4) > a', en: 'Get KM-Plugins ↗' },
       { sel: '.wrap > div:nth-of-type(3) > div:nth-of-type(4) > span', en: 'Bundle:<br><b>KM-AC · KM-RiotOps · KM-AntiBots · KM-Login · KM-Maintenance · KM-Moderations · KM-Perms · KM-Survival · KM-TAB · KrazyMan Perf · KM-MOTD</b>' },
       { sel: '.nav-arrows .btn-primary', en: 'Next: Stack →' },
+      { sel: '#game-filter [data-game-filter="all"]', en: 'All' },
+      { sel: '#game-teaser h3', en: 'KM-MOTOR GAMES — soon' },
+      { sel: '#game-teaser p', en: 'Ultra-fast Minecraft proxy + custom game engine, 100% Rust. The next game? <b>NOT HERE YET.</b>' },
+      { sel: '#game-teaser a', en: 'Notify me →' },
     ],
     skill: [
       { sel: '.wrap > div:nth-of-type(1) .kicker', en: '/stack — 03' },

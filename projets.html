@@ -10,6 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/easter-egg.css?v=3">
+<link rel="stylesheet" href="css/theme-bw.css?v=1">
+<meta name="theme-color" content="#050505">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KrazyDev">
+<meta property="og:title" content="Projets — KrazyDev | Krazy Studio Bot & KM-Plugins">
+<meta property="og:description" content="Krazy Studio Bot (confidentiel) & KM-Plugins (public, gratuits) : auth, perms, anti-bot, anti-cheat, modération, survie, perf.">
+<meta property="og:url" content="https://krazyman-off.github.io/krazydev-portfolio/projets.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Projets — KrazyDev">
+<meta name="twitter:description" content="Bot Discord + 12 plugins Minecraft gratuits. KM-Motor Games (Rust) bientôt.">
+<link rel="canonical" href="https://krazyman-off.github.io/krazydev-portfolio/projets.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"KrazyDev — Projets","itemListElement":[{"@type":"SoftwareApplication","position":1,"name":"Krazy Studio Bot","applicationCategory":"DeveloperApplication","operatingSystem":"Any"},{"@type":"SoftwareApplication","position":2,"name":"KM-Plugins","applicationCategory":"DeveloperApplication","operatingSystem":"Any"}]}</script>
 </head>
 <body>
 <div id="loader"><div class="loader-inner"><div class="loader-logo">KRAZY<span>DEV</span></div><div class="loader-bar"><span></span></div><p>Chargement sécurisé...</p></div></div>
@@ -18,7 +31,7 @@
 <div class="bg"></div><div class="grid-bg"></div><div class="scanline"></div>
 <nav><div class="nav-inner"><div class="logo glitch" data-text="KRAZYDEV">KRAZY<span>DEV</span></div><div class="nav-links"><a href="index.html">Accueil</a><a href="projets.html" class="active">Projets</a><a href="skills.html">Stack</a><a href="contact.html">Contact</a></div></div></nav>
 
-<div class="wrap" style="padding-top:44px">
+<div class="wrap" role="main" style="padding-top:44px">
   <div class="page-head reveal visible">
     <div class="kicker">/projets — 02</div>
     <h1>Les <em>projets</em></h1>
@@ -74,6 +87,21 @@
         <p><b>Pitch :</b> Une suite cohérente qui couvre auth, perms, anti-bot, anti-cheat, modération, survie et perf — sans empiler 20 plugins incompatibles. Chaque module parle aux autres : les grades KM-Perms s'affichent dans KM-TAB, les sanctions KM-Moderations s'annoncent sur tout le réseau, KM-AntiBots bloque avant même le backend. Tous gratuits, liens par DM sur Discord.</p>
         <div class="tags"><span class="tag">Java 17</span><span class="tag">Paper API</span><span class="tag">Velocity</span><span class="tag">Bungee</span><span class="tag">Maven</span><span class="tag">Gradle</span></div>
       </div>
+    </div>
+
+    <div class="game-filter" id="game-filter" role="tablist" aria-label="Filtrer les projets par jeu">
+      <button type="button" class="gf-btn active" data-game-filter="all" role="tab" aria-selected="true">Tous</button>
+      <button type="button" class="gf-btn" data-game-filter="minecraft" role="tab" aria-selected="false">⛏ Minecraft</button>
+      <button type="button" class="gf-btn gf-locked" data-game-filter="next" role="tab" aria-selected="false">🔒 NOT HERE YET</button>
+    </div>
+
+    <div class="game-teaser" id="game-teaser" hidden>
+      <div class="gt-lock">🔒</div>
+      <div>
+        <h3>KM-MOTOR GAMES — bientôt</h3>
+        <p>Proxy Minecraft ultra-perf + moteur de jeu custom, 100% Rust. Le prochain jeu ? <b>NOT HERE YET.</b></p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Être notifié →</a>
     </div>
 
     <div class="subgrid" id="subgrid" style="grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px">
