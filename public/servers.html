@@ -22,24 +22,50 @@
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://krazyman-off.github.io/krazydev-portfolio/servers.html">
 <style>
-.srv-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 6px}
-.srv-tab{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:14px;cursor:pointer;
-  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.95rem;transition:.2s}
-.srv-tab:hover{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.1);transform:translateY(-2px)}
-.srv-tab.active{border-color:var(--red);background:rgba(168,85,247,.14);box-shadow:0 0 0 1px rgba(168,85,247,.45), 0 8px 26px rgba(124,58,237,.25)}
-.srv-tab .srv-mini-badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.12em;
-  background:rgba(245,195,78,.14);color:var(--gold);border:1px solid rgba(245,195,78,.35);
-  border-radius:100px;padding:3px 9px}
-.srv-panel{animation:fadeDown .4s ease}
+/* panneaux : entrée glissée à chaque changement d'onglet */
+.srv-panel{animation:srvIn .45s cubic-bezier(.2,.8,.2,1)}
 .srv-panel[hidden]{display:none}
-.srv-hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.srv-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+@keyframes srvIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* ligne de statut live */
+.srv-status{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.14em;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  padding:7px 14px;border-radius:100px}
+.srv-status .dot-live{width:8px;height:8px;border-radius:50%;background:#fff;
+  box-shadow:0 0 10px #fff;animation:livePulse 1.6s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+/* hero Krazy MC */
+.srv-hero{padding:30px 28px !important;overflow:hidden;position:relative}
+.srv-hero::after{content:"⛏️";position:absolute;right:18px;top:8px;font-size:5rem;opacity:.07;
+  filter:grayscale(1);pointer-events:none;transform:rotate(-12deg)}
+.srv-hero h2{font-size:clamp(2rem,5vw,3rem) !important;letter-spacing:.02em}
+.srv-hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.srv-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
 @media(max-width:700px){.srv-facts{grid-template-columns:1fr}}
-.srv-fact{background:rgba(11,7,23,.5);border:1px solid rgba(168,85,247,.2);border-radius:12px;padding:12px;text-align:center}
-.srv-fact b{display:block;font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--red)}
-.srv-fact span{display:block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-top:4px}
-.srv-soon{font-size:4rem;line-height:1;filter:drop-shadow(0 0 24px rgba(168,85,247,.5))}
+.srv-fact{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:.2s}
+.srv-fact:hover{border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
+.srv-fact b{display:block;font-family:'JetBrains Mono',monospace;font-size:.92rem;color:#fff}
+.srv-fact span{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:5px}
+/* cartes modes : icône géante + hover */
+.srv-mode{text-align:left;position:relative;overflow:hidden}
+.srv-mode .m-ico{font-size:2rem;display:block;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(255,255,255,.25))}
+.srv-mode p{font-size:.9rem}
+/* roadmap Roblox */
+.srv-road{margin-top:20px;text-align:left}
+.srv-step{display:grid;grid-template-columns:46px 1fr;gap:14px;position:relative;padding:13px 4px}
+.srv-step::before{content:"";position:absolute;left:26px;top:58px;bottom:-4px;width:2px;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.06))}
+.srv-step:last-child::before{display:none}
+.srv-dot{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);flex-shrink:0}
+.srv-step.done .srv-dot{background:rgba(255,255,255,.1)}
+.srv-step.done h4::after{content:" ✓";color:#fff}
+.srv-step.now .srv-dot{background:#fff;color:#000;border-color:#fff;
+  box-shadow:0 0 24px rgba(255,255,255,.4);animation:livePulse 1.8s ease-in-out infinite}
+.srv-step h4{font-size:.98rem}
+.srv-step p{opacity:.65;font-size:.86rem;margin-top:4px;line-height:1.6}
+.srv-soon{font-size:4rem;line-height:1;filter:drop-shadow(0 0 24px rgba(255,255,255,.35));animation:lockBob 2.4s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -58,17 +84,19 @@
 
   <!-- SÉLECTEUR DE JEU -->
   <div class="section reveal">
-    <div class="srv-tabs" role="tablist" aria-label="Choisir un jeu">
-      <button type="button" class="srv-tab active" id="tab-minecraft" role="tab" aria-selected="true" aria-controls="panel-minecraft" data-srv-tab="minecraft">⛏️ Minecraft</button>
-      <button type="button" class="srv-tab" id="tab-roblox" role="tab" aria-selected="false" aria-controls="panel-roblox" data-srv-tab="roblox">🟥 Roblox <span class="srv-mini-badge" id="srv-rb-badge">BIENTÔT</span></button>
+    <div class="game-filter" role="tablist" aria-label="Choisir un jeu">
+      <span class="filter-label" id="srv-filter-label">Jeu</span>
+      <button type="button" class="gf-btn active" id="tab-minecraft" role="tab" aria-selected="true" aria-controls="panel-minecraft" data-srv-tab="minecraft">⛏️ Minecraft</button>
+      <button type="button" class="gf-btn gf-locked" id="tab-roblox" role="tab" aria-selected="false" aria-controls="panel-roblox" data-srv-tab="roblox">🟥 Roblox · <span id="srv-rb-badge">Bientôt</span></button>
     </div>
   </div>
 
   <!-- PANEL MINECRAFT : KRAZY MC -->
   <div class="srv-panel" id="panel-minecraft" role="tabpanel" aria-labelledby="tab-minecraft" data-srv-panel="minecraft">
     <div class="section reveal">
-      <div class="card" style="padding:26px">
+      <div class="card srv-hero">
         <div id="srv-mc-badges" style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-dev">BÊTA</span><span class="badge badge-public">JAVA 1.21.10</span><span class="badge badge-maintenu">BEDROCK BIENTÔT</span></div>
+        <div class="srv-status"><span class="dot-live"></span><span id="srv-mc-status">EN BÊTA — SERVEUR OUVERT</span></div>
         <h2 id="srv-mc-name" style="margin-top:12px">KRAZY MC</h2>
         <p class="lead" id="srv-mc-tag" style="margin-top:6px">Votre aventure, vos règles, votre légende.</p>
         <p id="srv-mc-intro" style="opacity:.82;line-height:1.75">Bienvenue sur <b>Krazy MC</b>, un serveur Minecraft Java en constante évolution, où chaque joueur peut trouver son propre terrain de jeu. Que vous soyez passionné de construction, joueur compétitif ou simplement à la recherche d'une communauté avec laquelle vous amuser, Krazy MC vous ouvre ses portes.</p>
@@ -87,9 +115,9 @@
     <div class="section reveal">
       <h2 id="srv-modes-title">Des modes de jeu pour tous</h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px" class="mini-grid">
-        <div class="card" style="padding:18px" id="srv-mode-smp"><h3 style="font-size:1.05rem">🌍 SMP</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Bâtissez votre propre histoire, construisez des projets ambitieux et développez votre aventure. Grâce aux clans et aux fonctionnalités personnalisées, votre expérience évolue au fil de votre progression.</p></div>
-        <div class="card" style="padding:18px" id="srv-mode-mini"><h3 style="font-size:1.05rem">🎮 Mini-jeux</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Relevez des défis, affrontez d'autres joueurs et découvrez des modes comme le BedWars, actuellement en développement.</p></div>
-        <div class="card" style="padding:18px" id="srv-mode-pvp"><h3 style="font-size:1.05rem">⚔️ PvP Ranked <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">BIENTÔT</span></h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Préparez-vous à grimper dans le classement, affronter des adversaires et démontrer votre niveau dans un système compétitif.</p></div>
+        <div class="card srv-mode" style="padding:20px" id="srv-mode-smp"><span class="m-ico">🌍</span><h3>SMP</h3><p>Bâtissez votre propre histoire, construisez des projets ambitieux et développez votre aventure. Grâce aux clans et aux fonctionnalités personnalisées, votre expérience évolue au fil de votre progression.</p></div>
+        <div class="card srv-mode" style="padding:20px" id="srv-mode-mini"><span class="m-ico">🎮</span><h3>Mini-jeux</h3><p>Relevez des défis, affrontez d'autres joueurs et découvrez des modes comme le BedWars, actuellement en développement.</p></div>
+        <div class="card srv-mode" style="padding:20px" id="srv-mode-pvp"><span class="m-ico">⚔️</span><h3>PvP Ranked <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">BIENTÔT</span></h3><p>Préparez-vous à grimper dans le classement, affronter des adversaires et démontrer votre niveau dans un système compétitif.</p></div>
       </div>
     </div>
 
@@ -125,6 +153,13 @@
         <p class="lead" style="max-width:560px;margin:10px auto 0" id="srv-rb-txt">Quelque chose se prépare du côté de Roblox. Le projet est en préparation — restez connectés sur Discord pour être les premiers au courant de l'ouverture.</p>
         <div class="srv-hero-cta" style="justify-content:center">
           <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="btn btn-primary" id="srv-rb-cta">Me tenir au courant ↗</a>
+        </div>
+        <div class="srv-road" style="max-width:560px;margin:6px auto 0">
+          <h3 style="font-size:1rem;margin:18px 0 4px" id="srv-road-title">Feuille de route</h3>
+          <div class="srv-step done" id="srv-step-1"><div class="srv-dot">🧪</div><div><h4>En préparation</h4><p>Concepts et prototypes en cours dans les labos KrazyDev.</p></div></div>
+          <div class="srv-step now" id="srv-step-2"><div class="srv-dot">📣</div><div><h4>Annonce</h4><p>Révélation du projet sur Discord — soyez les premiers au courant.</p></div></div>
+          <div class="srv-step" id="srv-step-3"><div class="srv-dot">🧑‍🤝‍🧑</div><div><h4>Bêta fermée</h4><p>Tests avec la communauté avant l'ouverture au public.</p></div></div>
+          <div class="srv-step" id="srv-step-4"><div class="srv-dot">🚀</div><div><h4>Ouverture</h4><p>Lancement public du serveur Roblox.</p></div></div>
         </div>
       </div>
       <div class="nav-arrows" style="display:flex;gap:10px;margin-top:30px"><button class="btn btn-ghost" data-action="prev">← Retour</button><a href="contact.html" class="btn btn-primary">Contact →</a></div>

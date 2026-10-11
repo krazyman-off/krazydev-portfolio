@@ -193,7 +193,9 @@
       { sel: '#srv-title', en: 'Our <em>servers</em>' },
       { sel: '#srv-sub', en: 'Minecraft & Roblox — pick your playground.' },
       { sel: '#srv-rb-badge', en: 'SOON' },
+      { sel: '#srv-filter-label', en: 'Game' },
       { sel: '#srv-mc-badges', en: '<span class="badge badge-dev">BETA</span><span class="badge badge-public">JAVA 1.21.10</span><span class="badge badge-maintenu">BEDROCK SOON</span>' },
+      { sel: '#srv-mc-status', en: 'IN BETA — SERVER OPEN' },
       { sel: '#srv-mc-tag', en: 'Your adventure, your rules, your legend.' },
       { sel: '#srv-mc-intro', en: 'Welcome to <b>Krazy MC</b>, an ever-evolving Minecraft Java server where every player can find their own playground. Whether you are into building, competitive play, or just looking for a community to have fun with, Krazy MC opens its doors to you.' },
       { sel: '#srv-fact-v', en: 'Current version' },
@@ -202,9 +204,9 @@
       { sel: '#srv-mc-cta-discord', en: 'Join on Discord ↗' },
       { sel: '#srv-mc-cta-contact', en: 'Ask a question →' },
       { sel: '#srv-modes-title', en: 'Game modes for everyone' },
-      { sel: '#srv-mode-smp', en: '<h3 style="font-size:1.05rem">🌍 SMP</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Build your own story, take on ambitious projects and grow your adventure. With clans and custom features, your experience evolves as you progress.</p>' },
-      { sel: '#srv-mode-mini', en: '<h3 style="font-size:1.05rem">🎮 Mini-games</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Take on challenges, face other players and discover modes like BedWars, currently in development.</p>' },
-      { sel: '#srv-mode-pvp', en: '<h3 style="font-size:1.05rem">⚔️ Ranked PvP <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">SOON</span></h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Get ready to climb the ranks, face opponents and prove your skills in a competitive system.</p>' },
+      { sel: '#srv-mode-smp', en: '<span class="m-ico">🌍</span><h3>SMP</h3><p>Build your own story, take on ambitious projects and grow your adventure. With clans and custom features, your experience evolves as you progress.</p>' },
+      { sel: '#srv-mode-mini', en: '<span class="m-ico">🎮</span><h3>Mini-games</h3><p>Take on challenges, face other players and discover modes like BedWars, currently in development.</p>' },
+      { sel: '#srv-mode-pvp', en: '<span class="m-ico">⚔️</span><h3>Ranked PvP <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">SOON</span></h3><p>Get ready to climb the ranks, face opponents and prove your skills in a competitive system.</p>' },
       { sel: '#srv-evol', en: '<h3 style="font-size:1.05rem">⚙️ A server that evolves with you</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Krazy MC runs plugins personally developed by its creator, including in <b>Rust</b>, for original mechanics. In SMP, systems like heat and cold management add depth without turning every session into a chore. Ranks, clans and much more complete the experience.</p>' },
       { sel: '#srv-commu', en: '<h3 style="font-size:1.05rem">🤝 Built for the community</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Builders, fighters or chill players: everyone finds their place and plays at their own pace. Zone protections preserve the most ambitious SMP builds. Special events, temporary bonuses and earnable ranks will come with the community.</p>' },
       { sel: '#srv-saisons', en: '<h3 style="font-size:1.05rem">🎃 A world that follows the seasons</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Lobbies and some mini-game maps change with seasons and events. Halloween is coming: a themed map is in the works. More seasonal atmospheres will follow.</p>' },
@@ -216,7 +218,12 @@
       { sel: '#srv-rb-soon', en: 'COMING SOON' },
       { sel: '#srv-rb-title', en: 'Roblox is coming' },
       { sel: '#srv-rb-txt', en: 'Something is brewing on the Roblox side. The project is in the works — stay tuned on Discord to be first in line when it opens.' },
-      { sel: '#srv-rb-cta', en: 'Keep me posted ↗' }
+      { sel: '#srv-rb-cta', en: 'Keep me posted ↗' },
+      { sel: '#srv-road-title', en: 'Roadmap' },
+      { sel: '#srv-step-1', en: '<div class="srv-dot">🧪</div><div><h4>In the works</h4><p>Concepts and prototypes cooking in the KrazyDev labs.</p></div>' },
+      { sel: '#srv-step-2', en: '<div class="srv-dot">📣</div><div><h4>Announcement</h4><p>Project reveal on Discord — be the first to know.</p></div>' },
+      { sel: '#srv-step-3', en: '<div class="srv-dot">🧑‍🤝‍🧑</div><div><h4>Closed beta</h4><p>Testing with the community before opening to the public.</p></div>' },
+      { sel: '#srv-step-4', en: '<div class="srv-dot">🚀</div><div><h4>Launch</h4><p>Public opening of the Roblox server.</p></div>' }
     ]
   };
 
