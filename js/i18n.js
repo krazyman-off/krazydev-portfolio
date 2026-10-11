@@ -31,7 +31,7 @@
   var EN = {
     global: [
       { sel: '#loader p', en: 'Secure loading...' },
-      { sel: 'footer', en: 'Made with ♥ by <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Home</a> • <a href="projets.html">Projects</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a>' }
+      { sel: 'footer', en: 'Made with ♥ by <b style="color:var(--red)">KrazyMan_off</b> aka Sasha — KrazyDev • 2023-2026 • <a href="index.html">Home</a> • <a href="projets.html">Projects</a> • <a href="skills.html">Stack</a> • <a href="contact.html">Contact</a> • <a href="servers.html">Servers</a>' }
     ],
     home: [
       { sel: '.hero > div:nth-of-type(1) .kicker', en: '● Available • Portfolio v2 • 2023 — 2026 • Prod ready' },
@@ -59,7 +59,7 @@
       { sel: '.stack-side .skill:nth-of-type(3) p', en: '2023 → 2026 : 3 years<br>15+ plugins • 12 cogs<br>60k+ cumulative files<br>Discord : discord.gg/45Dc3UZ726' },
       { sel: '.wrap > .section:nth-of-type(1) .nav-arrows a', en: 'View my projects →' },
       { sel: '.wrap > .section:nth-of-type(2) h2', en: 'Explore' },
-      { sel: '.wrap > .section:nth-of-type(2) p.lead', en: 'Three dedicated pages.' },
+      { sel: '.wrap > .section:nth-of-type(2) p.lead', en: 'Four dedicated pages.' },
       { sel: '.page-grid .page-card:nth-of-type(1) h3', en: 'Projects' },
       { sel: '.page-grid .page-card:nth-of-type(1) p', en: 'Krazy Studio Bot & KM-Plugins in detail: architecture, features, plugins, stacks.' },
       { sel: '.page-grid .page-card:nth-of-type(1) .pc-go', en: 'Open →' },
@@ -69,6 +69,9 @@
       { sel: '.page-grid .page-card:nth-of-type(3) h3', en: 'Contact' },
       { sel: '.page-grid .page-card:nth-of-type(3) p', en: 'Discord, email, quotes. Shall we work together?' },
       { sel: '.page-grid .page-card:nth-of-type(3) .pc-go', en: 'Open →' },
+      { sel: '.page-grid .page-card:nth-of-type(4) h3', en: 'Servers' },
+      { sel: '.page-grid .page-card:nth-of-type(4) p', en: 'Krazy MC (Minecraft Java 1.21.10, beta) & Roblox soon. Pick your playground.' },
+      { sel: '.page-grid .page-card:nth-of-type(4) .pc-go', en: 'Open →' },
       { sel: '.wrap > .section:nth-of-type(3) h2', en: 'In brief' },
       { sel: '.projects .card:nth-of-type(1) h3', en: 'Krazy Studio Bot' },
       { sel: '.projects .card:nth-of-type(1) .links-a', en: 'Details →' },
@@ -184,6 +187,36 @@
       { sel: '.why-grid .mini:nth-of-type(3)', en: '<b>🛡️ You want a security audit</b><p style="opacity:.6;margin-top:4px">I comb through your server/bot and bring back a report + patches.</p>' },
       { sel: '.why-grid .mini:nth-of-type(4)', en: '<b>📈 You want a Rust portfolio</b><p style="opacity:.6;margin-top:4px">Axum server, rate-limit, security headers, multi-page static — like this page.</p>' },
       { sel: '.wrap > .section:nth-of-type(4) .nav-arrows .btn-primary', en: 'Back to home →' }
+    ],
+    'servers.html': [
+      { sel: '#srv-kicker', en: '/servers — 05' },
+      { sel: '#srv-title', en: 'Our <em>servers</em>' },
+      { sel: '#srv-sub', en: 'Minecraft & Roblox — pick your playground.' },
+      { sel: '#srv-rb-badge', en: 'SOON' },
+      { sel: '#srv-mc-badges', en: '<span class="badge badge-dev">BETA</span><span class="badge badge-public">JAVA 1.21.10</span><span class="badge badge-maintenu">BEDROCK SOON</span>' },
+      { sel: '#srv-mc-tag', en: 'Your adventure, your rules, your legend.' },
+      { sel: '#srv-mc-intro', en: 'Welcome to <b>Krazy MC</b>, an ever-evolving Minecraft Java server where every player can find their own playground. Whether you are into building, competitive play, or just looking for a community to have fun with, Krazy MC opens its doors to you.' },
+      { sel: '#srv-fact-v', en: 'Current version' },
+      { sel: '#srv-fact-m', en: 'Open modes' },
+      { sel: '#srv-fact-a', en: 'Stress-tested' },
+      { sel: '#srv-mc-cta-discord', en: 'Join on Discord ↗' },
+      { sel: '#srv-mc-cta-contact', en: 'Ask a question →' },
+      { sel: '#srv-modes-title', en: 'Game modes for everyone' },
+      { sel: '#srv-mode-smp', en: '<h3 style="font-size:1.05rem">🌍 SMP</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Build your own story, take on ambitious projects and grow your adventure. With clans and custom features, your experience evolves as you progress.</p>' },
+      { sel: '#srv-mode-mini', en: '<h3 style="font-size:1.05rem">🎮 Mini-games</h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Take on challenges, face other players and discover modes like BedWars, currently in development.</p>' },
+      { sel: '#srv-mode-pvp', en: '<h3 style="font-size:1.05rem">⚔️ Ranked PvP <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">SOON</span></h3><p style="opacity:.7;font-size:.9rem;margin-top:6px;line-height:1.65">Get ready to climb the ranks, face opponents and prove your skills in a competitive system.</p>' },
+      { sel: '#srv-evol', en: '<h3 style="font-size:1.05rem">⚙️ A server that evolves with you</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Krazy MC runs plugins personally developed by its creator, including in <b>Rust</b>, for original mechanics. In SMP, systems like heat and cold management add depth without turning every session into a chore. Ranks, clans and much more complete the experience.</p>' },
+      { sel: '#srv-commu', en: '<h3 style="font-size:1.05rem">🤝 Built for the community</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Builders, fighters or chill players: everyone finds their place and plays at their own pace. Zone protections preserve the most ambitious SMP builds. Special events, temporary bonuses and earnable ranks will come with the community.</p>' },
+      { sel: '#srv-saisons', en: '<h3 style="font-size:1.05rem">🎃 A world that follows the seasons</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Lobbies and some mini-game maps change with seasons and events. Halloween is coming: a themed map is in the works. More seasonal atmospheres will follow.</p>' },
+      { sel: '#srv-anticheat', en: '<h3 style="font-size:1.05rem">🛡️ Monitored, crafted gameplay</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">A home-grown anti-cheat, developed and stress-tested to catch suspicious behavior while limiting false positives. Goal: a playing field as fair as possible.</p>' },
+      { sel: '#srv-java', en: '<h3 style="font-size:1.05rem">💻 Java today, Bedrock next</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Playable on <b>Minecraft Java Edition 1.21.10</b>. Bedrock support is planned, with careful mini-game balancing to narrow the gap between platforms — plus tweaks to help controller beginners enjoy combat without any edge over veterans.</p>' },
+      { sel: '#srv-beta-title', en: 'Krazy MC is in beta' },
+      { sel: '#srv-beta-txt', en: 'The server is continuously developed, tested and improved. Bugs may remain, features land gradually. Join the adventure and help grow the community.' },
+      { sel: '#srv-beta-cta', en: 'Join the adventure ↗' },
+      { sel: '#srv-rb-soon', en: 'COMING SOON' },
+      { sel: '#srv-rb-title', en: 'Roblox is coming' },
+      { sel: '#srv-rb-txt', en: 'Something is brewing on the Roblox side. The project is in the works — stay tuned on Discord to be first in line when it opens.' },
+      { sel: '#srv-rb-cta', en: 'Keep me posted ↗' }
     ]
   };
 
@@ -206,7 +239,7 @@
     '● MAINTENU — 2023-2026': '● MAINTAINED — 2023-2026'
   };
   var CHIPS = { 'Java': 'Java', 'Rust': 'Rust', 'Maintenu': 'Maintained' };
-  var NAV = { 'index.html': 'Home', 'projets.html': 'Projects', 'skills.html': 'Stack', 'contact.html': 'Contact' };
+  var NAV = { 'index.html': 'Home', 'projets.html': 'Projects', 'skills.html': 'Stack', 'contact.html': 'Contact', 'servers.html': 'Servers' };
 
   // ---------- Helpers d'origine ----------
   function saveOrig(el, key, val) {
@@ -302,7 +335,8 @@
           'index.html': 'KrazyDev — KrazyMan_off (Sasha) | Home',
           'projets.html': 'Projects — KrazyDev | Krazy Studio Bot & KM-Plugins',
           'skills.html': 'Stack & Services — KrazyDev | Languages, Security, Infra',
-          'contact.html': 'Contact — KrazyDev | KrazyMan_off aka Sasha'
+          'contact.html': 'Contact — KrazyDev | KrazyMan_off aka Sasha',
+          'servers.html': 'Servers — KrazyDev | Krazy MC & Roblox'
         };
         if (T[p]) t.textContent = T[p];
       }
