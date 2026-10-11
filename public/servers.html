@@ -113,7 +113,9 @@
 /* progression roadmap */
 .srv-roadbar{height:6px;border-radius:100px;background:rgba(255,255,255,.08);margin-top:14px;overflow:hidden}
 .srv-roadbar span{display:block;height:100%;width:25%;border-radius:100px;
-  background:linear-gradient(90deg,#fff,#64748b);box-shadow:0 0 12px rgba(255,255,255,.4)}
+  background:linear-gradient(90deg,#fff,#64748b);box-shadow:0 0 12px rgba(255,255,255,.4);
+  animation:roadFill 1.1s cubic-bezier(.2,.8,.2,1) .3s both}
+@keyframes roadFill{from{width:0}to{width:25%}}
 /* règlement */
 .srv-rule{display:flex;gap:14px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
 .srv-rule:last-child{border-bottom:none}

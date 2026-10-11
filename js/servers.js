@@ -50,14 +50,51 @@
     list.forEach(function (t) {
       t.addEventListener('click', function () {
         show(t.getAttribute('data-srv-tab'));
+        // remet l'onglet visible si l'utilisateur avait scrollé plus bas
+        var gf = document.querySelector('.game-filter');
+        if (gf) {
+          var r = gf.getBoundingClientRect();
+          if (r.top < 0 || r.bottom > innerHeight) {
+            try { gf.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+          }
+        }
       });
     });
+    // clavier : pattern ARIA tabs (flèches + Home/End)
+    var bar = document.querySelector('.game-filter');
+    if (bar) {
+      bar.addEventListener('keydown', function (e) {
+        var cur = list.indexOf(document.activeElement);
+        if (cur === -1) return;
+        var next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (cur + 1) % list.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (cur - 1 + list.length) % list.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = list.length - 1;
+        if (next !== null) {
+          e.preventDefault();
+          list[next].focus();
+          show(list[next].getAttribute('data-srv-tab'));
+        }
+      });
+    }
     addEventListener('hashchange', function () {
       var h = currentFromHash();
       if (h) show(h, false);
     });
     // priorité : hash > dernier onglet mémorisé > minecraft
     show(currentFromHash() || stored() || 'minecraft', false);
+
+    // FAQ : accordéon exclusif (une seule réponse ouverte)
+    Array.prototype.forEach.call(document.querySelectorAll('.srv-faq'), function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) {
+          Array.prototype.forEach.call(document.querySelectorAll('.srv-faq'), function (o) {
+            if (o !== d && o.open) o.removeAttribute('open');
+          });
+        }
+      });
+    });
 
     // bouton copier l'IP (feedback localisé, restauration auto)
     Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (btn) {
@@ -66,6 +103,16 @@
         var okLabel = document.documentElement.lang === 'en' ? 'Copied ✓' : 'Copié ✓';
         var done = function () {
           btn.innerHTML = okLabel;
+          // sélectionne aussi le texte de l'IP (CTRL+C manuel possible)
+          try {
+            var code = document.getElementById('srv-ip-addr');
+            if (code) {
+              var range = document.createRange();
+              range.selectNodeContents(code);
+              var sel = window.getSelection();
+              if (sel) { sel.removeAllRanges(); sel.addRange(range); }
+            }
+          } catch (e) {}
           setTimeout(function () {
             btn.innerHTML = document.documentElement.lang === 'en' ? 'Copy IP' : "Copier l'IP";
           }, 1600);
