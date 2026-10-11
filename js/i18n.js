@@ -201,7 +201,7 @@
       { sel: '#srv-fact-v', en: 'Current version' },
       { sel: '#srv-fact-m', en: 'Open modes' },
       { sel: '#srv-fact-a', en: 'Stress-tested' },
-      { sel: '#srv-ip-label', en: 'SERVER IP' },
+      { sel: '#srv-ip-motd', en: 'Build, fight, explore. Write what comes next.' },
       { sel: '#srv-copy-btn', en: 'Copy IP' },
       { sel: '#srv-mc-cta-discord', en: 'Join on Discord ↗' },
       { sel: '#srv-mc-cta-contact', en: 'Ask a question →' },
