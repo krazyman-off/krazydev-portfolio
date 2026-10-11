@@ -66,6 +66,23 @@
 .srv-step h4{font-size:.98rem}
 .srv-step p{opacity:.65;font-size:.86rem;margin-top:4px;line-height:1.6}
 .srv-soon{font-size:4rem;line-height:1;filter:drop-shadow(0 0 24px rgba(255,255,255,.35));animation:lockBob 2.4s ease-in-out infinite}
+/* carte verrouillée (PvP ranked) */
+.srv-locked{border-style:dashed !important;opacity:.92}
+/* FAQ accordéon (details/summary natif, zéro JS) */
+.srv-faq{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;margin-top:10px;overflow:hidden;transition:border-color .2s}
+.srv-faq:hover{border-color:rgba(255,255,255,.3)}
+.srv-faq summary{cursor:pointer;padding:15px 18px;font-weight:800;font-size:.95rem;
+  list-style:none;display:flex;gap:12px;align-items:center}
+.srv-faq summary::-webkit-details-marker{display:none}
+.srv-faq summary::before{content:"+";font-family:'JetBrains Mono',monospace;font-size:1.1rem;
+  width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.25);border-radius:50%}
+.srv-faq[open] summary::before{content:"–";background:#fff;color:#000;border-color:#fff}
+.srv-faq .faq-a{padding:0 18px 16px 56px;opacity:.72;font-size:.9rem;line-height:1.7}
+/* étapes rejoindre */
+.srv-step-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+  color:#fff;opacity:.6}
 </style>
 </head>
 <body>
@@ -117,7 +134,16 @@
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px" class="mini-grid">
         <div class="card srv-mode" style="padding:20px" id="srv-mode-smp"><span class="m-ico">🌍</span><h3>SMP</h3><p>Bâtissez votre propre histoire, construisez des projets ambitieux et développez votre aventure. Grâce aux clans et aux fonctionnalités personnalisées, votre expérience évolue au fil de votre progression.</p></div>
         <div class="card srv-mode" style="padding:20px" id="srv-mode-mini"><span class="m-ico">🎮</span><h3>Mini-jeux</h3><p>Relevez des défis, affrontez d'autres joueurs et découvrez des modes comme le BedWars, actuellement en développement.</p></div>
-        <div class="card srv-mode" style="padding:20px" id="srv-mode-pvp"><span class="m-ico">⚔️</span><h3>PvP Ranked <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">BIENTÔT</span></h3><p>Préparez-vous à grimper dans le classement, affronter des adversaires et démontrer votre niveau dans un système compétitif.</p></div>
+        <div class="card srv-mode srv-locked" style="padding:20px" id="srv-mode-pvp"><span class="m-ico">⚔️</span><h3>PvP Ranked <span class="badge badge-maintenu" id="srv-pvp-badge" style="font-size:.62rem;vertical-align:middle">BIENTÔT</span></h3><p>Préparez-vous à grimper dans le classement, affronter des adversaires et démontrer votre niveau dans un système compétitif.</p></div>
+      </div>
+    </div>
+
+    <div class="section reveal">
+      <h2 id="srv-join-title">Comment rejoindre ?</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px" class="mini-grid">
+        <div class="mini" id="srv-join-1"><span class="srv-step-num">ÉTAPE 01</span><b>💻 Prépare ton jeu</b><p style="opacity:.65;margin-top:6px">Minecraft Java Edition en version <b>1.21.10</b>.</p></div>
+        <div class="mini" id="srv-join-2"><span class="srv-step-num">ÉTAPE 02</span><b>💬 Passe par Discord</b><p style="opacity:.65;margin-top:6px">Récupère l'IP et les infos d'accès sur le serveur Discord.</p></div>
+        <div class="mini" id="srv-join-3"><span class="srv-step-num">ÉTAPE 03</span><b>⛏️ Rejoins l'aventure</b><p style="opacity:.65;margin-top:6px">Connecte-toi et choisis ton mode : SMP, mini-jeux, et bientôt PvP ranked.</p></div>
       </div>
     </div>
 
@@ -132,12 +158,24 @@
 
     <div class="section reveal">
       <div class="card" style="padding:20px" id="srv-java"><h3 style="font-size:1.05rem">💻 Java aujourd'hui, Bedrock prochainement</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Serveur accessible sur <b>Minecraft Java Edition 1.21.10</b>. Compatibilité Bedrock prévue, avec un équilibrage soigné des mini-jeux pour limiter les écarts entre plateformes — et des ajustements pour aider les débutants sur manette sans avantager personne.</p></div>
+      <div class="game-teaser" id="srv-halloween"><div class="gt-lock">🎃</div><div><h3>Halloween approche</h3><p>Une carte thématique est en préparation pour apporter une nouvelle ambiance au serveur. Restez connectés — d'autres changements saisonniers suivront.</p></div></div>
     </div>
 
     <div class="section reveal">
       <div class="cta">
         <div><h3 id="srv-beta-title">Krazy MC est en bêta</h3><p style="opacity:.7;margin-top:4px" id="srv-beta-txt">Le serveur est développé, testé et amélioré en continu. Des bugs peuvent subsister, des fonctionnalités arrivent progressivement. Rejoignez l'aventure et contribuez à la communauté.</p></div>
         <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="btn btn-primary" id="srv-beta-cta">Rejoindre l'aventure ↗</a>
+      </div>
+    </div>
+
+    <div class="section reveal">
+      <h2 id="srv-faq-title">Questions fréquentes</h2>
+      <div style="margin-top:14px">
+        <details class="srv-faq" id="srv-faq-1"><summary>Quelle version faut-il pour jouer ?</summary><p class="faq-a">Minecraft Java Edition en version 1.21.10. La compatibilité Bedrock est prévue pour plus tard.</p></details>
+        <details class="srv-faq" id="srv-faq-2"><summary>Comment obtenir l'IP du serveur ?</summary><p class="faq-a">Rejoins le serveur Discord : l'IP et toutes les infos d'accès y sont partagées avec la communauté.</p></details>
+        <details class="srv-faq" id="srv-faq-3"><summary>Le serveur est-il terminé ?</summary><p class="faq-a">Non — Krazy MC est en bêta. Des bugs peuvent subsister et de nouvelles fonctionnalités arrivent progressivement.</p></details>
+        <details class="srv-faq" id="srv-faq-4"><summary>Comment protéger ma construction ?</summary><p class="faq-a">Des protections de zones peuvent être mises en place pour préserver les projets ambitieux du SMP. Demande sur Discord.</p></details>
+        <details class="srv-faq" id="srv-faq-5"><summary>Y aura-t-il des événements ?</summary><p class="faq-a">Oui : événements spéciaux, bonus temporaires, grades à gagner et cartes saisonnières (Halloween en préparation) arriveront avec la communauté.</p></details>
       </div>
       <div class="nav-arrows" style="display:flex;gap:10px;margin-top:30px"><button class="btn btn-ghost" data-action="prev">← Retour</button><a href="contact.html" class="btn btn-primary">Contact →</a></div>
     </div>

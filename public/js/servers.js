@@ -12,9 +12,18 @@
     return Array.prototype.slice.call(document.querySelectorAll('[data-srv-panel]'));
   }
 
+  var LS = 'krazydev_srv';
+
+  function stored() {
+    try {
+      var v = localStorage.getItem(LS);
+      return VALID[v] ? v : null;
+    } catch (e) { return null; }
+  }
+
   function currentFromHash() {
     var h = (location.hash || '').replace('#', '').toLowerCase();
-    return VALID[h] ? h : 'minecraft';
+    return VALID[h] ? h : null;
   }
 
   function show(name, syncHash) {
@@ -31,6 +40,7 @@
       try {
         history.replaceState(null, '', 'servers.html#' + name);
       } catch (e) {}
+      try { localStorage.setItem(LS, name); } catch (e) {}
     }
   }
 
@@ -43,9 +53,11 @@
       });
     });
     addEventListener('hashchange', function () {
-      show(currentFromHash(), false);
+      var h = currentFromHash();
+      if (h) show(h, false);
     });
-    show(currentFromHash(), false);
+    // priorité : hash > dernier onglet mémorisé > minecraft
+    show(currentFromHash() || stored() || 'minecraft', false);
   }
 
   if (document.readyState === 'loading') {
