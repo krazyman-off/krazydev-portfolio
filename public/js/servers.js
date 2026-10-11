@@ -58,6 +58,39 @@
     });
     // priorité : hash > dernier onglet mémorisé > minecraft
     show(currentFromHash() || stored() || 'minecraft', false);
+
+    // bouton copier l'IP (feedback localisé, restauration auto)
+    Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (btn) {
+      btn.addEventListener('click', function () {
+        var val = btn.getAttribute('data-copy') || '';
+        var okLabel = document.documentElement.lang === 'en' ? 'Copied ✓' : 'Copié ✓';
+        var done = function () {
+          btn.innerHTML = okLabel;
+          setTimeout(function () {
+            btn.innerHTML = document.documentElement.lang === 'en' ? 'Copy IP' : "Copier l'IP";
+          }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(val).then(done, function () { fallbackCopy(val, done); });
+        } else {
+          fallbackCopy(val, done);
+        }
+      });
+    });
+  }
+
+  function fallbackCopy(val, done) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = val;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch (e) {}
+    done();
   }
 
   if (document.readyState === 'loading') {

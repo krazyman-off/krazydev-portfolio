@@ -83,6 +83,23 @@
 /* étapes rejoindre */
 .srv-step-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;
   color:#fff;opacity:.6}
+/* barre IP + bouton copier */
+.srv-ipbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;
+  padding:14px 16px;border:1px dashed rgba(255,255,255,.3);border-radius:14px;
+  background:rgba(255,255,255,.03)}
+.srv-ip-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;opacity:.55}
+.srv-ip{font-family:'JetBrains Mono',monospace;font-size:1.15rem;font-weight:700;color:#fff;
+  background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:8px 14px;user-select:all}
+/* règlement */
+.srv-rule{display:flex;gap:14px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.srv-rule:last-child{border-bottom:none}
+.srv-rule-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;color:#000;
+  background:#fff;border-radius:8px;min-width:38px;height:30px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.srv-rule h4{font-size:.95rem}
+.srv-rule p{opacity:.65;font-size:.87rem;margin-top:4px;line-height:1.6}
+.srv-rules-note{margin-top:12px;font-size:.8rem;opacity:.55;font-family:'JetBrains Mono',monospace}
 </style>
 </head>
 <body>
@@ -122,6 +139,11 @@
           <div class="srv-fact"><b>SMP + Mini-jeux</b><span id="srv-fact-m">Modes ouverts</span></div>
           <div class="srv-fact"><b>Anti-triche maison</b><span id="srv-fact-a">Stress-testé</span></div>
         </div>
+        <div class="srv-ipbar">
+          <span class="srv-ip-label" id="srv-ip-label">IP DU SERVEUR</span>
+          <code class="srv-ip" id="srv-ip-addr">90.63.115.130</code>
+          <button type="button" class="btn btn-ghost" style="height:42px" id="srv-copy-btn" data-copy="90.63.115.130">Copier l'IP</button>
+        </div>
         <div class="srv-hero-cta">
           <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="btn btn-primary" id="srv-mc-cta-discord">Rejoindre sur Discord ↗</a>
           <a href="contact.html" class="btn btn-ghost" id="srv-mc-cta-contact">Poser une question →</a>
@@ -142,7 +164,7 @@
       <h2 id="srv-join-title">Comment rejoindre ?</h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px" class="mini-grid">
         <div class="mini" id="srv-join-1"><span class="srv-step-num">ÉTAPE 01</span><b>💻 Prépare ton jeu</b><p style="opacity:.65;margin-top:6px">Minecraft Java Edition en version <b>1.21.10</b>.</p></div>
-        <div class="mini" id="srv-join-2"><span class="srv-step-num">ÉTAPE 02</span><b>💬 Passe par Discord</b><p style="opacity:.65;margin-top:6px">Récupère l'IP et les infos d'accès sur le serveur Discord.</p></div>
+        <div class="mini" id="srv-join-2"><span class="srv-step-num">ÉTAPE 02</span><b>💬 Passe par Discord</b><p style="opacity:.65;margin-top:6px">Copie l'IP ci-dessus ou récupère-la sur le Discord, avec toutes les infos d'accès.</p></div>
         <div class="mini" id="srv-join-3"><span class="srv-step-num">ÉTAPE 03</span><b>⛏️ Rejoins l'aventure</b><p style="opacity:.65;margin-top:6px">Connecte-toi et choisis ton mode : SMP, mini-jeux, et bientôt PvP ranked.</p></div>
       </div>
     </div>
@@ -162,6 +184,32 @@
     </div>
 
     <div class="section reveal">
+      <h2 id="srv-secu-title">Sécurité & anti-DDoS</h2>
+      <p class="lead" id="srv-secu-sub">Pourquoi exposer l'IP ne fait pas tomber le serveur.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px" class="two-col">
+        <div class="card" style="padding:20px" id="srv-secu-1"><h3 style="font-size:1.05rem">🦀 Proxy Rust 100% isolé</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Toutes les requêtes passent par un proxy codé en Rust, isolé à 100% des serveurs backend. L'infrastructure réelle n'est jamais exposée directement aux joueurs.</p></div>
+        <div class="card" style="padding:20px" id="srv-secu-2"><h3 style="font-size:1.05rem">🧪 Testé à l'extrême</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Anti-DDoS éprouvé en conditions extrêmes, y compris des scénarios qui ne se produiront jamais. Plugins maison compilés en .exe Rust, pensés pour encaisser.</p></div>
+        <div class="card" style="padding:20px" id="srv-secu-3"><h3 style="font-size:1.05rem">📝 Connexions surveillées</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Connexions loggées temporairement pour repérer les comportements suspects et réagir vite, sans impacter les joueurs légitimes.</p></div>
+        <div class="card" style="padding:20px" id="srv-secu-4"><h3 style="font-size:1.05rem">🎭 Anti-usurpation</h3><p style="opacity:.7;font-size:.9rem;margin-top:8px;line-height:1.7">Pseudos et skins premium protégés contre le vol, doubles comptes bannis du proxy comme des mini-jeux, VPN détectés par KM-Login.</p></div>
+      </div>
+    </div>
+
+    <div class="section reveal">
+      <h2 id="srv-rules-title">Règlement</h2>
+      <div class="card" style="padding:22px;margin-top:14px">
+        <div id="srv-rules-list">
+          <div class="srv-rule"><span class="srv-rule-n">01</span><div><h4>Triche interdite</h4><p>Mods, hacks et exploits en tout genre : l'anti-triche maison surveille et sanctionne.</p></div></div>
+          <div class="srv-rule"><span class="srv-rule-n">02</span><div><h4>Pas d'usurpation</h4><p>Les pseudos et skins des comptes premium sont protégés, même en version crackée.</p></div></div>
+          <div class="srv-rule"><span class="srv-rule-n">03</span><div><h4>Un seul compte</h4><p>Les doubles comptes sont détectés et bannis du proxy comme des mini-jeux.</p></div></div>
+          <div class="srv-rule"><span class="srv-rule-n">04</span><div><h4>VPN interdits</h4><p>Détectés automatiquement par KM-Login. Jouez avec votre vraie connexion.</p></div></div>
+          <div class="srv-rule"><span class="srv-rule-n">05</span><div><h4>Respect des constructions</h4><p>Grief et vol interdits ; les zones protégées sont intouchables.</p></div></div>
+          <div class="srv-rule"><span class="srv-rule-n">06</span><div><h4>Respect des joueurs</h4><p>Harcèlement, insultes et comportements toxiques sanctionnés.</p></div></div>
+        </div>
+        <p class="srv-rules-note" id="srv-rules-note">Règlement complet disponible sur Discord.</p>
+      </div>
+    </div>
+
+    <div class="section reveal">
       <div class="cta">
         <div><h3 id="srv-beta-title">Krazy MC est en bêta</h3><p style="opacity:.7;margin-top:4px" id="srv-beta-txt">Le serveur est développé, testé et amélioré en continu. Des bugs peuvent subsister, des fonctionnalités arrivent progressivement. Rejoignez l'aventure et contribuez à la communauté.</p></div>
         <a href="https://discord.gg/45Dc3UZ726" target="_blank" rel="noopener" class="btn btn-primary" id="srv-beta-cta">Rejoindre l'aventure ↗</a>
@@ -172,10 +220,11 @@
       <h2 id="srv-faq-title">Questions fréquentes</h2>
       <div style="margin-top:14px">
         <details class="srv-faq" id="srv-faq-1"><summary>Quelle version faut-il pour jouer ?</summary><p class="faq-a">Minecraft Java Edition en version 1.21.10. La compatibilité Bedrock est prévue pour plus tard.</p></details>
-        <details class="srv-faq" id="srv-faq-2"><summary>Comment obtenir l'IP du serveur ?</summary><p class="faq-a">Rejoins le serveur Discord : l'IP et toutes les infos d'accès y sont partagées avec la communauté.</p></details>
+        <details class="srv-faq" id="srv-faq-2"><summary>Comment obtenir l'IP du serveur ?</summary><p class="faq-a">L'IP est affichée en haut de cette page (bouton « Copier l'IP ») — elle est aussi partagée sur le Discord.</p></details>
         <details class="srv-faq" id="srv-faq-3"><summary>Le serveur est-il terminé ?</summary><p class="faq-a">Non — Krazy MC est en bêta. Des bugs peuvent subsister et de nouvelles fonctionnalités arrivent progressivement.</p></details>
         <details class="srv-faq" id="srv-faq-4"><summary>Comment protéger ma construction ?</summary><p class="faq-a">Des protections de zones peuvent être mises en place pour préserver les projets ambitieux du SMP. Demande sur Discord.</p></details>
         <details class="srv-faq" id="srv-faq-5"><summary>Y aura-t-il des événements ?</summary><p class="faq-a">Oui : événements spéciaux, bonus temporaires, grades à gagner et cartes saisonnières (Halloween en préparation) arriveront avec la communauté.</p></details>
+        <details class="srv-faq" id="srv-faq-6"><summary>Les versions crackées sont-elles acceptées ?</summary><p class="faq-a">Oui, mais avec des protections : les pseudos et skins premium sont protégés contre l'usurpation, les doubles comptes sont bannis et les VPN sont détectés.</p></details>
       </div>
       <div class="nav-arrows" style="display:flex;gap:10px;margin-top:30px"><button class="btn btn-ghost" data-action="prev">← Retour</button><a href="contact.html" class="btn btn-primary">Contact →</a></div>
     </div>
